@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Her A–Z: women's health, explained plainly (prototype)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F2F7; --surface:#FFFFFF; --ink:#1F1A2B; --muted:#5E5870; --line:#DDD8E6;
+  --accent:#3D2F7A; --accent-ink:#FFFFFF; --accent-soft:#E7E2F5;
+  --sage:#DDEBE3; --sage-ink:#2F5A47;
+  --alert:#FBE9E5; --alert-ink:#8E2F20; --alert-line:#E9B8AE;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15121C; --surface:#1E1A28; --ink:#EEEAF5; --muted:#A9A2BA; --line:#332D42;
+    --accent:#B6A8FF; --accent-ink:#1A1430; --accent-soft:#2A2442;
+    --sage:#1F2E27; --sage-ink:#9ED2B6;
+    --alert:#3A1E1A; --alert-ink:#FFB4A5; --alert-line:#6A3329;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15121C; --surface:#1E1A28; --ink:#EEEAF5; --muted:#A9A2BA; --line:#332D42;
+  --accent:#B6A8FF; --accent-ink:#1A1430; --accent-soft:#2A2442;
+  --sage:#1F2E27; --sage-ink:#9ED2B6;
+  --alert:#3A1E1A; --alert-ink:#FFB4A5; --alert-line:#6A3329;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;margin:0;letter-spacing:-0.01em}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:680px;margin:0 auto;padding:20px 18px 110px}
+.brand{font-family:var(--display);font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:22px}
+.brand i{width:22px;height:22px;border-radius:50% 50% 50% 4px;background:var(--accent);display:inline-block}
+.tag{font-family:var(--display);font-size:13px;color:var(--muted)}
+.muted{color:var(--muted)}
+.btn{font-family:var(--display);font-weight:500;font-size:16px;border-radius:999px;border:1.5px solid var(--accent);padding:13px 22px;background:var(--accent);color:var(--accent-ink);min-height:48px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.block{width:100%}
+.btn.small{padding:8px 16px;min-height:40px;font-size:14px}
+.link{background:none;border:0;padding:8px 0;color:var(--muted);text-decoration:underline;font-family:var(--display);font-size:15px}
+.stack>*+*{margin-top:14px}
+
+/* onboarding */
+.ob h1{font-size:34px;margin-bottom:12px}
+.ob p.lead{font-size:18px;color:var(--muted);margin:0 0 24px}
+.opts{display:grid;gap:10px;margin-bottom:22px}
+.opt{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-family:var(--display);font-size:17px;font-weight:500;min-height:52px}
+.opt small{display:block;font-family:var(--body);font-weight:400;font-size:14px;color:var(--muted);margin-top:2px}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.privacy{font-size:14px;color:var(--muted);background:var(--sage);color:var(--sage-ink);border-radius:12px;padding:12px 14px;margin:0 0 22px}
+
+/* home */
+.hero h1{font-size:32px;margin-bottom:8px}
+.hero p{margin:0 0 18px;color:var(--muted)}
+.search{width:100%;font:inherit;font-size:17px;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.sec{margin-top:30px}
+.sec h2{font-size:21px;margin-bottom:12px}
+.sec .sub{font-size:14px;color:var(--muted);margin:-6px 0 12px}
+
+/* life-stage ribbon: the memorable element */
+.ribbon{position:relative;display:flex;gap:0;overflow-x:auto;padding:6px 2px 14px;margin:0 -18px;padding-left:18px;padding-right:18px;scroll-snap-type:x proximity}
+.ribbon::before{content:"";position:absolute;left:18px;right:18px;top:26px;height:2px;background:var(--line)}
+.stage{position:relative;flex:0 0 132px;scroll-snap-align:start;background:none;border:0;text-align:left;padding:0 10px 0 0}
+.stage .dot{display:block;width:40px;height:40px;border-radius:50%;background:var(--bg);border:2px solid var(--line);margin-bottom:10px;position:relative;z-index:1;transition:background .15s,border-color .15s}
+.stage .dot::after{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--line);transition:background .15s}
+.stage b{display:block;font-family:var(--display);font-size:15px;line-height:1.2}
+.stage span.d{display:block;font-size:13px;color:var(--muted);line-height:1.35;margin-top:3px}
+.stage[aria-pressed="true"] .dot{border-color:var(--accent);background:var(--accent-soft)}
+.stage[aria-pressed="true"] .dot::after{background:var(--accent)}
+.stage[aria-pressed="true"] b{color:var(--accent)}
+
+.list{display:grid;gap:10px}
+.row{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.row:hover{border-color:var(--accent)}
+.row .t{display:block;font-family:var(--display);font-weight:700;font-size:18px}
+.row .s{display:block;font-size:15px;color:var(--muted);margin-top:3px;line-height:1.45}
+.row .meta{display:inline-block;margin-top:8px;font-family:var(--display);font-size:12.5px;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 10px;margin-right:6px}
+.empty{background:var(--surface);border:1.5px dashed var(--line);border-radius:14px;padding:16px;color:var(--muted);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--display);font-size:14.5px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;min-height:40px;text-decoration:none;display:inline-block}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.note{font-size:14px;color:var(--muted);margin-top:10px}
+
+/* entry */
+.back{background:none;border:0;padding:8px 0;margin-bottom:8px;font-family:var(--display);color:var(--muted);font-size:15px}
+.entry h1{font-size:36px;margin-bottom:4px}
+.aka{color:var(--muted);font-size:15px;margin-bottom:12px}
+.draft{background:var(--accent-soft);color:var(--accent);border-radius:12px;padding:10px 14px;font-size:14px;margin:12px 0 18px;font-family:var(--display)}
+.lead{font-size:19px;line-height:1.55}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.entry section{margin-top:28px}
+.entry h2{font-size:22px;margin-bottom:10px}
+.entry ul{padding-left:22px;margin:0}
+.entry li{margin-bottom:8px;max-width:62ch}
+.entry p{max-width:62ch;margin:0 0 10px}
+.urgent{background:var(--alert);border:1.5px solid var(--alert-line);color:var(--alert-ink);border-radius:14px;padding:16px 18px}
+.urgent h2{color:var(--alert-ink)}
+.sources a{color:var(--accent)}
+.disclaimer{font-size:13.5px;color:var(--muted);margin-top:34px;border-top:1px solid var(--line);padding-top:14px}
+
+/* A-Z */
+.az-letter{font-family:var(--display);font-weight:700;font-size:15px;color:var(--accent);margin:22px 0 8px}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+.tabs .in{display:flex;width:100%;max-width:680px}
+.tab{flex:1;background:none;border:0;padding:10px 4px 9px;font-family:var(--display);font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;min-height:56px}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tab[aria-current="page"]{color:var(--accent);font-weight:700}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-family:var(--display);font-size:14px;z-index:9}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="tabs"></div>
+
+<script>
+/* ---------- Content (DRAFT: not yet reviewed by a clinician) ---------- */
+const STAGES=[
+ {k:'teen',n:'Teens',d:'First periods and growing up'},
+ {k:'repro',n:'Reproductive years',d:'Cycles, fertility, everyday health'},
+ {k:'preg',n:'Pregnancy & after birth',d:'Pregnant, postpartum or planning'},
+ {k:'meno',n:'Perimenopause & menopause',d:'Changes as periods wind down'},
+ {k:'later',n:'Later life',d:'Health after menopause'}
+];
+const AREAS={repro:'Reproductive system',horm:'Hormones & metabolism',preg:'Pregnancy',heart:'Heart & blood pressure'};
+const SOURCES={
+ nhs:{n:'NHS',u:'https://www.nhs.uk'},
+ nice:{n:'NICE guidelines',u:'https://www.nice.org.uk'},
+ rcog:{n:'Royal College of Obstetricians and Gynaecologists (RCOG)',u:'https://www.rcog.org.uk'},
+ eu:{n:'Endometriosis UK',u:'https://www.endometriosis-uk.org'},
+ mp:{n:'Menopause Support / British Menopause Society',u:'https://thebms.org.uk'},
+ dukk:{n:'Diabetes UK',u:'https://www.diabetes.org.uk'},
+ act:{n:'Action on Pre-eclampsia (APEC)',u:'https://action-on-pre-eclampsia.org.uk'}
+};
+const ENTRIES=[
+{id:'endometriosis',name:'Endometriosis',aka:'Often called "endo"',
+ short:'Tissue similar to the womb lining grows elsewhere in the body, often causing long-term pelvic pain.',
+ stages:['teen','repro'],areas:['repro'],
+ tags:['Pelvic pain','Painful periods','Fatigue','Heavy periods'],
+ summary:'Endometriosis is a long-term condition where tissue similar to the lining of the womb grows in other places, such as the ovaries, fallopian tubes and the lining of the pelvis. It can cause pain and other symptoms, and it affects many women during their reproductive years.',
+ symptoms:['Pelvic pain, often worse around your period','Painful periods that get in the way of daily life','Pain during or after sex','Pain when going to the toilet during your period','Heavy periods','Feeling very tired','Bloating or feeling sick','Difficulty getting pregnant','Symptoms vary a lot. Some people have very few, even with widespread endometriosis.'],
+ causes:['The exact cause isn\'t known. One theory is that some period blood flows backwards into the pelvis instead of leaving the body.','It can run in families, so having a close relative with it raises the chance.','It isn\'t caused by anything you did.'],
+ diagnosis:['Your GP will usually ask about your symptoms and may offer an examination.','Ultrasound or MRI scans can show some types of endometriosis, but a normal scan doesn\'t rule it out.','The only way to confirm it for certain is usually keyhole surgery (laparoscopy).','Diagnosis often takes years, so keeping a symptom diary can help your appointments go further.'],
+ manage:['There\'s currently no cure, but treatment can reduce symptoms.','Pain relief, such as anti-inflammatory painkillers.','Hormone treatments, such as the contraceptive pill or a hormonal coil, to reduce or stop periods.','Surgery to remove patches of endometriosis tissue.','Support for pain, fatigue and mental health, including pain clinics and peer support groups.','If you want to get pregnant, fertility options are available. A GP or specialist can talk these through.'],
+ ask:['Could my symptoms be endometriosis, and which tests do you recommend?','If the first treatment doesn\'t help, what are the next steps?','Should I be referred to a specialist endometriosis service?','How might this affect my chances of getting pregnant?'],
+ urgent:['Sudden, severe pelvic pain, especially with fainting, fever or vomiting','Bleeding so heavy that you soak through pads or tampons every hour'],
+ src:['nhs','nice','eu']},
+{id:'pcos',name:'Polycystic ovary syndrome (PCOS)',aka:'Also called PCOS',
+ short:'A common hormone condition that can cause irregular periods, excess hair growth and fertility difficulties.',
+ stages:['teen','repro'],areas:['horm','repro'],
+ tags:['Irregular periods','Acne','Fatigue','Mood changes'],
+ summary:'PCOS is a common condition that affects how the ovaries work. It involves hormone imbalances, often higher levels of "male" hormones called androgens, and it can affect periods, skin, hair, weight and fertility.',
+ symptoms:['Irregular periods, or no periods at all','Excess hair on the face or body','Acne or oily skin','Thinning hair on the scalp','Weight gain or difficulty losing weight','Difficulty getting pregnant','Low mood or anxiety, which are more common with PCOS'],
+ causes:['The exact cause isn\'t clear.','It often runs in families.','Many people with PCOS have insulin resistance, which can raise androgen levels and make symptoms worse.'],
+ diagnosis:['Diagnosis usually needs at least two of three things: irregular or absent ovulation, signs of high androgens (from symptoms or blood tests), and polycystic-looking ovaries on an ultrasound.','Blood tests help rule out other causes, such as thyroid problems.','It can be hard to diagnose in teenagers, because irregular periods are common in the first years.'],
+ manage:['Healthy eating and regular movement can improve symptoms and insulin resistance, even with modest changes.','The contraceptive pill can help regulate periods and reduce acne and excess hair.','Medicines such as metformin are sometimes used, particularly where insulin resistance is a concern.','Fertility treatment is available if you\'re trying to conceive.','If you go many months without a period, discuss protecting the womb lining with your doctor.','Ask about checks for blood sugar, cholesterol and mood, because PCOS is linked to higher long-term risks of type 2 diabetes and other conditions.'],
+ ask:['Which tests do I need to confirm PCOS or rule out other causes?','Which treatment suits my main concern: periods, skin, hair or fertility?','How often should I have blood sugar and cholesterol checks?','Do I need to do anything to protect my womb lining if I have few periods?'],
+ urgent:['Very heavy bleeding after a long gap without periods','Thoughts of harming yourself. Contact NHS 111 or call 999.'],
+ src:['nhs','nice','rcog']},
+{id:'perimenopause-menopause',name:'Perimenopause and menopause',aka:'Also called "the change"',
+ short:'The transition when periods become irregular and then stop, with symptoms such as hot flushes and poor sleep.',
+ stages:['meno','later'],areas:['horm'],
+ tags:['Hot flushes','Sleep problems','Irregular periods','Mood changes','Vaginal dryness','Fatigue'],
+ summary:'Perimenopause is the time leading up to your last period, when hormone levels begin to change. Menopause is the point when you haven\'t had a period for 12 months. In the UK the average age of menopause is around 51, but perimenopause can begin in your 40s, sometimes earlier.',
+ symptoms:['Changes to your periods: shorter, longer, heavier, lighter or less predictable','Hot flushes and night sweats','Trouble sleeping','Low mood, anxiety or irritability','Brain fog and memory lapses','Vaginal dryness and discomfort during sex','Reduced sex drive','Aching joints','Frequent urinary infections or needing to pass urine more often'],
+ causes:['Falling levels of oestrogen and progesterone as the ovaries wind down.','Menopause can also happen earlier because of surgery to remove the ovaries, some cancer treatments, or for reasons that aren\'t always clear. Menopause before 40 is called premature ovarian insufficiency and needs medical advice.'],
+ diagnosis:['If you\'re over 45 with typical symptoms, a GP can usually diagnose perimenopause from your symptoms alone.','Blood tests may be used if you\'re under 45 or the picture is unclear, though hormone levels can fluctuate and aren\'t always reliable in perimenopause.'],
+ manage:['Hormone replacement therapy (HRT) replaces falling hormones and is the most effective treatment for many symptoms. It isn\'t right for everyone, so talk through benefits and risks with a doctor.','Vaginal oestrogen can help with dryness and urinary symptoms.','Non-hormonal options include cognitive behavioural therapy (CBT) and certain medicines.','Regular exercise, a balanced diet, limiting alcohol and good sleep habits can help.','Strength training and enough calcium and vitamin D support bone health after menopause.'],
+ ask:['Are my symptoms likely to be perimenopause?','Is HRT suitable for me, and what are the risks and benefits in my case?','What can I try if I can\'t or don\'t want to take hormones?','What should I do about heavy or irregular bleeding?'],
+ urgent:['Any bleeding after your periods have stopped for 12 months or more: see a GP promptly','Very heavy bleeding, or bleeding with dizziness or severe pain'],
+ src:['nhs','nice','mp']},
+{id:'gestational-diabetes',name:'Gestational diabetes',aka:'Diabetes that starts in pregnancy',
+ short:'High blood sugar that develops during pregnancy and usually goes away after birth.',
+ stages:['preg'],areas:['preg','horm'],
+ tags:['Excess thirst','Fatigue'],
+ summary:'Gestational diabetes is high blood sugar that develops during pregnancy. It happens when your body can\'t make enough insulin to meet the extra needs of pregnancy. It usually goes away after the baby is born, and with good care most people go on to have healthy pregnancies.',
+ symptoms:['Many people have no symptoms at all, which is why testing matters','Feeling very thirsty','Needing to pass urine more often','Feeling tired','Thrush or other recurring infections'],
+ causes:['Hormones from the placenta can make it harder for insulin to work.','Some things raise the chance: a high body mass index, gestational diabetes in a previous pregnancy, a close relative with diabetes, a previous large baby, and certain family backgrounds (for example South Asian, Black Caribbean or Middle Eastern).','Having risk factors doesn\'t mean you will develop it, and it can happen without any.'],
+ diagnosis:['If you\'re at higher risk, you\'ll usually be offered a glucose tolerance test at around 24 to 28 weeks, sometimes earlier.','The test involves a fasting blood sample, a sugary drink, and another blood sample about two hours later.'],
+ manage:['Eating a balanced diet and being active can help control blood sugar.','You\'ll be shown how to check your own blood sugar levels with a finger-prick test.','Some people need medicine (metformin or insulin) if lifestyle changes aren\'t enough.','Extra antenatal checks and scans are common to monitor you and your baby.','After the birth, you\'ll be offered a blood test to check your sugar levels, and ongoing yearly checks, because the chance of type 2 diabetes later is higher.'],
+ ask:['What range should my blood sugar levels stay within?','Will I need medicine, and what are the options?','How will this affect where and how I give birth?','What follow-up testing will I have after my baby is born?'],
+ urgent:['Extreme thirst, vomiting, or feeling very unwell, drowsy or confused','Reduced baby movements: contact your maternity unit immediately'],
+ src:['nhs','nice','dukk']},
+{id:'pre-eclampsia',name:'Pre-eclampsia',aka:'High blood pressure condition in pregnancy',
+ short:'A pregnancy condition with high blood pressure and signs that organs, like the kidneys, are affected.',
+ stages:['preg'],areas:['preg','heart'],
+ tags:['Headache','Swelling'],
+ summary:'Pre-eclampsia is a condition that usually develops after 20 weeks of pregnancy. It involves high blood pressure and signs that other organs, such as the kidneys or liver, aren\'t working as they should. It can also develop shortly after birth. Most cases are picked up and managed well with regular antenatal checks.',
+ symptoms:['A severe headache that doesn\'t go away','Problems with vision, such as blurring, flashing lights or spots','Pain just below the ribs, usually on the right side','Sudden swelling of the face, hands or feet','Feeling sick or vomiting, especially later in pregnancy','Early pre-eclampsia often has no symptoms, and the first sign is raised blood pressure at a routine check.'],
+ causes:['The exact cause isn\'t fully understood. It is thought to involve how the placenta develops early in pregnancy.','You may be at higher risk if you\'ve had pre-eclampsia before, have high blood pressure, kidney disease or diabetes, are expecting twins or more, are over 40, or have a high body mass index.'],
+ diagnosis:['Blood pressure and urine are checked at antenatal appointments.','If readings are raised, you may have blood tests, extra monitoring and scans of your baby.'],
+ manage:['Regular monitoring of your blood pressure, blood tests and baby\'s growth.','Medicines to lower blood pressure.','If you\'re at higher risk, you may be advised to take low-dose aspirin from early pregnancy. Only start this if a doctor or midwife recommends it.','The only cure is delivery of the baby and placenta. Doctors weigh the risks to you and the baby to decide the best time, which can mean an earlier delivery.','Blood pressure is checked after birth because pre-eclampsia can develop or continue for several weeks afterwards.'],
+ ask:['Am I at higher risk, and should I take aspirin?','How often will my blood pressure be checked?','Which symptoms should make me call the maternity unit straight away?','How might this affect when and how I give birth?'],
+ urgent:['Severe headache, vision changes, severe pain under your ribs or sudden swelling: contact your maternity unit or call 111 straight away','Call 999 if you have a fit (seizure), difficulty breathing or collapse'],
+ src:['nhs','nice','act']}
+];
+const COMING=['Fibroids','Heavy periods','Urinary tract infections','Thrush and bacterial vaginosis','Postnatal depression','Osteoporosis','Breast health','Pelvic floor problems'];
+const TAGS=['Pelvic pain','Painful periods','Irregular periods','Heavy periods','Hot flushes','Sleep problems','Mood changes','Fatigue','Headache','Swelling','Excess thirst','Vaginal dryness','Acne'];
+const AGES=['Under 18','18 to 29','30 to 39','40 to 49','50 to 59','60 or over'];
+const AGE_STAGE={'Under 18':'teen','18 to 29':'repro','30 to 39':'repro','40 to 49':'meno','50 to 59':'meno','60 or over':'later'};
+
+/* ---------- Storage (stays on this device) ---------- */
+const mem={};
+const store={
+ get(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return mem[k]??null}},
+ set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){mem[k]=v}},
+ clearAll(){try{['hz_profile','hz_saved','hz_req'].forEach(k=>localStorage.removeItem(k))}catch(e){}for(const k in mem)delete mem[k]}
+};
+let profile=store.get('hz_profile');
+let saved=store.get('hz_saved')||[];
+let reqs=store.get('hz_req')||[];
+let viewStage=profile&&profile.stage?profile.stage:null;
+let ob={step:1,age:null,stage:null};
+
+/* ---------- Helpers ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stageName=k=>(STAGES.find(s=>s.k===k)||{}).n||'';
+const byId=id=>ENTRIES.find(e=>e.id===id);
+function saveProfile(){store.set('hz_profile',profile)}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)}
+function rowHtml(e){
+ return `<a class="row" href="#/entry/${e.id}"><span class="t">${esc(e.name)}</span><span class="s">${esc(e.short)}</span>${e.stages.map(s=>`<span class="meta">${esc(stageName(s))}</span>`).join('')}</a>`;
+}
+function matches(e,q){
+ q=q.toLowerCase();
+ return [e.name,e.aka,e.short,e.summary,...e.tags,...e.symptoms].join(' ').toLowerCase().includes(q);
+}
+const DISCLAIMER='Information only, not medical advice. This does not replace a conversation with a doctor, nurse or pharmacist. If you\'re worried about your health, speak to a healthcare professional.';
+
+/* ---------- Views ---------- */
+function viewOnboarding(){
+ const app=$('#app');$('#tabs').innerHTML='';
+ if(ob.step===1){
+  app.innerHTML=`<div class="wrap ob">
+   <div class="brand"><i></i>Her A–Z</div>
+   <h1>Women's health, explained plainly.</h1>
+   <p class="lead">Browse clear information on conditions across every life stage. Two quick questions help us show you the most relevant things first.</p>
+   <p class="privacy">What you tell us stays on this device. We don't create an account or send your answers anywhere.</p>
+   <h2 style="font-size:19px;margin-bottom:10px">How old are you?</h2>
+   <div class="opts">${AGES.map(a=>`<button class="opt" data-age="${a}" aria-pressed="${ob.age===a}">${a}</button>`).join('')}</div>
+   <button class="btn block" id="next" ${ob.age?'':'disabled style="opacity:.5"'}>Continue</button>
+   <div style="text-align:center;margin-top:10px"><button class="link" id="guest">Continue as a guest</button></div>
+  </div>`;
+  app.querySelectorAll('[data-age]').forEach(b=>b.onclick=()=>{ob.age=b.dataset.age;ob.stage=AGE_STAGE[ob.age];viewOnboarding()});
+  $('#next').onclick=()=>{if(ob.age){ob.step=2;viewOnboarding();window.scrollTo(0,0)}};
+ } else {
+  app.innerHTML=`<div class="wrap ob">
+   <div class="brand"><i></i>Her A–Z</div>
+   <h1>Which describes you best right now?</h1>
+   <p class="lead">We've pre-selected one based on your age. Change it if another fits better.</p>
+   <div class="opts">${STAGES.map(s=>`<button class="opt" data-stage="${s.k}" aria-pressed="${ob.stage===s.k}">${s.n}<small>${s.d}</small></button>`).join('')}</div>
+   <button class="btn block" id="done">Show me my guide</button>
+   <div style="text-align:center;margin-top:10px"><button class="link" id="back">Back</button></div>
+  </div>`;
+  app.querySelectorAll('[data-stage]').forEach(b=>b.onclick=()=>{ob.stage=b.dataset.stage;viewOnboarding()});
+  $('#back').onclick=()=>{ob.step=1;viewOnboarding()};
+  $('#done').onclick=()=>{profile={guest:false,age:ob.age,stage:ob.stage,conditions:[]};saveProfile();viewStage=ob.stage;location.hash='#/';route()};
+  return;
+ }
+ $('#guest').onclick=()=>{profile={guest:true,age:null,stage:null,conditions:[]};saveProfile();viewStage=null;location.hash='#/';route()};
+}
+
+function viewHome(){
+ const app=$('#app');
+ const conds=(profile.conditions||[]).map(byId).filter(Boolean);
+ const list=viewStage?ENTRIES.filter(e=>e.stages.includes(viewStage)):ENTRIES;
+ app.innerHTML=`<div class="wrap">
+  <div class="brand"><i></i>Her A–Z</div>
+  <div class="hero">
+   <h1>${profile.guest?'Women\'s health, explained plainly.':'Your guide to women\'s health.'}</h1>
+   <p>${profile.guest?'Browsing as a guest. Pick a life stage, or search for anything.':'Showing what matters at your life stage first.'}</p>
+   <input class="search" id="q" type="search" placeholder="Search a condition or symptom" aria-label="Search a condition or symptom" autocomplete="off">
+  </div>
+  <div id="results" hidden></div>
+  <div id="main">
+   <div class="sec"><h2>Where are you in life right now?</h2>
+    <div class="ribbon" role="group" aria-label="Life stage">${STAGES.map(s=>`<button class="stage" data-stage="${s.k}" aria-pressed="${viewStage===s.k}"><span class="dot"></span><b>${s.n}</b><span class="d">${s.d}</span></button>`).join('')}</div>
+   </div>
+   ${conds.length?`<div class="sec"><h2>Your conditions</h2><div class="list">${conds.map(rowHtml).join('')}</div></div>`:''}
+   <div class="sec"><h2>${viewStage?`For ${esc(stageName(viewStage).toLowerCase())}`:'Start here'}</h2>
+    <div class="list">${list.length?list.map(rowHtml).join(''):`<div class="empty">No guides for this stage yet. Tell us what to write first in the list below.</div>`}</div>
+    ${viewStage?`<button class="link" id="allstages">Show all guides</button>`:''}
+   </div>
+   <div class="sec"><h2>Start from a symptom</h2>
+    <p class="sub">Matching a symptom doesn't mean you have the condition. It only shows where to read more.</p>
+    <div class="chips">${TAGS.map(t=>`<a class="chip" href="#/tag/${encodeURIComponent(t)}">${t}</a>`).join('')}</div>
+   </div>
+   <div class="sec"><h2>Coming next</h2>
+    <p class="sub">Tap to tell us what to write first.</p>
+    <div class="chips">${COMING.map(c=>`<button class="chip" data-req="${esc(c)}" aria-pressed="${reqs.includes(c)}">${esc(c)}${reqs.includes(c)?' ✓':''}</button>`).join('')}</div>
+   </div>
+   <p class="disclaimer">${DISCLAIMER}</p>
+  </div>
+ </div>`;
+ app.querySelectorAll('[data-stage]').forEach(b=>b.onclick=()=>{viewStage=viewStage===b.dataset.stage?null:b.dataset.stage;viewHome();tabs()});
+ const all=$('#allstages');if(all)all.onclick=()=>{viewStage=null;viewHome();tabs()};
+ app.querySelectorAll('[data-req]').forEach(b=>b.onclick=()=>{
+  const c=b.dataset.req;reqs=reqs.includes(c)?reqs.filter(x=>x!==c):[...reqs,c];store.set('hz_req',reqs);viewHome();tabs();
+ });
+ const q=$('#q');
+ q.addEventListener('input',()=>{
+  const v=q.value.trim();
+  const res=$('#results'),main=$('#main');
+  if(!v){res.hidden=true;main.hidden=false;return}
+  const found=ENTRIES.filter(e=>matches(e,v));
+  main.hidden=true;res.hidden=false;
+  res.innerHTML=`<div class="sec"><h2>${found.length} result${found.length===1?'':'s'} for "${esc(v)}"</h2>
+   <div class="list">${found.length?found.map(rowHtml).join(''):`<div class="empty">Nothing matches yet. Try a different word, or request it in "Coming next" after clearing your search.</div>`}</div></div>`;
+ });
+}
+
+function viewTag(tag){
+ const found=ENTRIES.filter(e=>e.tags.includes(tag));
+ $('#app').innerHTML=`<div class="wrap">
+  <button class="back" onclick="history.back()">← Back</button>
+  <h1 style="font-size:30px;margin-bottom:8px">${esc(tag)}</h1>
+  <p class="muted">Guides that mention this symptom. Matching a symptom doesn't mean you have the condition. Many things can cause the same symptom, so a doctor is the right person to work out why.</p>
+  <div class="list" style="margin-top:18px">${found.length?found.map(rowHtml).join(''):'<div class="empty">No guides mention this symptom yet.</div>'}</div>
+  <p class="disclaimer">${DISCLAIMER}</p>
+ </div>`;
+}
+
+function viewBrowse(){
+ const sorted=[...ENTRIES].sort((a,b)=>a.name.localeCompare(b.name));
+ let html='',cur='';
+ sorted.forEach(e=>{const l=e.name[0].toUpperCase();if(l!==cur){cur=l;html+=`<div class="az-letter">${l}</div>`}html+=`<div class="list" style="margin-bottom:10px">${rowHtml(e)}</div>`});
+ $('#app').innerHTML=`<div class="wrap">
+  <div class="brand"><i></i>Her A–Z</div>
+  <h1 style="font-size:30px;margin-bottom:6px">All conditions, A to Z</h1>
+  <p class="muted" style="margin-bottom:6px">${ENTRIES.length} guides so far. More are on the way.</p>
+  <h2 style="font-size:17px;margin:18px 0 8px">Filter by body area</h2>
+  <div class="chips" id="areachips"><a class="chip" href="#/browse" aria-pressed="true">All</a>${Object.entries(AREAS).map(([k,v])=>`<a class="chip" href="#/area/${k}">${v}</a>`).join('')}</div>
+  ${html}
+  <p class="disclaimer">${DISCLAIMER}</p>
+ </div>`;
+}
+
+function viewArea(k){
+ const found=ENTRIES.filter(e=>e.areas.includes(k));
+ $('#app').innerHTML=`<div class="wrap">
+  <button class="back" onclick="location.hash='#/browse'">← All conditions</button>
+  <h1 style="font-size:30px;margin-bottom:14px">${esc(AREAS[k]||'')}</h1>
+  <div class="list">${found.length?found.map(rowHtml).join(''):'<div class="empty">No guides in this area yet.</div>'}</div>
+  <p class="disclaimer">${DISCLAIMER}</p>
+ </div>`;
+}
+
+function viewEntry(id){
+ const e=byId(id);
+ if(!e){location.hash='#/';return}
+ const isSaved=saved.includes(id),has=(profile.conditions||[]).includes(id);
+ const ul=a=>`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+ $('#app').innerHTML=`<div class="wrap entry">
+  <button class="back" onclick="history.back()">← Back</button>
+  <h1>${esc(e.name)}</h1>
+  <div class="aka">${esc(e.aka)}</div>
+  <div class="draft">Draft content: not yet reviewed by a clinician. Information only, not medical advice.</div>
+  <p class="lead">${esc(e.summary)}</p>
+  <div class="actions">
+   <button class="btn small ${isSaved?'':'ghost'}" id="save">${isSaved?'Saved ✓':'Save this guide'}</button>
+   <button class="btn small ghost" id="have">${has?'On my list ✓':'I have this'}</button>
+  </div>
+  <section><h2>Common symptoms</h2>${ul(e.symptoms)}</section>
+  <section><h2>Causes and risk factors</h2>${ul(e.causes)}</section>
+  <section><h2>How it's diagnosed</h2>${ul(e.diagnosis)}</section>
+  <section><h2>Managing it</h2>${ul(e.manage)}</section>
+  <section><h2>Questions to ask your doctor</h2>${ul(e.ask)}</section>
+  <section class="urgent"><h2>Get help urgently if you have</h2>${ul(e.urgent)}<p style="margin-top:10px;font-size:15px">Call NHS 111 for urgent advice, or 999 in an emergency.</p></section>
+  <section class="sources"><h2>Where to read more</h2>${ul(e.src.map(s=>s)).replace(/<li>(.*?)<\/li>/g,(m,s)=>`<li><a href="${SOURCES[s].u}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[s].n)}</a></li>`)}
+   <p class="note">Check these sources for the latest official guidance. Last reviewed: not yet clinically reviewed (draft).</p></section>
+  <p class="disclaimer">${DISCLAIMER}</p>
+ </div>`;
+ $('#save').onclick=()=>{saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];store.set('hz_saved',saved);toast(saved.includes(id)?'Saved':'Removed from saved');viewEntry(id)};
+ $('#have').onclick=()=>{
+  const c=profile.conditions||[];
+  profile.conditions=c.includes(id)?c.filter(x=>x!==id):[...c,id];
+  saveProfile();toast(profile.conditions.includes(id)?'Added to your list':'Removed from your list');viewEntry(id);
+ };
+}
+
+function viewSaved(){
+ const items=saved.map(byId).filter(Boolean);
+ $('#app').innerHTML=`<div class="wrap">
+  <div class="brand"><i></i>Her A–Z</div>
+  <h1 style="font-size:30px;margin-bottom:14px">Saved guides</h1>
+  <div class="list">${items.length?items.map(rowHtml).join(''):'<div class="empty">Nothing saved yet. Open a guide and choose "Save this guide" to keep it here.</div>'}</div>
+ </div>`;
+}
+
+function viewMe(){
+ const conds=(profile.conditions||[]).map(byId).filter(Boolean);
+ $('#app').innerHTML=`<div class="wrap">
+  <div class="brand"><i></i>Her A–Z</div>
+  <h1 style="font-size:30px;margin-bottom:14px">Your profile</h1>
+  <p class="privacy">Everything here is stored only on this device. Nothing is sent to a server.</p>
+  ${profile.guest?`<p>You're browsing as a guest.</p>`:`<p>Age range: <b>${esc(profile.age||'not set')}</b><br>Life stage: <b>${esc(stageName(profile.stage)||'not set')}</b></p>`}
+  <h2 style="font-size:19px;margin:18px 0 8px">Conditions on your list</h2>
+  <div class="list">${conds.length?conds.map(rowHtml).join(''):'<div class="empty">None yet. Use "I have this" on a guide to add one.</div>'}</div>
+  <div class="stack" style="margin-top:26px">
+   <button class="btn ghost block" id="edit">${profile.guest?'Set up a profile':'Change my answers'}</button>
+   <button class="btn ghost block" id="clear">Delete all my data from this device</button>
+  </div>
+  <h2 style="font-size:19px;margin:30px 0 8px">About this prototype</h2>
+  <p class="muted" style="font-size:15px">Her A–Z is an early prototype. The guides are drafts written from public UK health information and haven't yet been checked by a clinician. ${DISCLAIMER}</p>
+ </div>`;
+ $('#edit').onclick=()=>{ob={step:1,age:null,stage:null};profile=null;route()};
+ $('#clear').onclick=()=>{if(confirm('Delete your profile, saved guides and requests from this device?')){store.clearAll();profile=null;saved=[];reqs=[];viewStage=null;ob={step:1,age:null,stage:null};location.hash='#/';route()}};
+}
+
+/* ---------- Tabs & routing ---------- */
+const ICON={
+ home:'<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+ az:'<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
+ bm:'<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
+ me:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>'
+};
+function tabs(){
+ const h=location.hash||'#/';
+ const cur=h.startsWith('#/browse')||h.startsWith('#/area')?'browse':h.startsWith('#/saved')?'saved':h.startsWith('#/me')?'me':'home';
+ const t=(k,href,label,ic)=>`<button class="tab" ${cur===k?'aria-current="page"':''} onclick="location.hash='${href}'">${ic}${label}</button>`;
+ $('#tabs').innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t('home','#/','Home',ICON.home)}${t('browse','#/browse','A to Z',ICON.az)}${t('saved','#/saved','Saved',ICON.bm)}${t('me','#/me','Profile',ICON.me)}</div></nav>`;
+}
+function route(){
+ if(!profile){viewOnboarding();return}
+ const h=location.hash||'#/';
+ const [, a, b]=h.split('/');
+ if(a==='entry')viewEntry(b);
+ else if(a==='tag')viewTag(decodeURIComponent(b||''));
+ else if(a==='area')viewArea(b);
+ else if(a==='browse')viewBrowse();
+ else if(a==='saved')viewSaved();
+ else if(a==='me')viewMe();
+ else viewHome();
+ tabs();
+ if(a!=='')window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
