@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Her A–Z: women's health, explained plainly (prototype)</title>
+<title>Her A–Z: women's health, explained plainly</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   --bg:#F4F2F7; --surface:#FFFFFF; --ink:#1F1A2B; --muted:#5E5870; --line:#DDD8E6;
   --accent:#3D2F7A; --accent-ink:#FFFFFF; --accent-soft:#E7E2F5;
   --sage:#DDEBE3; --sage-ink:#2F5A47;
-  --alert:#FBE9E5; --alert-ink:#8E2F20; --alert-line:#E9B8AE;
+  --alert:#FBE9E5; --alert-ink:#8E2F20; --alert-line:#E9B8AE; --amber:#FFF1D6; --amber-ink:#7A4B00; --amber-line:#EBCB8F;
   --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   box-sizing:border-box;
@@ -24,14 +24,14 @@
     --bg:#15121C; --surface:#1E1A28; --ink:#EEEAF5; --muted:#A9A2BA; --line:#332D42;
     --accent:#B6A8FF; --accent-ink:#1A1430; --accent-soft:#2A2442;
     --sage:#1F2E27; --sage-ink:#9ED2B6;
-    --alert:#3A1E1A; --alert-ink:#FFB4A5; --alert-line:#6A3329;
+    --alert:#3A1E1A; --alert-ink:#FFB4A5; --alert-line:#6A3329; --amber:#33270F; --amber-ink:#F3CF8B; --amber-line:#6B5222;
   }
 }
 :root[data-theme="dark"]{
   --bg:#15121C; --surface:#1E1A28; --ink:#EEEAF5; --muted:#A9A2BA; --line:#332D42;
   --accent:#B6A8FF; --accent-ink:#1A1430; --accent-soft:#2A2442;
   --sage:#1F2E27; --sage-ink:#9ED2B6;
-  --alert:#3A1E1A; --alert-ink:#FFB4A5; --alert-line:#6A3329;
+  --alert:#3A1E1A; --alert-ink:#FFB4A5; --alert-line:#6A3329; --amber:#33270F; --amber-ink:#F3CF8B; --amber-line:#6B5222;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
@@ -121,6 +121,52 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tab[aria-current="page"]{color:var(--accent);font-weight:700}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-family:var(--display);font-size:14px;z-index:9}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* v2 additions */
+.tab{font-size:11.5px;padding-left:2px;padding-right:2px}
+.cards{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:22px}
+@media (max-width:420px){.cards{grid-template-columns:1fr}}
+.card{display:block;text-decoration:none;background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:16px}
+.card:nth-child(2){background:var(--sage);color:var(--sage-ink)}
+.card b{display:block;font-family:var(--display);font-size:18px;margin-bottom:4px}
+.card span{font-size:14.5px;line-height:1.4;display:block}
+.sr{position:absolute;left:-9999px}
+.chatlog{display:grid;gap:12px;margin:16px 0}
+.msg{max-width:94%;border-radius:16px;padding:12px 14px}
+.msg p{margin:0 0 8px}.msg p:last-child{margin-bottom:0}
+.msg.user{justify-self:end;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:4px}
+.msg.bot{justify-self:start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:4px;max-width:100%;width:100%}
+.askform textarea{width:100%;font:inherit;font-size:17px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);resize:vertical}
+.askbtns{display:flex;gap:14px;align-items:center;margin-top:10px}
+.flag{border-radius:14px;padding:12px 14px;margin:10px 0;border:1.5px solid var(--alert-line);background:var(--alert);color:var(--alert-ink)}
+.flag b{font-family:var(--display)}.flag p{margin:4px 0 0;font-size:15px}
+.flag.soon{background:var(--amber);border-color:var(--amber-line);color:var(--amber-ink)}
+.bot-note{font-size:14px;color:var(--muted)}
+.row.res .t{text-decoration:none}
+.row.res a.t{color:inherit}
+.meta.fit{background:var(--sage);color:var(--sage-ink)}
+.meta.rare{background:var(--amber);color:var(--amber-ink)}
+.why{font-size:13.5px}
+.care{background:var(--sage);color:var(--sage-ink);border-radius:14px;padding:12px 16px;margin:14px 0}
+.care ul{margin:6px 0 0;padding-left:20px}.care li{margin-bottom:6px;font-size:15.5px}
+.prep{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--bg)}
+.prep summary{cursor:pointer;font-family:var(--display);font-weight:500}
+.prep textarea{width:100%;font:inherit;font-size:14px;margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--surface);color:var(--ink)}
+.badge{display:inline-block;font-family:var(--display);font-size:12.5px;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.r-strong{background:var(--sage);color:var(--sage-ink)}
+.r-mod{background:var(--accent-soft);color:var(--accent)}
+.r-lim{background:var(--amber);color:var(--amber-ink)}
+.r-weak{background:var(--alert);color:var(--alert-ink)}
+.legend>div{margin-bottom:8px;font-size:15px}
+.supps{display:grid;gap:10px}
+.supp{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 16px}
+.supp summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;list-style:none}
+.supp summary::-webkit-details-marker{display:none}
+.sname{font-family:var(--display);font-weight:700;font-size:18px}
+.sbody{padding-bottom:14px}.sbody h3{font-size:15px;margin:14px 0 4px;color:var(--accent)}.sbody p{margin:0 0 6px;font-size:16px}
+.rnote{font-style:italic;color:var(--muted)}
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+.jump a{font-family:var(--display);font-size:14px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:var(--surface);text-decoration:none;color:var(--accent)}
 </style>
 </head>
 <body>
@@ -136,7 +182,7 @@ const STAGES=[
  {k:'meno',n:'Perimenopause & menopause',d:'Changes as periods wind down'},
  {k:'later',n:'Later life',d:'Health after menopause'}
 ];
-const AREAS={repro:'Reproductive system',horm:'Hormones & metabolism',preg:'Pregnancy',heart:'Heart & blood pressure'};
+const AREAS={repro:'Reproductive system',horm:'Hormones & metabolism',preg:'Pregnancy & birth',heart:'Heart & blood pressure',breast:'Breast health',urinary:'Bladder & pelvic floor',sexual:'Sexual health & infections',cancer:'Cancer & screening',bone:'Bones',mind:'Mental health'};
 const SOURCES={
  nhs:{n:'NHS',u:'https://www.nhs.uk'},
  nice:{n:'NICE guidelines',u:'https://www.nice.org.uk'},
@@ -144,7 +190,24 @@ const SOURCES={
  eu:{n:'Endometriosis UK',u:'https://www.endometriosis-uk.org'},
  mp:{n:'Menopause Support / British Menopause Society',u:'https://thebms.org.uk'},
  dukk:{n:'Diabetes UK',u:'https://www.diabetes.org.uk'},
- act:{n:'Action on Pre-eclampsia (APEC)',u:'https://action-on-pre-eclampsia.org.uk'}
+ act:{n:'Action on Pre-eclampsia (APEC)',u:'https://action-on-pre-eclampsia.org.uk'},
+ cruk:{n:'Cancer Research UK',u:'https://www.cancerresearchuk.org'},
+ jos:{n:'Jo\'s Cervical Cancer Trust',u:'https://www.jostrust.org.uk'},
+ eve:{n:'The Eve Appeal',u:'https://eveappeal.org.uk'},
+ ovca:{n:'Ovarian Cancer Action',u:'https://ovarian.org.uk'},
+ bcn:{n:'Breast Cancer Now',u:'https://breastcancernow.org'},
+ ros:{n:'Royal Osteoporosis Society',u:'https://theros.org.uk'},
+ btf:{n:'British Thyroid Foundation',u:'https://www.btf-thyroid.org'},
+ vps:{n:'Vulval Pain Society',u:'https://www.vulvalpainsociety.org'},
+ tommys:{n:'Tommy\'s',u:'https://www.tommys.org'},
+ ectopic:{n:'The Ectopic Pregnancy Trust',u:'https://ectopic.org.uk'},
+ pss:{n:'Pregnancy Sickness Support',u:'https://www.pregnancysicknesssupport.org.uk'},
+ mind:{n:'Mind',u:'https://www.mind.org.uk'},
+ pandas:{n:'PANDAS Foundation',u:'https://pandasfoundation.org.uk'},
+ daisy:{n:'The Daisy Network',u:'https://www.daisynetwork.org'},
+ fnuk:{n:'Fertility Network UK',u:'https://fertilitynetworkuk.org'},
+ bladder:{n:'Bladder Health UK',u:'https://www.bladderhealthuk.org'},
+ sh:{n:'NHS sexual health services',u:'https://www.nhs.uk/service-search/sexual-health'}
 };
 const ENTRIES=[
 {id:'endometriosis',name:'Endometriosis',aka:'Often called "endo"',
@@ -208,10 +271,543 @@ const ENTRIES=[
  urgent:['Severe headache, vision changes, severe pain under your ribs or sudden swelling: contact your maternity unit or call 111 straight away','Call 999 if you have a fit (seizure), difficulty breathing or collapse'],
  src:['nhs','nice','act']}
 ];
-const COMING=['Fibroids','Heavy periods','Urinary tract infections','Thrush and bacterial vaginosis','Postnatal depression','Osteoporosis','Breast health','Pelvic floor problems'];
-const TAGS=['Pelvic pain','Painful periods','Irregular periods','Heavy periods','Hot flushes','Sleep problems','Mood changes','Fatigue','Headache','Swelling','Excess thirst','Vaginal dryness','Acne'];
+const COMING=['Migraine and hormones','Anxiety and hormones','Endometrial hyperplasia','Interstitial cystitis','Contraception choices','Perinatal anxiety','Gestational hypertension','Fertility treatment (IVF)'];
+let TAGS=[];
 const AGES=['Under 18','18 to 29','30 to 39','40 to 49','50 to 59','60 or over'];
 const AGE_STAGE={'Under 18':'teen','18 to 29':'repro','30 to 39':'repro','40 to 49':'meno','50 to 59':'meno','60 or over':'later'};
+
+/* ---------- More entries (DRAFT: not yet reviewed by a clinician) ---------- */
+const X=(id,name,aka,short,stages,areas,tags,summary,symptoms,causes,diagnosis,manage,ask,urgent,src)=>({id,name,aka,short,stages,areas,tags,summary,symptoms,causes,diagnosis,manage,ask,urgent,src});
+ENTRIES.push(
+X('adenomyosis','Adenomyosis','When womb lining tissue grows into the womb wall',
+"Tissue like the womb lining grows into the muscle wall of the womb, causing heavy, painful periods.",
+['repro','meno'],['repro'],['Heavy periods','Painful periods','Pelvic pain','Bloating'],
+"Adenomyosis is a condition where tissue similar to the womb lining grows into the muscular wall of the womb. It is most often diagnosed in people in their 30s and 40s, and it can overlap with endometriosis and fibroids. Some people have no symptoms at all.",
+["Heavy periods","Painful periods that may get worse over time","Pain in the lower tummy or pelvis","Pain during sex","Bloating or a tender, swollen lower tummy","Bleeding between periods","Some people have no symptoms"],
+["The cause isn't known.","It's more common in people who have had children, previous womb surgery (such as a caesarean), or who are in their 30s and 40s.","Hormones, especially oestrogen, are thought to play a part."],
+["A GP may examine you and ask about your periods and pain.","A pelvic ultrasound or MRI scan can show changes in the womb wall.","In the past it was often only confirmed after a hysterectomy, but scans are now used more often."],
+["Painkillers such as anti-inflammatories can ease pain.","Tranexamic acid can reduce heavy bleeding.","A hormonal coil (levonorgestrel IUS) or the contraceptive pill can reduce bleeding and pain.","If symptoms are severe and you've completed your family, a hysterectomy is a definitive treatment.","Adenomyosis usually improves after menopause, as hormone levels fall."],
+["Could my heavy or painful periods be adenomyosis, fibroids or something else?","Which scan is most useful for me?","Would a hormonal coil suit me?","How might this affect my plans to have children?"],
+["Bleeding so heavy that you soak through pads or tampons every hour","Sudden, severe pelvic pain, especially with fainting or fever"],
+['nhs','nice','rcog']),
+
+X('iron-deficiency-anaemia','Iron-deficiency anaemia','Low iron causing tiredness',
+"Not enough iron to make healthy red blood cells, often caused by heavy periods or pregnancy.",
+['teen','repro','preg','meno'],['horm'],['Fatigue','Dizziness','Heavy periods'],
+"Iron-deficiency anaemia happens when your body doesn't have enough iron to make haemoglobin, the part of red blood cells that carries oxygen. It is common in women, especially with heavy periods or during pregnancy. It is treatable, but it's important to find out why iron is low.",
+["Feeling very tired or weak","Looking pale","Shortness of breath, especially on exertion","Headaches or dizziness","A fast or noticeable heartbeat (palpitations)","Hair loss, brittle nails or a sore tongue","Cravings to eat non-food items such as ice (called pica)"],
+["Heavy periods are the most common cause in women who haven't reached menopause.","Pregnancy increases the amount of iron you need.","Not getting enough iron from food, for example on a restrictive or vegan diet without planning.","Conditions that affect absorption, such as coeliac disease, or bleeding from the gut."],
+["A blood test (full blood count and ferritin) shows whether you're anaemic and how low your iron stores are.","If iron is low, your doctor will usually look for the cause, including asking about periods and diet."],
+["Iron tablets are usually taken for several months to rebuild stores. The dose and type should come from a doctor or pharmacist.","Taking iron with vitamin C (for example orange juice) may help absorption, while tea and coffee can reduce it.","Iron tablets can cause constipation and dark stools. Tell your doctor if they upset your stomach, as there are other options.","Treating the cause, such as heavy periods, matters as much as taking iron.","In some cases iron is given by infusion."],
+["Is my iron low, and why?","How long should I take iron tablets and when will I be re-tested?","Could my heavy periods be treated?","Do I need other tests, for example for coeliac disease?"],
+["Chest pain, severe breathlessness, fainting or a racing heartbeat that doesn't settle","Black, tarry stools or vomiting blood"],
+['nhs','nice','rcog']),
+
+X('bacterial-vaginosis','Bacterial vaginosis (BV)','A common vaginal imbalance, not an infection you catch',
+"A change in the balance of vaginal bacteria causing thin discharge and a fishy smell.",
+['teen','repro','preg','meno'],['repro'],['Unusual discharge','Fishy smell'],
+"Bacterial vaginosis (BV) is the most common cause of unusual vaginal discharge in women of reproductive age. It happens when the balance of bacteria in the vagina changes. It isn't a sexually transmitted infection, though it's linked to sexual activity and can come back.",
+["Thin, white or grey discharge","A fishy smell, often stronger after sex or during your period","Usually no itching or soreness (which helps tell it apart from thrush)","Some people have no symptoms"],
+["It happens when 'good' lactobacilli bacteria fall and other bacteria overgrow.","It's linked to a change in sexual partner, having an IUD (coil), smoking, and washing inside the vagina (douching) or using scented products."],
+["A doctor, nurse or sexual health clinic can take a swab or check the acidity (pH) of your vagina.","It's worth testing rather than guessing, because BV and thrush need different treatments."],
+["Antibiotics, such as metronidazole or clindamycin, given as tablets, gel or cream.","Avoid douching, scented soaps, bubble baths and vaginal deodorants.","BV often returns. If it keeps coming back, ask about longer or different treatment.","If you're pregnant, tell your midwife or GP, because treatment may be recommended."],
+["Is this BV, thrush or something else?","What can I do to stop it coming back?","Does my partner need treatment?","Should I be tested for sexually transmitted infections?"],
+["Discharge with a fever, pelvic pain or pain with sex","Unusual discharge during pregnancy: tell your midwife or GP promptly"],
+['nhs','nice','rcog']),
+
+X('thrush','Vaginal thrush','A yeast infection causing itching and soreness',
+"A common yeast infection causing itching, soreness and thick white discharge.",
+['teen','repro','preg','meno'],['repro'],['Itching','Unusual discharge','Burning when peeing'],
+"Thrush is a common yeast infection, caused by an overgrowth of a fungus called Candida that normally lives harmlessly in the vagina. It isn't a sexually transmitted infection, but it can cause a lot of discomfort. Most people get it at some point.",
+["Itching and irritation around the vagina and vulva","Thick, white discharge that doesn't usually smell, sometimes like cottage cheese","Soreness, redness or swelling","Stinging when you pee","Pain during sex"],
+["Antibiotics can upset the balance of vaginal organisms.","Pregnancy, uncontrolled diabetes and a weakened immune system raise the chance.","Hormonal changes, and irritants such as scented products or tight, non-breathable clothing, can play a part."],
+["It's often diagnosed from your symptoms, and a pharmacist can help.","See a GP or sexual health clinic if it's your first time, or you're pregnant, or it keeps coming back (four or more times a year), or treatment hasn't worked.","A swab can confirm it and rule out other causes."],
+["Antifungal treatment, such as a pessary, cream or a single capsule, is available from pharmacies. A pharmacist can check which option is suitable for you, and some are not suitable in pregnancy.","Avoid scented soaps, douching and tight synthetic clothing.","If it keeps coming back, a longer course may be prescribed and your doctor may check for other causes, such as diabetes."],
+["Could this be something other than thrush?","Why do I keep getting it?","Should I be checked for diabetes?","Which treatment is safe for me if I'm pregnant or breastfeeding?"],
+["Sores, blisters or ulcers on the vulva","Fever, pelvic pain, or symptoms during pregnancy that don't settle"],
+['nhs','nice','rcog']),
+
+X('uti','Urinary tract infection (UTI)','Often called cystitis',
+"A bladder or urinary infection causing burning when you pee and a frequent need to go.",
+['teen','repro','preg','meno','later'],['urinary'],['Burning when peeing','Frequent urination','Blood in urine','Pelvic pain'],
+"A urinary tract infection (UTI) is an infection of the bladder, urethra or sometimes the kidneys. Women get them more often than men because the urethra is shorter. A bladder infection is uncomfortable but usually clears quickly with treatment, while a kidney infection needs urgent care.",
+["Burning or stinging when you pee","Needing to pee more often or urgently","Cloudy, strong-smelling or blood-stained urine","Pain low in your tummy","Feeling generally unwell or tired","Signs of a kidney infection: fever, shivering, pain in the back or side, nausea or vomiting"],
+["Bacteria from the bowel get into the urethra and bladder.","Sex, menopause (when lower oestrogen thins the lining of the urethra), pregnancy, diabetes and a weakened immune system can raise the chance."],
+["A urine dipstick test can be done at your GP or pharmacy. A urine sample may be sent to the lab if infections are frequent or complicated.","In England, some pharmacies can assess and treat uncomplicated UTIs in women aged 16 to 64 without a GP appointment (the Pharmacy First scheme). Check with your local pharmacy."],
+["Antibiotics, usually for a few days, prescribed by a pharmacist or GP.","Paracetamol or ibuprofen (if suitable for you) can ease pain. Drinking enough fluids is sensible but won't cure an infection.","If you get UTIs often, ask about prevention, such as vaginal oestrogen after menopause, or other advice.","Wipe front to back, pee after sex, and avoid irritants in the genital area."],
+["Why do I keep getting UTIs?","Would vaginal oestrogen help me if I'm perimenopausal or menopausal?","Do I need a urine culture before antibiotics?","What should I do if symptoms don't improve in a couple of days?"],
+["Fever, shivering, vomiting, pain in your back or side, or confusion: contact a GP, 111 or urgent care the same day","Any UTI symptoms in pregnancy: contact your midwife or GP the same day","Blood in your urine that isn't explained by an infection"],
+['nhs','nice','rcog']),
+
+X('urinary-incontinence','Urinary incontinence','Leaking urine',
+"Leaking urine, often when you cough, laugh or exercise, or with a sudden strong urge to pee.",
+['repro','preg','meno','later'],['urinary'],['Urine leaks','Frequent urination'],
+"Urinary incontinence means leaking urine when you don't mean to. It is very common, especially after childbirth and around and after menopause, and it can usually be improved. Many people put off getting help because they feel embarrassed.",
+["Leaking when you cough, sneeze, laugh, jump or exercise (stress incontinence)","A sudden, strong urge to pee that you can't hold (urge incontinence)","Needing to pee often, including at night","Leaking without any warning, or not feeling your bladder is empty"],
+["Weak pelvic floor muscles, often after pregnancy and childbirth.","Menopause, because lower oestrogen can affect the bladder and urethra.","Being overweight, constipation, a long-term cough or some medicines.","Urine infections can cause a temporary worsening."],
+["A GP or nurse will usually ask about your symptoms, check your pelvic floor and test your urine.","You may be asked to keep a bladder diary for a few days."],
+["Pelvic floor exercises done regularly for at least three months are the first step for stress incontinence. A women's health physiotherapist can check you're doing them correctly.","Bladder training and cutting down on caffeine can help urge incontinence.","Losing weight if you're overweight, and treating constipation, can help.","Medicines or procedures may be offered if lifestyle steps aren't enough.","Vaginal oestrogen can help some people after menopause."],
+["Which type of incontinence do I have?","Can I be referred to a pelvic health physiotherapist?","Are there medicines or procedures if exercises don't work?","Could my symptoms be linked to menopause?"],
+["Leaking with numbness between your legs, back pain, or being unable to pass urine: seek urgent medical help (call 999 or go to A&E)","Blood in your urine, or leaking with pain and fever"],
+['nhs','nice','bladder']),
+
+X('pelvic-floor-problems','Pelvic floor problems and prolapse','Weak pelvic floor, pelvic organ prolapse',
+"Weak or damaged pelvic floor muscles that can cause leaking, heaviness or a bulge in the vagina.",
+['repro','preg','meno','later'],['urinary','repro'],['Urine leaks','Pelvic pain'],
+"The pelvic floor is a group of muscles that support the bladder, womb and bowel. If they're weakened or damaged, for example by pregnancy and childbirth, you may leak urine or have a prolapse, where one of the pelvic organs drops down into the vagina. Both are common and treatable.",
+["Leaking urine or struggling to hold wind or stools","A feeling of heaviness, dragging or pressure in the pelvis","A lump or bulge in or coming out of the vagina","Difficulty emptying your bladder or bowels","Pain or reduced sensation during sex","Discomfort that's worse at the end of the day or after standing for long"],
+["Pregnancy and vaginal childbirth are the most common causes.","Menopause, long-term coughing, constipation and heavy lifting.","Being overweight, and a family history of prolapse."],
+["A GP or specialist will ask about your symptoms and examine you, often with a speculum.","Further tests, such as bladder tests, may be arranged if you're considering surgery."],
+["Pelvic floor exercises, ideally taught by a specialist physiotherapist.","Lifestyle steps such as treating constipation, avoiding heavy lifting and managing weight.","A vaginal pessary, a small device that supports the organs, can be fitted.","Vaginal oestrogen may help after menopause.","Surgery is an option if other treatments haven't helped."],
+["Which pelvic floor treatment is right for me?","Could a pessary help?","What are the surgical options and risks?","Is it safe to keep exercising?"],
+["Being unable to pass urine, or new numbness around the genitals or between your legs: call 999 or go to A&E","A prolapse that has become sore, bleeding or can't be pushed back"],
+['nhs','nice','rcog']),
+
+X('fibroids','Fibroids','Non-cancerous growths in or around the womb',
+"Non-cancerous growths in or around the womb, often causing heavy periods and pressure symptoms.",
+['repro','meno'],['repro'],['Heavy periods','Bloating','Frequent urination','Pelvic pain'],
+"Fibroids are non-cancerous growths made of muscle and fibrous tissue that grow in or around the womb. They are very common, particularly in people in their 30s and 40s, and many people never know they have them. They can range from tiny to as large as a melon.",
+["Heavy or long periods","Pain in the lower tummy or back","Needing to pee often","Constipation or bloating","Pain during sex","A feeling of fullness or a swollen tummy","Many people have no symptoms"],
+["The cause isn't clear. Hormones (oestrogen and progesterone) seem to influence their growth.","They are more common in Black women, in people with a family history, and in those who are overweight.","They tend to shrink after menopause."],
+["A GP may feel a lump in your tummy or find an enlarged womb on examination.","A pelvic ultrasound is the usual test. MRI or a camera test of the womb (hysteroscopy) may be used for more detail."],
+["If you have no symptoms, you may not need treatment.","Medicines such as tranexamic acid or a hormonal coil (levonorgestrel IUS) can reduce bleeding and pain.","Other medicines can shrink fibroids for a time, often before surgery.","Procedures include fibroid embolisation, removing fibroids (myomectomy) or, if needed, a hysterectomy.","Your options depend on your symptoms, the size and position of fibroids and whether you hope to have children."],
+["Where are my fibroids and how big are they?","Could they affect my fertility or pregnancy?","Which treatment fits my plans for children?","Is my anaemia, if I have it, linked to my periods?"],
+["Sudden, severe pelvic pain","Bleeding so heavy you're soaking through pads or tampons every hour, or you feel faint"],
+['nhs','nice','rcog']),
+
+X('heavy-periods','Heavy periods','Also called menorrhagia',
+"Periods that are heavy enough to affect your daily life, including soaking through protection or passing large clots.",
+['teen','repro','meno'],['repro'],['Heavy periods','Fatigue','Dizziness'],
+"Heavy periods (heavy menstrual bleeding) are very common. There's no fixed amount of blood that counts as heavy. If your bleeding disrupts your life, it's worth treating, and there are good options.",
+["Soaking through a pad or tampon every one to two hours","Needing to use two types of protection together","Passing blood clots larger than about 2.5cm","Bleeding that lasts more than seven days","Flooding or leaking onto clothes or bedding","Tiredness or feeling short of breath, which can be signs of low iron"],
+["In many people no cause is found.","Fibroids, adenomyosis, endometriosis, polyps, PCOS and thyroid conditions can cause them.","Some contraception, such as a copper coil, can make periods heavier.","Less often, blood clotting conditions, which are worth asking about if heavy periods began at your first period."],
+["Your GP will usually ask about your periods and check for anaemia with a blood test.","An examination and, if needed, an ultrasound or other tests can look for a cause."],
+["The hormonal coil (levonorgestrel IUS) is often recommended first, because it works very well for heavy bleeding.","Tranexamic acid and mefenamic acid taken during your period can reduce flow and pain.","The combined contraceptive pill or other hormonal treatments can also help.","Procedures such as endometrial ablation, or hysterectomy, are options if other treatments don't work.","If you're anaemic, you'll need iron treatment alongside treating the periods."],
+["Do I need any tests to find the cause?","Am I anaemic?","Would a hormonal coil suit me?","What can I do if medicines aren't working?"],
+["Soaking through protection every hour for several hours, or feeling faint or dizzy","Heavy bleeding if you may be pregnant"],
+['nhs','nice','rcog']),
+
+X('pms-pmdd','PMS and PMDD','Premenstrual syndrome and premenstrual dysphoric disorder',
+"Physical and emotional symptoms in the one to two weeks before a period. PMDD is a severe form.",
+['teen','repro','meno'],['horm'],['Mood changes','Bloating','Fatigue','Low mood','Breast changes'],
+"Premenstrual syndrome (PMS) is a group of physical and emotional symptoms that come in the days before your period and ease once it starts. Premenstrual dysphoric disorder (PMDD) is a more severe form, in which mood symptoms such as low mood, anxiety or anger can seriously affect your life.",
+["Mood swings, irritability or anger","Feeling anxious, low or tearful","Bloating, breast tenderness or headaches","Tiredness and trouble sleeping","Food cravings or appetite changes","PMDD: severe low mood, hopelessness, feeling out of control, or thoughts of self-harm"],
+["PMS and PMDD are thought to be caused by the way your body reacts to normal hormone changes in the second half of your cycle.","They aren't caused by 'too much' or 'too little' of a hormone.","Stress, family history and some medical conditions can make them worse."],
+["There's no single test. A symptom diary kept for at least two cycles shows whether symptoms follow a pattern.","Your doctor may rule out other conditions, such as thyroid problems, anaemia or depression that isn't linked to your cycle."],
+["Regular exercise, a balanced diet, enough sleep and reducing alcohol and caffeine can help.","Cognitive behavioural therapy (CBT) can help with mood symptoms.","Some contraceptive pills can help PMS. Antidepressants called SSRIs are an option for severe PMS and PMDD.","Some people use supplements. See the Supplements section for what the evidence says."],
+["Could my symptoms be PMDD?","Would the contraceptive pill or an SSRI help me?","How should I record my symptoms?","What other support is available?"],
+["Thoughts of harming yourself or ending your life: call 999, or Samaritans on 116 123 any time, or NHS 111 for urgent help","Feeling unable to cope or unsafe"],
+['nhs','nice','mind']),
+
+X('period-pain','Period pain','Also called dysmenorrhoea',
+"Cramping pain in the lower tummy before or during a period.",
+['teen','repro','meno'],['repro'],['Painful periods','Pelvic pain'],
+"Period pain is very common and usually mild to moderate. Pain that stops you doing normal activities, gets worse over time or begins in your 20s or later may have an underlying cause, such as endometriosis or adenomyosis, and is worth getting checked.",
+["Cramping pain in the lower tummy, sometimes spreading to the back and thighs","Pain that starts just before or at the start of your period and lasts one to three days","Feeling sick, headaches, or loose stools","Pain that worsens with each period, or that is severe, may suggest another condition"],
+["Chemicals called prostaglandins make the womb muscle contract to shed its lining, causing cramps.","Secondary causes include endometriosis, adenomyosis, fibroids and pelvic infection."],
+["Your doctor will ask about your pain and periods.","If your pain is severe or not improving with treatment, you may have an ultrasound or other tests to check for another cause."],
+["Heat, such as a hot water bottle, and gentle exercise can help.","Anti-inflammatory painkillers (such as ibuprofen, if suitable for you) taken at the first sign of pain, or paracetamol.","The contraceptive pill or hormonal coil can reduce pain.","TENS machines help some people.","See your GP if over-the-counter treatment isn't enough."],
+["Could an underlying condition be causing my pain?","Are hormonal treatments suitable for me?","When should I have a scan?","What pain relief is safest for me?"],
+["Sudden severe pelvic pain, fainting or fever","Severe pain that comes with heavy bleeding or if you may be pregnant"],
+['nhs','nice','rcog']),
+
+X('absent-periods','Absent periods','Missed periods, also called amenorrhoea',
+"No periods for three months or more when you're not pregnant, or not having a first period by 15 or 16.",
+['teen','repro','meno'],['repro','horm'],['Irregular periods','Fatigue'],
+"Missing periods can have many causes, from pregnancy and breastfeeding to hormone conditions and stress. If you've had regular periods and miss three or more in a row, or you haven't started periods by about 15 or 16, it's worth speaking to a doctor.",
+["No periods for three months or more","No periods starting by age 15 or 16","Irregular or infrequent periods","Other signs depending on cause: acne, extra hair, hot flushes, milky nipple discharge, weight changes"],
+["Pregnancy and breastfeeding are the most common causes.","PCOS, thyroid problems and high prolactin.","Stress, heavy exercise, being underweight or not eating enough.","Early menopause or premature ovarian insufficiency.","Some contraception, for example the hormonal coil or implant."],
+["A pregnancy test is usually the first step.","Blood tests can check hormones such as thyroid hormone, prolactin and FSH.","A pelvic scan may be needed."],
+["Treatment depends on the cause. Some causes need no treatment, while others, such as PCOS or thyroid problems, have specific treatments.","If your period loss is linked to low weight, restrictive eating or over-exercise, getting support matters for your bones and long-term health. A GP can help without judgement.","If you're not trying to get pregnant, your periods being absent doesn't mean you can't conceive."],
+["Which tests do I need?","Could my missed periods affect my bones or fertility?","Do I need contraception even though I'm not having periods?","What support is there if stress, eating or exercise is a factor?"],
+["Missed period with severe one-sided tummy pain, shoulder tip pain or feeling faint: possible ectopic pregnancy, seek emergency help","Missed periods with milky nipple discharge or severe headaches and vision changes"],
+['nhs','nice','rcog']),
+
+X('ovarian-cysts','Ovarian cysts','Fluid-filled sacs on the ovaries',
+"Fluid-filled sacs on or in an ovary. Most are harmless and go away on their own.",
+['teen','repro','meno','later'],['repro'],['Pelvic pain','Bloating','Painful sex'],
+"Ovarian cysts are common and usually harmless. Most develop as part of your normal menstrual cycle (functional cysts) and disappear without treatment. Others, such as endometriomas or dermoid cysts, may need follow-up.",
+["Often no symptoms","Dull ache or heaviness in the lower tummy or back","Bloating or a feeling of fullness","Pain during sex","Needing to pee more often","Irregular periods"],
+["Functional cysts form when an egg isn't released or the follicle seals up after release.","Endometriosis, PCOS and some other conditions can cause cysts.","After menopause, cysts need more careful checking."],
+["A pelvic ultrasound is the usual test.","If you're past menopause or the cyst looks unusual, a blood test (CA125) and specialist review may be arranged."],
+["Many cysts disappear within a few cycles, so your doctor may suggest rechecking with another scan.","Painkillers can help with discomfort.","Surgery is sometimes advised for large cysts, those that don't resolve, or if there's concern.","Hormonal contraception doesn't dissolve existing cysts but may prevent new ones in some people."],
+["What type of cyst do I have?","Do I need another scan, and when?","Could this affect my fertility?","What symptoms should make me return?"],
+["Sudden, severe pelvic pain, especially with vomiting, fever or fainting (a cyst can burst or twist)","Pain with a missed period (possible ectopic pregnancy)"],
+['nhs','nice','rcog']),
+
+X('ovarian-cancer','Ovarian cancer','Persistent bloating is the key symptom to know',
+"A less common cancer where early symptoms, such as persistent bloating, are easy to miss.",
+['repro','meno','later'],['repro','cancer'],['Bloating','Pelvic pain','Frequent urination'],
+"Ovarian cancer isn't common, but it's often found late because early symptoms can seem vague. It's most common after menopause. Knowing the symptoms and not ignoring ones that persist can help find it earlier. There is no national screening programme.",
+["Persistent bloating that doesn't come and go","Feeling full quickly or loss of appetite","Pain in the pelvis or lower tummy","Needing to pee more urgently or more often","Other symptoms can include changes in bowel habits, tiredness or unexplained weight loss","Symptoms that are new for you and happen on most days, especially if over 50, are more worrying"],
+["The cause isn't fully known.","Risk rises with age and with certain inherited gene changes, such as BRCA1 and BRCA2, or a strong family history of ovarian or breast cancer.","Other factors can include never having been pregnant, and endometriosis."],
+["See your GP if you have symptoms like these frequently, particularly more than 12 times a month, and especially if you're over 50.","A blood test (CA125) and a pelvic ultrasound are the first tests.","If these suggest cancer, you'll be referred urgently to a specialist."],
+["Treatment usually involves surgery and chemotherapy.","Other treatments, such as targeted therapies, may be used depending on the type and stage.","Specialist nurses and charities can offer support and information."],
+["Could my symptoms be ovarian cancer? Should I have a CA125 test and scan?","How long should I wait before coming back if symptoms continue?","Should I have genetic counselling given my family history?","What support is available?"],
+["Persistent bloating, feeling full quickly or pelvic pain: see your GP promptly rather than waiting","Sudden severe tummy pain, vomiting or being unable to eat or drink: seek urgent care"],
+['nhs','nice','ovca','cruk']),
+
+X('cervical-cancer','Cervical cancer and screening','Cervical screening ("smear tests") prevents most cases',
+"Almost all cervical cancers are caused by HPV. Regular screening finds changes early, before cancer develops.",
+['repro','meno','later'],['repro','cancer'],['Bleeding between periods','Bleeding after sex','Unusual discharge'],
+"Cervical cancer is almost always caused by long-term infection with high-risk types of the human papillomavirus (HPV). Screening checks for HPV and cell changes, so treatment can prevent cancer from developing. The HPV vaccine, offered in schools, helps protect against it.",
+["Early cervical cancer often has no symptoms, which is why screening matters","Bleeding between periods, after sex or after menopause","Unusual or bloody vaginal discharge","Pain during sex","Pelvic pain"],
+["Most people are exposed to HPV at some point, and in most it clears on its own.","In some people, persistent high-risk HPV causes cell changes that can develop into cancer over years.","Smoking and a weakened immune system raise the risk."],
+["In England, cervical screening is offered from age 25 to 64. How often you're invited (every three to five years) depends on your age and previous results. The sample is tested for HPV first. Check the current NHS guidance for your own schedule.","If you have symptoms, don't wait for screening. See your GP.","If screening finds changes, you may be referred for colposcopy, where the cervix is looked at closely and a small sample may be taken."],
+["Abnormal cells found at screening can be removed with a small procedure, which prevents cancer from developing.","If cancer is diagnosed, treatment can include surgery, radiotherapy and chemotherapy depending on the stage.","The HPV vaccine is offered to young people (from the age of 12 to 13) and protects against high-risk HPV types.","Attending screening matters even if you've had the vaccine."],
+["Am I up to date with cervical screening?","What does my screening result mean?","What happens at colposcopy?","Can I have a female clinician or a chaperone?"],
+["Bleeding after sex, between periods or after menopause: see your GP promptly","Heavy bleeding or severe pelvic pain: seek urgent care"],
+['nhs','jos','cruk']),
+
+X('endometrial-cancer','Womb (endometrial) cancer','Bleeding after menopause should always be checked',
+"A cancer of the womb lining. Bleeding after menopause is the main warning sign and should always be checked.",
+['meno','later'],['repro','cancer'],['Bleeding between periods','Pelvic pain','Unusual discharge'],
+"Womb cancer, also called endometrial cancer, affects the lining of the womb. It's most common after menopause. It's often found early because bleeding after menopause prompts people to seek help, and early cases are often treated successfully.",
+["Vaginal bleeding after menopause, even a small amount","Bleeding between periods or heavier periods than usual if you're still having them","Unusual vaginal discharge","Pain in the pelvis or lower tummy, or pain during sex (less common)"],
+["Higher oestrogen exposure without enough progesterone raises the risk.","Being overweight, type 2 diabetes, PCOS, never having children and taking tamoxifen increase the risk.","Some inherited conditions, such as Lynch syndrome, raise the risk.","Combined HRT (with progesterone) doesn't have the same risk, but oestrogen-only HRT in someone with a womb isn't recommended."],
+["See your GP urgently if you have any bleeding after menopause.","You'll usually be referred for a pelvic ultrasound and, if needed, a hysteroscopy and a small sample (biopsy) of the womb lining."],
+["The main treatment is surgery to remove the womb, ovaries and tubes.","Some people also have radiotherapy, hormone therapy or chemotherapy.","Most causes of bleeding after menopause aren't cancer, but they must be checked."],
+["Could my bleeding be serious and what tests do I need?","What other conditions could cause this?","How quickly will I be seen?","Is my HRT suitable for me?"],
+["Any vaginal bleeding after menopause, even spotting: see your GP promptly (don't wait for it to happen again)","Heavy bleeding with dizziness or severe pain: seek urgent care"],
+['nhs','nice','cruk','eve']),
+
+X('breast-changes','Breast pain and benign breast changes','Most lumps and pain are not cancer',
+"Breast pain and lumpiness are common and usually harmless, but any new change is worth getting checked.",
+['teen','repro','preg','meno','later'],['breast'],['Breast changes','Mood changes'],
+"Breast pain and lumpiness are very common and usually linked to your hormones. Most breast lumps are not cancer, for example fluid-filled cysts or fibroadenomas. Still, any new lump or change should be checked by a doctor so you have peace of mind.",
+["Breast pain or tenderness that comes and goes with your cycle (cyclical)","Breast pain that doesn't follow your cycle (non-cyclical)","General lumpiness that feels similar in both breasts","A smooth, movable lump (could be a fibroadenoma or cyst)","Breast pain linked to a poorly fitting bra, or to breastfeeding (such as mastitis)"],
+["Hormone changes across the cycle, pregnancy, breastfeeding and menopause.","Cysts and fibroadenomas are benign and common.","Some medicines, including some contraceptives and HRT, can cause breast tenderness."],
+["A GP will examine your breasts and may refer you to a breast clinic if there's a lump or another change.","The clinic may do a mammogram, ultrasound or take a small sample (biopsy)."],
+["Wearing a supportive, well-fitted bra can help pain.","Simple painkillers and a warm or cool compress can ease discomfort.","A symptom diary can show whether pain is related to your cycle.","Cysts may be drained, and most fibroadenomas don't need treatment."],
+["Is this lump something to be worried about?","Do I need a referral to a breast clinic?","Is my breast pain linked to my contraception or HRT?","How should I check my breasts?"],
+["A new lump or thickening in a breast or armpit: see your GP promptly","Skin changes, nipple changes or bloody nipple discharge: see your GP promptly"],
+['nhs','nice','bcn']),
+
+X('breast-cancer','Breast cancer','Know what is normal for you',
+"The most common cancer in women in the UK. Finding it early makes treatment more likely to succeed.",
+['repro','meno','later'],['breast','cancer'],['Breast changes'],
+"Breast cancer is the most common cancer in women in the UK. Many breast cancers are found at an early stage, when treatment is most likely to work. Knowing how your breasts normally look and feel and attending screening can help find it sooner.",
+["A new lump or thickening in a breast or armpit","A change in size, shape or feel of a breast","Skin changes such as dimpling, puckering or a rash","A change in the nipple, such as turning inwards, or discharge, which may be bloody","Pain in one breast that doesn't go away (less common)"],
+["The cause isn't fully understood. Age is the biggest risk factor.","A family history of breast or ovarian cancer, inherited changes in genes such as BRCA1 and BRCA2, and some hormone factors raise the risk.","Alcohol, being overweight after menopause and lack of exercise raise the risk."],
+["See your GP if you notice a change. You can be referred to a breast clinic for a mammogram, ultrasound or biopsy.","In England, NHS breast screening with mammograms is offered every three years from around age 50 up to the age of 71."],
+["Treatment can include surgery, radiotherapy, chemotherapy, hormone therapy and targeted treatments, depending on the type and stage.","Specialist breast care nurses and charities can offer practical and emotional support.","Many people are treated successfully, especially when it's found early."],
+["Is this change something to worry about?","Do I need a referral and how quickly?","Should I have genetic testing given my family history?","Am I eligible for screening and when is mine due?"],
+["Any new lump, skin change or nipple change: see your GP promptly, don't wait to see if it goes away","Ask for an urgent referral if you have been waiting and symptoms are worsening"],
+['nhs','nice','cruk','bcn']),
+
+X('osteoporosis','Osteoporosis','Fragile bones',
+"A condition that weakens bones, making them more likely to break. Risk increases after menopause.",
+['meno','later'],['bone'],['Fatigue'],
+"Osteoporosis weakens bones so they break more easily, particularly in the wrist, hip and spine. It often has no symptoms until a bone breaks. Oestrogen helps protect bones, so the risk goes up after menopause. There is plenty you can do to protect your bones.",
+["Usually no symptoms until a fracture","A bone that breaks after a minor fall or bump","Loss of height over time","A curved upper back (stooped posture)","Sudden back pain from a spinal fracture"],
+["Falling oestrogen levels after menopause, or early menopause.","Family history, low body weight, smoking and high alcohol intake.","Long-term steroid use and some medical conditions.","Not getting enough calcium or vitamin D."],
+["A doctor can estimate your fracture risk with an online tool called FRAX.","A bone density scan (DXA) may be offered if you're at higher risk."],
+["Weight-bearing and strength exercise, such as walking, dancing or lifting weights.","A balanced diet with enough calcium, and vitamin D, especially in autumn and winter in the UK.","Stopping smoking and keeping alcohol within recommended limits.","Medicines such as bisphosphonates can reduce fracture risk. HRT can help in some people.","Reducing the risk of falls matters too."],
+["What is my fracture risk and do I need a scan?","Do I need calcium or vitamin D supplements?","Which medicine would suit me?","How can I reduce my risk of falling?"],
+["Sudden, severe back pain, or a fracture after a minor fall: seek medical help","If you cannot put weight on a leg after a fall: call 999 or go to A&E"],
+['nhs','nice','ros']),
+
+X('hypothyroidism','Underactive thyroid (hypothyroidism)','When your thyroid makes too little hormone',
+"The thyroid gland doesn't make enough hormone, which can cause tiredness, weight gain and feeling cold.",
+['teen','repro','preg','meno','later'],['horm'],['Fatigue','Heavy periods','Mood changes'],
+"An underactive thyroid (hypothyroidism) means your thyroid doesn't produce enough thyroid hormone. It's much more common in women, especially after pregnancy and in midlife. Symptoms are easy to mistake for other things, but a simple blood test can diagnose it and treatment works well.",
+["Tiredness and slowing down","Weight gain without eating more","Feeling cold more than other people","Dry skin, thinning or dry hair","Constipation","Low mood, poor memory or concentration","Heavier or irregular periods","Muscle aches and a hoarse voice or puffy face"],
+["The most common cause is an autoimmune condition called Hashimoto's thyroiditis.","It can follow pregnancy (postpartum thyroiditis), thyroid surgery or radioactive iodine treatment.","Some medicines can affect the thyroid."],
+["A blood test measures thyroid stimulating hormone (TSH) and thyroid hormone (T4)."],
+["Treatment is a daily tablet of levothyroxine, which replaces the missing hormone.","You'll have regular blood tests to check the dose. It's usually taken long term.","Take it on an empty stomach as advised, and leave a gap before iron or calcium supplements because they can reduce absorption.","If you're planning pregnancy or pregnant, tell your doctor, because your dose often needs adjusting."],
+["Should I have a thyroid test?","Could my symptoms be linked to my thyroid?","How often will I have blood tests?","How does my thyroid affect pregnancy?"],
+["Severe symptoms such as confusion, very slow heartbeat or feeling extremely cold and drowsy: seek urgent medical help","Sudden palpitations, chest pain or breathlessness"],
+['nhs','nice','btf']),
+
+X('pid','Pelvic inflammatory disease (PID)','Infection of the womb, tubes and ovaries',
+"An infection of the upper female genital tract, often caused by a sexually transmitted infection.",
+['teen','repro'],['repro','sexual'],['Pelvic pain','Unusual discharge','Painful sex','Bleeding between periods'],
+"Pelvic inflammatory disease (PID) is an infection of the womb, fallopian tubes or ovaries. It is often caused by bacteria from a sexually transmitted infection such as chlamydia or gonorrhoea moving upwards. Early treatment prevents complications such as ongoing pain or fertility problems.",
+["Pain in the lower tummy or pelvis","Unusual vaginal discharge, sometimes with a smell","Pain during sex","Bleeding between periods or after sex","Pain or burning when you pee","Fever, or feeling generally unwell in severe cases","Some people have mild or no symptoms"],
+["Chlamydia and gonorrhoea are common causes.","Infection can also follow childbirth, miscarriage, abortion or putting in a coil, though this is less common.","Having a new partner, or multiple partners, raises the chance."],
+["A doctor or sexual health clinic will examine you and take swabs.","A urine test, blood tests or a pelvic ultrasound may also be used."],
+["A course of antibiotics, which may include more than one type.","Your recent sexual partners need testing and treatment, and you should avoid sex until you and they have completed treatment.","Complications can include long-term pelvic pain, ectopic pregnancy and difficulty getting pregnant, which is why early treatment matters.","See a sexual health clinic, which is free and confidential."],
+["Should I be tested for other infections?","Does my partner need treatment?","Could this affect my fertility?","When can I have sex again?"],
+["Severe pelvic pain, high fever, vomiting or feeling very unwell: seek urgent medical help","Pain with a missed period or with possible pregnancy: seek urgent help (possible ectopic pregnancy)"],
+['nhs','nice','rcog']),
+
+X('stis','Sexually transmitted infections (STIs)','Chlamydia and others, often with no symptoms',
+"Infections passed on through sexual contact. Many have no symptoms, so regular testing matters.",
+['teen','repro','meno','later'],['sexual','repro'],['Unusual discharge','Burning when peeing','Bleeding between periods','Itching'],
+"STIs such as chlamydia, gonorrhoea, genital herpes, genital warts and syphilis are common. Many people have no symptoms, so you can have one without knowing. Most are easily treated, and testing at a sexual health clinic is free, confidential and doesn't need a GP referral.",
+["Often no symptoms, especially with chlamydia","Unusual vaginal discharge","Pain or burning when you pee","Bleeding between periods or after sex","Pain during sex or in the lower tummy","Sores, blisters, lumps or warts around the genitals or anus","Itching or irritation"],
+["Passed on through vaginal, anal or oral sex and sometimes by close skin contact.","Condoms reduce the risk of most STIs.","Untreated chlamydia and gonorrhoea can lead to pelvic inflammatory disease and fertility problems."],
+["Testing involves a swab, urine test or blood test, depending on the infection.","Sexual health clinics offer free testing, and many areas offer free home test kits.","In England, chlamydia screening is offered to under-25s."],
+["Chlamydia and gonorrhoea are treated with antibiotics.","Herpes and HIV are managed with antiviral medicines, and warts can be treated in several ways.","Partners need to be told and treated so you don't pass the infection back and forth.","Avoid sex until treatment is finished and you've been told it's safe."],
+["Which tests do I need and how often?","How do I tell my partner?","Do I need to avoid sex, and for how long?","What protection and vaccines (HPV, hepatitis B) do I need?"],
+["Severe lower tummy pain, fever or vomiting: seek urgent medical help","Possible STI symptoms in pregnancy: contact your midwife or GP promptly"],
+['nhs','nice','sh']),
+
+X('vaginismus','Vaginismus','Involuntary tightening of the vaginal muscles',
+"Involuntary tightening of the muscles around the vagina that makes penetration painful or impossible.",
+['teen','repro','meno'],['sexual'],['Painful sex'],
+"Vaginismus is when the muscles around the vagina tighten involuntarily, making sex, a smear test, or using a tampon painful or impossible. It isn't your fault, and it isn't a sign that something is 'wrong' with you. It's common and very treatable with the right support.",
+["Pain or a feeling of tightness or blocking when trying to insert a tampon, finger or penis","Difficulty or inability to have sex or to have an internal exam","Burning or stinging","Fear or anxiety about penetration"],
+["It's often linked to fear or anxiety about pain, which causes the muscles to tighten automatically.","Painful sex before, infections, childbirth, painful conditions and past experiences can contribute.","Sometimes no cause is found."],
+["A GP, nurse or gynaecologist can talk with you and, if you're comfortable, examine you gently. You can ask for a female clinician or a chaperone and stop at any time.","Other causes of pain, such as infection or skin conditions, are checked."],
+["Treatment is usually a combination of education, relaxation techniques and gradually getting used to touch and insertion at your own pace, sometimes with vaginal trainers (dilators).","Psychosexual therapy, CBT and specialist pelvic floor physiotherapy are very effective.","Treatment works best with support from a clinician who understands the condition.","You can seek help through your GP, a sexual health clinic or a psychosexual therapist."],
+["Can you refer me to a specialist or psychosexual therapist?","Can I stop an examination at any time?","How long does treatment usually take?","Could other conditions be causing my pain?"],
+["Severe pain, bleeding or discharge: see your GP promptly","Distress that is affecting your mood or safety: reach out to your GP or NHS 111"],
+['nhs','nice','rcog']),
+
+X('vulvodynia','Vulvodynia','Long-term vulval pain without a clear cause',
+"Ongoing pain, burning or soreness of the vulva with no obvious cause.",
+['repro','meno','later'],['sexual'],['Painful sex','Itching'],
+"Vulvodynia means ongoing pain in the vulva (the skin around the vaginal opening) for three months or more, without an obvious cause such as infection or skin disease. The pain can be constant or triggered by touch, tampons or sex. It's real and treatable, though it can take time to find the right approach.",
+["Burning, stinging, rawness or soreness of the vulva","Pain triggered by touch, tampons, tight clothes, cycling or sex","Pain that comes on without any trigger","Pain that can be constant or come and go"],
+["The cause isn't fully understood. Nerves may become oversensitive.","Past infections, hormonal changes, tight pelvic floor muscles and skin conditions may be involved.","Diagnosis often follows other causes being ruled out."],
+["A GP or specialist will examine you and take swabs to rule out infection.","A gentle touch test with a cotton bud may be used to find where the pain is.","Tests for skin conditions, such as lichen sclerosus, may be done."],
+["Avoid irritants such as scented soap, wipes and tight clothing, and use plain emollients.","Local anaesthetic gels, nerve pain medicines such as amitriptyline or gabapentin, and pelvic floor physiotherapy may be offered.","CBT and psychosexual support can help you cope and reduce pain.","Specialist vulval clinics offer treatment if first-line approaches aren't enough."],
+["Have infections and skin conditions been ruled out?","Can I be referred to a vulval clinic?","Which medicines could help?","What can I do about pain during sex?"],
+["Sores, ulcers, lumps or a patch that won't heal: see your GP promptly","Severe pain with fever or discharge"],
+['nhs','vps','rcog']),
+
+X('lichen-sclerosus','Lichen sclerosus','A long-term skin condition affecting the vulva',
+"A long-term skin condition causing white patches, itching and soreness, most often around the vulva.",
+['teen','repro','meno','later'],['sexual'],['Itching','Painful sex'],
+"Lichen sclerosus is a long-term skin condition that mostly affects the skin around the vulva and anus. It's not contagious and not caused by poor hygiene. It's often missed or mistaken for thrush, so many people wait a long time for a diagnosis. Treatment works well and prevents scarring.",
+["Intense itching, particularly at night","White or pale, thin, crinkly patches of skin","Soreness, burning or pain, including during sex","Easy bruising, splitting, tearing or small blood blisters","Changes in the shape of the vulva over time, if untreated"],
+["The cause isn't known. It's thought to be an autoimmune condition.","It can happen at any age but is most common after menopause and in girls before puberty.","It is linked to other autoimmune conditions."],
+["A GP can often recognise it by looking, and may refer you to a dermatologist or gynaecologist.","A small skin sample (biopsy) may be taken to confirm it."],
+["A strong steroid ointment (such as clobetasol propionate) applied as prescribed is the main treatment, usually for a few months, then as needed.","Plain emollients, and avoiding soaps and irritants, help soothe the skin.","It's usually a long-term condition, so regular follow-up is advised.","There's a small increased risk of skin cancer of the vulva, so see a doctor about any lump, sore or patch that doesn't heal."],
+["Could this be lichen sclerosus rather than thrush?","Do I need a biopsy?","How often should I use the steroid ointment?","How often should I be checked?"],
+["A sore, ulcer, lump or area that doesn't heal: see your GP promptly","Bleeding or severe pain"],
+['nhs','nice','vps']),
+
+X('miscarriage','Miscarriage','Losing a pregnancy before 24 weeks',
+"The loss of a pregnancy in the first 23 weeks. It's common, and it's rarely anyone's fault.",
+['repro','preg'],['preg'],['Pelvic pain'],
+"A miscarriage is the loss of a pregnancy before 24 weeks. It's common, particularly in the first 12 weeks, and the cause is usually a chromosome problem in the pregnancy. It is almost never caused by anything you did or didn't do. Many people feel grief, and support is available.",
+["Vaginal bleeding, from light spotting to heavy bleeding with clots","Cramping or lower tummy pain","Passing tissue from the vagina","Pregnancy symptoms, such as nausea or sore breasts, going away","Some people have no symptoms and the miscarriage is found at a scan"],
+["Most early miscarriages are caused by chromosome changes in the pregnancy, and are not preventable.","Risk rises with age. Smoking, heavy alcohol use and some medical conditions may increase the risk.","Exercise, sex, stress and lifting do not cause miscarriage."],
+["Contact your GP, midwife or early pregnancy unit if you have bleeding or pain in early pregnancy.","An ultrasound scan and sometimes blood tests can show whether the pregnancy is continuing.","Tests to look for a cause are usually offered after three or more miscarriages in a row."],
+["Options usually include waiting for the miscarriage to happen naturally, taking medicine to bring it on, or a small surgical procedure.","You'll be offered pain relief and advice on bleeding, and contraception when you're ready.","Emotional support is important. Charities and counselling can help, and partners are affected too.","Most people go on to have a healthy pregnancy afterwards."],
+["What are my options for managing a miscarriage?","What bleeding and pain are normal, and what isn't?","When can I try again, if I want to?","What emotional support is available?"],
+["Heavy bleeding (soaking a pad every hour), severe pain, fever or feeling faint: call 111 or go to A&E","One-sided pain or shoulder tip pain with bleeding: possible ectopic pregnancy, seek emergency help"],
+['nhs','nice','tommys']),
+
+X('ectopic-pregnancy','Ectopic pregnancy','A pregnancy growing outside the womb',
+"A pregnancy that starts outside the womb, usually in a fallopian tube. It needs urgent medical care.",
+['repro','preg'],['preg'],['Pelvic pain'],
+"In an ectopic pregnancy, a fertilised egg implants outside the womb, most often in a fallopian tube. The pregnancy can't continue and it can cause the tube to burst, which is a medical emergency. Knowing the signs can save lives, and early treatment is very effective.",
+["Pain low in your tummy, often on one side","Vaginal bleeding or a brown, watery discharge","Pain at the tip of your shoulder","Pain when you pee or poo","Feeling dizzy or faint, or collapsing, which can mean internal bleeding","Usually appears at 4 to 12 weeks, often after a missed period"],
+["A previous ectopic pregnancy, tubal damage or surgery.","Pelvic inflammatory disease or chlamydia, endometriosis, or becoming pregnant with a coil in place.","Smoking and fertility treatment can raise the risk, though many people with an ectopic pregnancy have no risk factors."],
+["You'll be assessed at an early pregnancy unit or hospital with a pregnancy test, blood tests and a scan.","If you have symptoms, you should be seen urgently the same day."],
+["Medicine (methotrexate) can end an early ectopic pregnancy when it's caught in time.","Keyhole surgery removes the pregnancy and sometimes the tube.","If the tube has burst, emergency surgery is needed.","Emotional support after an ectopic pregnancy is important, and many people go on to have healthy pregnancies."],
+["What is my risk of another ectopic pregnancy?","How will I be monitored after treatment?","Will this affect my fertility?","What support is available?"],
+["Sharp or one-sided pain with a positive pregnancy test or missed period, shoulder tip pain, or feeling faint: call 999 or go to A&E now","Any bleeding or pain in early pregnancy: contact an early pregnancy unit or 111 the same day"],
+['nhs','nice','ectopic']),
+
+X('hyperemesis-gravidarum','Hyperemesis gravidarum','Severe pregnancy sickness',
+"Severe, ongoing nausea and vomiting in pregnancy that goes beyond normal morning sickness.",
+['preg'],['preg'],['Nausea','Fatigue','Dizziness'],
+"Hyperemesis gravidarum (HG) is severe nausea and vomiting in pregnancy. It's more than morning sickness, and can lead to dehydration and weight loss. It isn't your fault, it isn't 'all in the mind', and effective treatments exist. It often eases by about 20 weeks, but can last longer.",
+["Nausea and vomiting that is persistent and severe","Being unable to keep food or drink down","Weight loss of more than 5% of your pre-pregnancy weight","Dehydration, with dark urine, dizziness or passing little urine","Extreme tiredness, drooling or heightened sense of smell"],
+["The cause isn't fully understood but is linked to pregnancy hormones.","It's more likely if you had it in an earlier pregnancy, have a family history, or are expecting twins.","It often begins around 4 to 7 weeks."],
+["Diagnosis is based on your symptoms. A doctor may check your urine for ketones, your weight and your blood pressure.","Don't wait to ask for help if you can't keep fluids down."],
+["Anti-sickness medicines that are safe in pregnancy, such as cyclizine, prochlorperazine or ondansetron, can help.","Fluids through a drip in hospital if you're dehydrated.","Small, frequent meals, avoiding triggers and resting. Ginger and acupressure bands help some people mildly, though the evidence is limited.","Vitamin supplements such as vitamin B6 or thiamine may be advised by your doctor.","Support groups such as Pregnancy Sickness Support can help."],
+["Which anti-sickness medicine is safe and right for me?","Do I need to be admitted for fluids?","When should I come back?","What should I eat and drink?"],
+["Unable to keep any fluids down for 24 hours, passing very little or very dark urine, dizziness or fainting: contact your midwife, GP or 111 urgently","Severe tummy pain or bleeding: seek urgent care"],
+['nhs','nice','pss']),
+
+X('postnatal-depression','Postnatal depression','Depression after having a baby',
+"Low mood and anxiety after birth that lasts longer than the 'baby blues' and affects daily life.",
+['preg','repro'],['mind','preg'],['Low mood','Fatigue','Mood changes'],
+"Postnatal depression is a type of depression that can start any time in the first year after having a baby. It's common and treatable, and it doesn't mean you're a bad parent. It's different from the 'baby blues' (tearfulness in the first two weeks) which pass on their own.",
+["Low mood, tearfulness or feeling numb","Anxiety, panic or constant worry","Trouble sleeping even when the baby is sleeping","Loss of interest or pleasure","Difficulty bonding with your baby","Intrusive, frightening thoughts","Feeling guilty or like a failure"],
+["Hormone changes, tiredness, a difficult birth, lack of support, previous depression or stress can all play a part.","It can affect partners too."],
+["Tell your GP, midwife or health visitor. They may ask you questions (such as the Edinburgh Postnatal Depression Scale).","It's common to feel reluctant to talk about it. Asking for help is a sign of strength."],
+["Talking therapies such as CBT are effective.","Antidepressants may be offered, and many are suitable while breastfeeding.","Rest, practical support from friends or family, and peer support groups help.","Treatment works, and most people recover with the right support."],
+["What treatments are available and are they compatible with breastfeeding?","How can I get therapy quickly?","How can my partner and family support me?","What if my symptoms get worse?"],
+["Thoughts of harming yourself or your baby: call 999 or Samaritans on 116 123, or go to A&E","Confusion, hallucinations or extreme agitation in the weeks after birth (postpartum psychosis, a medical emergency): call 999"],
+['nhs','nice','mind','pandas']),
+
+X('premature-ovarian-insufficiency','Premature ovarian insufficiency (POI)','Early menopause before 40',
+"When the ovaries stop working normally before the age of 40, causing irregular or missed periods.",
+['teen','repro'],['horm'],['Irregular periods','Hot flushes','Vaginal dryness','Mood changes'],
+"Premature ovarian insufficiency (POI), sometimes called premature or early menopause, is when your ovaries stop working normally before the age of 40. It affects around 1 in 100 women. Treatment is important for protecting your bones and heart, and support is available for fertility and emotional wellbeing.",
+["Irregular or missing periods","Hot flushes and night sweats","Vaginal dryness and painful sex","Low mood, anxiety or trouble concentrating","Low sex drive","Difficulty getting pregnant"],
+["In many people no cause is found.","Genetic conditions (such as Turner syndrome or fragile X premutation), autoimmune disease, and some cancer treatments or surgery can cause it."],
+["Blood tests to measure FSH (taken twice, a few weeks apart) along with your symptoms.","Other tests may check for causes such as thyroid problems or genetic conditions."],
+["Hormone replacement therapy (HRT) is usually recommended until at least the average age of natural menopause, about 51, to protect your bones, heart and brain.","Some people can still conceive occasionally, but fertility is often reduced. Egg donation is an option. Talk with a specialist about fertility and contraception.","Emotional support is important. The Daisy Network is a charity for people with POI.","Weight-bearing exercise, enough calcium and vitamin D, and not smoking protect your bones."],
+["Should I take HRT and for how long?","What are my options for having a family?","How can I protect my bones and heart?","Where can I find support?"],
+["Severe low mood or thoughts of harming yourself: seek urgent help (999, or Samaritans on 116 123)","Sudden severe pelvic pain or bleeding"],
+['nhs','nice','daisy','mp']),
+
+X('infertility','Fertility problems','Difficulty getting pregnant',
+"Not getting pregnant after a year of trying with regular unprotected sex.",
+['repro'],['repro'],['Irregular periods','Painful periods'],
+"Many couples don't conceive straight away. About 8 in 10 couples conceive within a year of regular unprotected sex. If it hasn't happened, there are often tests and treatments that can help, and problems can come from either partner or from no known cause.",
+["Not becoming pregnant after a year of trying","Irregular or absent periods (possible ovulation problems)","Very painful or heavy periods (possible endometriosis or fibroids)","No other symptoms in many cases"],
+["Ovulation problems, such as PCOS or thyroid conditions.","Blocked fallopian tubes, endometriosis, fibroids or previous pelvic infection.","Sperm problems, which account for about a third of cases.","Age: fertility declines gradually from the early 30s.","In around a quarter of couples, no cause is found."],
+["See your GP after a year of trying, or sooner if you're 36 or over, or have irregular periods or a known condition.","Tests may include a blood test for ovulation, a scan, an assessment of the tubes, and semen analysis for your partner."],
+["Healthy lifestyle: folic acid before conception, stopping smoking, limiting alcohol and keeping a healthy weight.","Treatments include ovulation medicines, intrauterine insemination (IUI) and in vitro fertilisation (IVF).","NHS funding for IVF varies across the UK, so ask your GP about local criteria.","Counselling and peer support help with the emotional strain."],
+["What tests should we have first?","Is NHS fertility treatment available where I live?","Should I take folic acid and anything else?","Is my age affecting my options?"],
+["Severe pelvic pain with bleeding or a positive pregnancy test: seek urgent help (possible ectopic pregnancy)","Feeling very low or hopeless: speak to your GP or call Samaritans on 116 123"],
+['nhs','nice','fnuk'])
+);
+
+/* ---------- Supplements (DRAFT: not yet reviewed by a clinician or pharmacist) ---------- */
+const RATING={
+ strong:{l:'Strong evidence',c:'r-strong',d:'Good-quality research supports a benefit for the stated use.'},
+ moderate:{l:'Some evidence',c:'r-mod',d:'Several studies suggest a benefit, but results are mixed or the studies are small.'},
+ limited:{l:'Limited evidence',c:'r-lim',d:'Early or small studies only. A benefit is possible but unproven.'},
+ weak:{l:'Little or no evidence',c:'r-weak',d:'Research hasn\'t shown a clear benefit for this use.'}
+};
+const SUPPS=[
+{id:'vitamin-d',name:'Vitamin D',rating:'strong',ratingNote:'Strong for preventing deficiency and supporting bone health. Weaker for preventing fractures in people who aren\'t deficient.',
+ forIds:['osteoporosis','perimenopause-menopause','premature-ovarian-insufficiency','hypothyroidism'],stages:['preg','meno','later','teen','repro'],
+ what:'Helps your body absorb calcium and keep bones and muscles healthy. In the UK, sunlight is too weak from about October to March to make enough.',
+ evidence:'NHS advice is that everyone should consider 10 micrograms (400 IU) of vitamin D a day in autumn and winter. People with little sun exposure, who cover their skin, or who have darker skin should consider taking it all year. It is also recommended in pregnancy and breastfeeding.',
+ safety:'Taking more than 100 micrograms (4,000 IU) a day can be harmful and raise calcium too high. More is not better. If you think you\'re deficient, ask for a blood test.',
+ interactions:'Some medicines, such as steroids, certain anti-epilepsy drugs and some weight-loss drugs, affect vitamin D. Check with a pharmacist if you take regular medicines.',
+ avoid:'Ask a doctor first if you have kidney disease, sarcoidosis, or a history of high calcium.',
+ src:['nhs','ros']},
+{id:'folic-acid',name:'Folic acid (folate)',rating:'strong',ratingNote:'Strong evidence for preventing neural tube defects such as spina bifida when taken before and early in pregnancy.',
+ forIds:['infertility','miscarriage'],stages:['repro','preg'],
+ what:'A B vitamin that supports your baby\'s developing spine and brain.',
+ evidence:'NHS advice is to take 400 micrograms a day from before you conceive until 12 weeks of pregnancy. A higher dose (5 milligrams) on prescription is advised if you have diabetes, take certain anti-epilepsy medicines, have a BMI of 30 or more, or have had a previous pregnancy affected by a neural tube defect. Folic acid does not prevent miscarriage, but it is still recommended when planning pregnancy.',
+ safety:'The 400 microgram dose is very safe. The 5 mg dose should only be taken on a doctor\'s advice.',
+ interactions:'Can interact with some epilepsy medicines and methotrexate. Tell your doctor or pharmacist.',
+ avoid:'Generally safe in the standard dose. Ask a doctor first if you are on anti-epilepsy medicine.',
+ src:['nhs','nice']},
+{id:'iron',name:'Iron',rating:'strong',ratingNote:'Strong evidence for treating iron deficiency. Not recommended unless you are low in iron.',
+ forIds:['iron-deficiency-anaemia','heavy-periods','adenomyosis','fibroids'],stages:['teen','repro','preg'],
+ what:'Needed to make haemoglobin, which carries oxygen in your blood. Heavy periods and pregnancy are common reasons for low iron.',
+ evidence:'Iron tablets are an effective treatment for iron-deficiency anaemia. The right dose depends on your blood test, so get tested first rather than guessing.',
+ safety:'Taking iron when you don\'t need it can cause harm, and an overdose is dangerous, especially for children, so keep it out of reach. Common side effects are constipation, nausea and dark stools.',
+ interactions:'Iron can reduce absorption of levothyroxine, some antibiotics and bisphosphonates, so these need spacing apart. Antacids and tea or coffee can reduce iron absorption.',
+ avoid:'Avoid unless you have been tested and advised, particularly if you have haemochromatosis (iron overload).',
+ src:['nhs','nice']},
+{id:'calcium',name:'Calcium',rating:'moderate',ratingNote:'Best taken from food first. Supplements may help if your diet is low in calcium, but evidence for fracture prevention is mixed.',
+ forIds:['osteoporosis','premature-ovarian-insufficiency'],stages:['meno','later'],
+ what:'The main mineral in bones. Most adults need about 700mg a day, mostly from dairy, fortified plant milks, tinned fish with bones and green leafy vegetables.',
+ evidence:'If you eat enough calcium-rich foods you probably don\'t need a supplement. Calcium plus vitamin D may help people who are at risk and not getting enough from diet.',
+ safety:'Very high doses can cause constipation, kidney stones and possibly raise heart risk. Aim not to exceed 1,500mg a day from all sources, and check with a doctor.',
+ interactions:'Calcium can reduce absorption of levothyroxine, iron and some antibiotics, so space them apart. It can interact with some heart and bone medicines.',
+ avoid:'Ask a doctor first if you have kidney stones, high calcium or kidney disease.',
+ src:['nhs','ros']},
+{id:'magnesium',name:'Magnesium',rating:'limited',ratingNote:'Small studies suggest a modest benefit for PMS symptoms and period pain, but the research is limited.',
+ forIds:['pms-pmdd','period-pain'],stages:['teen','repro','meno'],
+ what:'A mineral involved in muscle and nerve function. Some trials have tested it for premenstrual symptoms, cramps and sleep.',
+ evidence:'Some small trials show improvements in PMS symptoms such as bloating and mood. Larger, better studies are needed. It isn\'t a replacement for treatment if symptoms are severe.',
+ safety:'High doses commonly cause diarrhoea and stomach upset. The NHS suggests not exceeding 400mg a day from supplements unless advised by a doctor.',
+ interactions:'Can reduce absorption of some antibiotics, bisphosphonates and levothyroxine. Space doses apart.',
+ avoid:'Ask a doctor first if you have kidney problems.',
+ src:['nhs']},
+{id:'vitamin-b6',name:'Vitamin B6',rating:'limited',ratingNote:'Some small studies suggest it may help PMS symptoms such as mood, but the evidence is not strong.',
+ forIds:['pms-pmdd','hyperemesis-gravidarum'],stages:['repro','preg'],
+ what:'A B vitamin that helps your body make some brain chemicals. It is sometimes used for premenstrual symptoms and, under medical advice, for pregnancy sickness.',
+ evidence:'Studies for PMS are small and mixed. In pregnancy, B6 is sometimes used for nausea, but you should talk with your midwife or doctor first.',
+ safety:'Too much, over a long time, can cause nerve damage. The NHS says taking 10mg or less a day is unlikely to cause harm, while taking 200mg or more a day can cause nerve damage over time.',
+ interactions:'Can interact with some epilepsy and Parkinson\'s medicines.',
+ avoid:'Don\'t exceed the dose on the label unless a doctor advises.',
+ src:['nhs','nice']},
+{id:'agnus-castus',name:'Agnus castus (chasteberry)',rating:'limited',ratingNote:'Some trials suggest a benefit for PMS, but quality varies. Not recommended routinely.',
+ forIds:['pms-pmdd','breast-changes'],stages:['repro'],
+ what:'A herbal extract from the Vitex agnus-castus plant, taken for PMS and breast tenderness before periods.',
+ evidence:'A few trials suggest it may reduce premenstrual symptoms, but studies vary in quality and product strength. Look for a product with a UK Traditional Herbal Registration (THR) mark.',
+ safety:'Possible side effects are nausea, headache, itching and stomach upset. It may affect hormones.',
+ interactions:'May interact with hormonal contraception, HRT and medicines for Parkinson\'s disease and psychosis.',
+ avoid:'Avoid in pregnancy and breastfeeding, and with hormone-sensitive conditions such as some breast cancers and fibroids.',
+ src:['nhs']},
+{id:'evening-primrose',name:'Evening primrose oil',rating:'weak',ratingNote:'Studies have not shown a clear benefit for breast pain or PMS. It is not recommended by the NHS.',
+ forIds:['pms-pmdd','breast-changes'],stages:['repro'],
+ what:'An oil from a plant seed, often sold for breast tenderness, PMS and menopause symptoms.',
+ evidence:'Research hasn\'t shown that it works better than placebo for breast pain or PMS. The licence for prescribing it for breast pain in the UK was withdrawn.',
+ safety:'Generally well tolerated, but may cause stomach upset or headaches.',
+ interactions:'May increase the risk of bleeding with blood thinners, and may interact with some medicines for mental health conditions.',
+ avoid:'Avoid in pregnancy, and ask a doctor if you have epilepsy or bleeding disorders.',
+ src:['nhs','nice']},
+{id:'omega-3',name:'Omega-3 fish oil',rating:'limited',ratingNote:'Some small trials suggest it may ease period pain. Not a proven treatment.',
+ forIds:['period-pain','pcos'],stages:['teen','repro'],
+ what:'Fatty acids found in oily fish. Some studies have looked at fish oil supplements for period pain and for cholesterol in PCOS.',
+ evidence:'A few small studies show reduced period pain, but larger studies are needed. Eating oily fish twice a week is a sensible way to get omega-3.',
+ safety:'May cause a fishy aftertaste or stomach upset. Avoid products that contain vitamin A (such as cod liver oil) in pregnancy.',
+ interactions:'May increase bleeding risk with warfarin or other blood thinners.',
+ avoid:'Check with a doctor before using if you take blood thinners or have a fish or shellfish allergy.',
+ src:['nhs']},
+{id:'inositol',name:'Myo-inositol',rating:'limited',ratingNote:'Some trials suggest improvements in periods and insulin in PCOS. Guidelines say it may be considered, but evidence is limited.',
+ forIds:['pcos','infertility'],stages:['repro'],
+ what:'A sugar-like compound that helps your body respond to insulin. It is widely used for PCOS.',
+ evidence:'International PCOS guidelines note that inositol may help with metabolic and ovulation outcomes, but the quality of evidence is low and it isn\'t a replacement for lifestyle change or prescribed treatment.',
+ safety:'Generally well tolerated. Stomach upset can happen. If you are trying to conceive or are pregnant, talk to a doctor first.',
+ interactions:'Few known interactions, but tell your doctor if you take metformin or other diabetes medicines.',
+ avoid:'Talk to a doctor first if you are pregnant, breastfeeding or have diabetes.',
+ src:['nhs','nice']},
+{id:'cranberry',name:'Cranberry products',rating:'moderate',ratingNote:'A review of studies found cranberry can reduce repeat UTIs in women who get them often. It is not a treatment for an active infection.',
+ forIds:['uti'],stages:['repro','meno','later'],
+ what:'Juice, capsules or tablets containing cranberry compounds that may stop bacteria sticking to the bladder wall.',
+ evidence:'For women with recurrent UTIs, cranberry products may reduce the number of infections. They do not treat an infection that is already there, so if you have symptoms, seek treatment.',
+ safety:'Mostly safe. Juice can be high in sugar. Large amounts may cause stomach upset or kidney stones in people prone to them.',
+ interactions:'There are reports it may affect warfarin, so ask a doctor or pharmacist if you take it.',
+ avoid:'Ask a doctor if you have a history of kidney stones or take warfarin.',
+ src:['nhs','nice']},
+{id:'d-mannose',name:'D-mannose',rating:'limited',ratingNote:'Studies are mixed. Some earlier studies suggested a benefit, but larger trials did not clearly confirm it.',
+ forIds:['uti'],stages:['repro','meno','later'],
+ what:'A type of sugar sold to help prevent UTIs.',
+ evidence:'Early results were promising, but larger, higher-quality trials have found little or no difference from placebo. It is not a substitute for antibiotics if you have an infection.',
+ safety:'Usually well tolerated. Diarrhoea and bloating can occur. It is a sugar, so be cautious if you have diabetes.',
+ interactions:'No major known interactions, but check with a pharmacist.',
+ avoid:'Talk to a doctor first if you have diabetes, are pregnant or have kidney disease.',
+ src:['nhs']},
+{id:'probiotics',name:'Probiotics (including lactobacilli)',rating:'limited',ratingNote:'Some studies suggest they may help prevent BV and thrush from returning, but evidence is limited and products vary.',
+ forIds:['bacterial-vaginosis','thrush'],stages:['repro','meno'],
+ what:'Live bacteria that may help restore a healthy vaginal balance. Some are taken by mouth, others are inserted into the vagina.',
+ evidence:'A few studies show fewer repeat episodes of BV with certain lactobacilli strains, but results are inconsistent. They aren\'t a replacement for treatment.',
+ safety:'Usually safe for healthy people, with mild bloating at most.',
+ interactions:'Few known interactions.',
+ avoid:'Ask a doctor first if you have a weakened immune system or are seriously ill.',
+ src:['nhs','nice']},
+{id:'black-cohosh',name:'Black cohosh',rating:'weak',ratingNote:'Evidence of benefit for hot flushes is inconsistent, and there are rare reports of liver problems.',
+ forIds:['perimenopause-menopause'],stages:['meno'],
+ what:'A herbal remedy, sold for hot flushes and night sweats.',
+ evidence:'Studies show mixed or no benefit compared with placebo. The NHS says there isn\'t enough evidence that it works, and that quality varies between products.',
+ safety:'Rare cases of liver damage have been reported. Stop and get medical advice if you develop yellow skin or eyes, dark urine or severe tummy pain. Look for products with a UK Traditional Herbal Registration.',
+ interactions:'May interact with liver-affecting medicines, tamoxifen and some others.',
+ avoid:'Avoid if you have liver disease, are pregnant or breastfeeding, or have had a hormone-sensitive cancer unless a doctor agrees.',
+ src:['nhs','mp']},
+{id:'st-johns-wort',name:'St John\'s wort',rating:'moderate',ratingNote:'Evidence supports use for mild to moderate low mood, but it interacts with many medicines and carries real risks.',
+ forIds:['perimenopause-menopause','pms-pmdd'],stages:['repro','meno'],
+ what:'A herbal remedy used for mild low mood, sometimes taken in menopause or for premenstrual mood symptoms.',
+ evidence:'It may help mild to moderate depression, but you should speak to a doctor if you have low mood, so you get a proper assessment and the right treatment.',
+ safety:'It can make your skin more sensitive to sunlight. It must not be used alongside many prescribed medicines.',
+ interactions:'Important: it can make the contraceptive pill, implant and patch less effective, and can interact with antidepressants (risk of serotonin syndrome), warfarin, some HIV and cancer medicines, and many others. Always tell a pharmacist or doctor before using it.',
+ avoid:'Avoid in pregnancy and breastfeeding. Do not combine with antidepressants or hormonal contraception without medical advice.',
+ src:['nhs','nice','mp']},
+{id:'soy-red-clover',name:'Soy isoflavones and red clover',rating:'weak',ratingNote:'Studies show little or inconsistent benefit for hot flushes. Safety with some conditions is uncertain.',
+ forIds:['perimenopause-menopause'],stages:['meno'],
+ what:'Plant compounds (phytoestrogens) that weakly mimic oestrogen, sold for hot flushes.',
+ evidence:'Large reviews have found no clear benefit over placebo, or only a small one. Eating soy foods as part of a balanced diet is generally fine.',
+ safety:'Side effects can include stomach upset. Long-term safety of concentrated supplements isn\'t well established.',
+ interactions:'May affect thyroid medicines and interact with hormone therapy or tamoxifen.',
+ avoid:'Check with a doctor if you have had breast cancer or another hormone-sensitive condition.',
+ src:['nhs','mp']},
+{id:'ashwagandha',name:'Ashwagandha',rating:'limited',ratingNote:'A few small trials suggest it may reduce stress and anxiety and improve sleep. Safety concerns exist, and long-term data are lacking.',
+ forIds:['perimenopause-menopause','pms-pmdd','hypothyroidism'],stages:['repro','meno'],
+ what:'A herb used in traditional Ayurvedic medicine, often sold for stress, sleep and mood.',
+ evidence:'Some small, short trials show lower stress scores and better sleep, but many are low in quality and funded by manufacturers. It hasn\'t been proven to treat menopause symptoms or PMS directly.',
+ safety:'There are reports of liver injury linked to ashwagandha. Stop and seek medical help if you have yellow skin or eyes, dark urine or persistent nausea. It can also raise thyroid hormone levels and cause drowsiness.',
+ interactions:'May interact with thyroid medicines, sedatives, immunosuppressants, blood pressure and diabetes medicines.',
+ avoid:'Avoid in pregnancy and breastfeeding, and if you have liver disease or a thyroid condition, unless a doctor advises it.',
+ src:['nhs']},
+{id:'ginger',name:'Ginger',rating:'limited',ratingNote:'Some small trials suggest it may ease period pain and mild nausea. It is not a substitute for treatment of severe sickness.',
+ forIds:['period-pain','hyperemesis-gravidarum'],stages:['teen','repro','preg'],
+ what:'The root is used as a food and in capsules, tea or biscuits for nausea and period pain.',
+ evidence:'Several small studies suggest ginger may reduce period pain and mild nausea, but the evidence is not strong. It does not replace anti-sickness medicine in severe pregnancy sickness (hyperemesis).',
+ safety:'Generally safe in food amounts. Large amounts can cause heartburn and stomach upset.',
+ interactions:'May increase bleeding risk with blood thinners such as warfarin.',
+ avoid:'In pregnancy, stick to food amounts and check with your midwife before using supplements.',
+ src:['nhs']}
+];
+
+const _tc={};ENTRIES.forEach(e=>e.tags.forEach(t=>_tc[t]=(_tc[t]||0)+1));
+TAGS=Object.keys(_tc).filter(t=>_tc[t]>=2).sort((a,b)=>_tc[b]-_tc[a]||a.localeCompare(b)).slice(0,18);
 
 /* ---------- Storage (stays on this device) ---------- */
 const mem={};
@@ -288,6 +884,7 @@ function viewHome(){
   </div>
   <div id="results" hidden></div>
   <div id="main">
+   <div class="cards"><a class="card" href="#/ask"><b>Not sure what's going on?</b><span>Describe your symptoms and see what could fit, plus what to do next.</span></a><a class="card" href="#/supps"><b>Supplements</b><span>What the evidence says, with safety notes.</span></a></div>
    <div class="sec"><h2>Where are you in life right now?</h2>
     <div class="ribbon" role="group" aria-label="Life stage">${STAGES.map(s=>`<button class="stage" data-stage="${s.k}" aria-pressed="${viewStage===s.k}"><span class="dot"></span><b>${s.n}</b><span class="d">${s.d}</span></button>`).join('')}</div>
    </div>
@@ -335,30 +932,372 @@ function viewTag(tag){
  </div>`;
 }
 
-function viewBrowse(){
- const sorted=[...ENTRIES].sort((a,b)=>a.name.localeCompare(b.name));
- let html='',cur='';
- sorted.forEach(e=>{const l=e.name[0].toUpperCase();if(l!==cur){cur=l;html+=`<div class="az-letter">${l}</div>`}html+=`<div class="list" style="margin-bottom:10px">${rowHtml(e)}</div>`});
- $('#app').innerHTML=`<div class="wrap">
-  <div class="brand"><i></i>Her A–Z</div>
-  <h1 style="font-size:30px;margin-bottom:6px">All conditions, A to Z</h1>
-  <p class="muted" style="margin-bottom:6px">${ENTRIES.length} guides so far. More are on the way.</p>
-  <h2 style="font-size:17px;margin:18px 0 8px">Filter by body area</h2>
-  <div class="chips" id="areachips"><a class="chip" href="#/browse" aria-pressed="true">All</a>${Object.entries(AREAS).map(([k,v])=>`<a class="chip" href="#/area/${k}">${v}</a>`).join('')}</div>
-  ${html}
-  <p class="disclaimer">${DISCLAIMER}</p>
- </div>`;
+/* ---------- Symptom guide engine (rules-based, runs on this device) ---------- */
+const SYM=[
+['pelvic_pain','Pelvic or lower tummy pain',/pelvic (pain|ache|cramp)|pain in (my )?(pelvis|lower (tummy|stomach|abdomen|belly))|(lower|low) (tummy|stomach|abdom\w*|belly)( is| feels)? (pain|ache|cramp|hurt|sore)|(lower|low) (tummy|stomach|abdom\w*|belly) (pain|ache|cramp)|stomach cramps?|tummy cramps?/],
+['painful_periods','Painful periods',/(painful|bad|severe|terrible|crippling|awful|horrible|really sore) (period|cramp)s?|period pain|period cramps?|cramps? (during|on|with|in) (my )?period|dysmenorr|periods? (are |is )?(so |really |very )?(painful|agony)|periods? hurt/],
+['heavy_periods','Heavy periods',/heavy (period|bleed)s?|soak\w* (through )?(a |my )?(pads?|tampons?)|flooding|(big|large) clots?|clots?\b|bleeding (really |very |so )?(heavily|a lot)|periods?.{0,20}(so much blood|really heavy|very heavy)/],
+['irregular_periods','Irregular periods',/irregular (period|cycle)s?|(period|cycle)s? (are |is )?(so |very |really )?(irregular|unpredictable|all over)|(miss(ed)?|skipp?ing|skipped) (my )?periods?|late periods?|long gaps? between|periods? (come|comes) (and go|late)|cycle (is|has been) (long|short|changing)/],
+['absent_periods','No periods',/(no|haven'?t had (a |my )?|stopped|missing|absent|lost) (my )?periods?|periods? (have |has )?(stopped|gone|disappeared|vanished)|amenorr|(haven'?t|not) (had|got|seen) (a |my )?period (for|in) (\d+|several|a few|many) (months|weeks)/],
+['bleeding','Unusual bleeding',/bleed\w*|spotting|blood (on|when|in) (my )?(underwear|knickers|toilet paper|pad)/],
+['bleeding_between','Bleeding between periods',/bleed\w* between (my )?periods?|spotting|intermenstrual|break(through)? bleed|mid.?cycle bleed/],
+['bleeding_after_sex','Bleeding after sex',/bleed\w* (after|during) (sex|intercourse)|post-?coital|blood (after|during) sex/],
+['postmeno_bleeding','Bleeding after menopause',/(bleed\w*|spotting).{0,50}(after|since) (the |my )?(menopause|periods? (have )?(stopped|ended))|post-?menopausal bleed|bleeding.{0,30}(years?|months?) after (my )?(last )?period|periods? stopped.{0,60}(bleed|spotting)|menopaus\w*.{0,60}(bleed|spotting)/],
+['painful_sex','Pain during sex',/(painful|pain (with|during|when)|hurts?|ouch).{0,15}(sex|intercourse)|dyspareunia|sex (is |was |feels? )?(painful|hurts?)|pain (on|upon) penetration|penetration (is |was )?(painful|impossible|hurts)/],
+['tight','Tightness or difficulty with penetration',/(muscles?|vagina) (tighten\w*|clamp\w*|tight|seize)|(can'?t|cannot|unable to|struggle to) (insert|use|put in) (a )?tampons?|(can'?t|cannot|unable to) (have|do) (sex|penetration)|smear.{0,30}(impossible|can'?t|painful)/],
+['hot_flushes','Hot flushes',/hot flush(es)?|hot flash(es)?|flushing|feel(ing)? (very |so )?hot (all the time|suddenly)|sudden (heat|waves of heat)/],
+['night_sweats','Night sweats',/night sweats?|sweat(ing)? (a lot )?(at night|in the night|overnight)|wake (up )?(drenched|soaked)/],
+['sleep','Trouble sleeping',/(can'?t|cannot|trouble|difficulty|struggl\w*|poor|bad) (to )?(sleep|sleeping|stay asleep|get to sleep|falling asleep)|insomnia|waking (up )?(at night|early|a lot|in the night)/],
+['low_mood','Low mood',/low mood|depress\w*|feel(ing)? (very |so |really )?(sad|down|low|hopeless|empty|numb|worthless)|tearful|crying (a lot|all the time|for no reason)|(no|nothing|lost) (joy|interest|pleasure)/],
+['anxiety','Anxiety',/anxi\w*|panic\w*|worr(y|ied|ying) (a lot|constantly|all the time)|on edge/],
+['mood_swings','Mood swings or irritability',/mood swings?|irritab\w*|(angry|rage|snappy|short.?tempered)|emotional|mood (changes|shifts)/],
+['fatigue','Tiredness',/\btired|exhaust\w*|fatigue\w*|no energy|low energy|worn out|drained|lethargic|always sleepy/],
+['bloating','Bloating',/bloat\w*|swollen (tummy|stomach|belly)|distended|(tummy|stomach|belly) (feels |is )?(full|swollen|big)/],
+['full_quickly','Feeling full quickly',/(feel(ing)?|get|getting) full (quickly|fast|very quickly|after (eating )?(a )?little)|loss of appetite|not hungry|can'?t eat much|no appetite/],
+['nausea','Nausea',/nause\w*|feel(ing)? sick|queasy/],
+['vomiting','Vomiting',/vomit\w*|throwing up|being sick|can'?t keep (food|water|fluids|anything) down/],
+['weight_gain','Weight gain',/weight gain|gain(ed|ing)? weight|putting on weight|can'?t lose weight/],
+['weight_loss','Weight loss',/weight loss|los(t|ing|e) weight|unintentional(ly)? los/],
+['acne','Acne or oily skin',/acne|spots|breakouts|oily skin|pimples/],
+['hair_growth','Extra facial or body hair',/(excess|unwanted|extra|more) (facial |body )?hair|hirsut\w*|facial hair|hair on (my )?(chin|face|chest|stomach)/],
+['hair_loss','Hair thinning or loss',/hair (loss|thinning|falling|shedding)|thinning hair|losing (my )?hair|balding/],
+['headache','Headaches',/headache|migraine|head (hurts|pain)/],
+['breast_lump','Breast lump',/(lump|bump|thickening|mass).{0,25}(breast|boob|chest|armpit)|(breast|boob).{0,25}(lump|bump|thickening|mass)/],
+['breast_pain','Breast pain or tenderness',/(breast|boob|nipple)s? (pain|ache|sore|tender|tenderness|hurt)|(painful|sore|tender) (breast|boob)s?/],
+['breast_skin','Breast or nipple changes',/(dimpl\w*|puckering|orange peel|redness|rash|crust\w*|inverted|retract\w*).{0,25}(breast|nipple)|(breast|nipple).{0,25}(dimpl\w*|puckering|orange peel|rash|crust\w*|inverted|changed shape|swelling)|nipple discharge|discharge from (my )?nipple/],
+['vulval_itch','Itching or irritation',/itch\w*|irritat\w*|sore (down there|vulva|vagina)|vulval? (sore|itch|burn)/],
+['discharge_unusual','Unusual discharge',/discharge/],
+['fishy_smell','Fishy smell',/fish(y)? (smell|odou?r)|smell(s)? (like )?fish|(vaginal |down there )(smell|odou?r)|smell down there/],
+['cottage_cheese','Thick white discharge',/cottage cheese|thick white discharge|clumpy|thick white/],
+['burning_urine','Burning when peeing',/burn\w*( when| while| on)? (i )?(wee|pee|urinat\w*|going to the toilet)|(wee|pee|urination) (burns|stings|is painful)|sting\w* (when|while) (i )?(wee|pee)|painful (to )?(wee|pee|urinat\w*)|dysuria|burns when i (wee|pee)/],
+['frequent_urine','Needing to pee often',/(wee|pee|urinat\w*|toilet) (a lot|more often|all the time|frequently|constantly)|frequent(ly)? (wee|pee|urinat\w*|toilet|trips)|need(ing)? to (wee|pee) (more|often|urgently|all the time)|urgent need to (wee|pee)|(wee|pee)ing (a lot|every)/],
+['urine_leak','Leaking urine',/leak\w* (urine|wee|pee)|(urine|wee|pee) leak\w*|wet myself|incontinen\w*|(leak|wee|pee) when i (cough|sneeze|laugh|run|jump|exercise)|leak when i (cough|sneeze|laugh|run|jump|exercise)/],
+['blood_urine','Blood in urine',/blood in (my )?(urine|wee|pee)|(urine|wee|pee) (is |was |looks? )?(pink|red|bloody)/],
+['cloudy_urine','Cloudy or smelly urine',/cloudy (urine|wee|pee)|smelly (urine|wee|pee)|(urine|wee|pee) (is |looks? |smells? )?(cloudy|smelly|strong)/],
+['back_pain','Back or side pain',/back ?(pain|ache)|pain in (my )?(back|side|loin|flank)|loin pain|backache/],
+['constipation','Constipation',/constipat\w*|struggle to poo|hard stools?|straining/],
+['bowel_pain','Pain when pooing',/pain (when|while) (i )?(poo|pooing|open my bowels|go to the toilet)|painful (poo|bowel)|(poo|pooing|bowel movements?) (is |are )?painful/],
+['fever','Fever or chills',/fever|high temp|shiver\w*|chills?\b|temperature of/],
+['cold','Feeling cold',/feel(ing)? (very |so )?cold|cold (all the time|intolerance)|always cold/],
+['dry_skin','Dry skin or hair',/dry skin|dry hair|brittle (hair|nails)/],
+['palpitations','Racing or fluttering heart',/palpitat\w*|heart (racing|pounding|fluttering)|racing heart/],
+['dizzy','Dizziness or faintness',/dizz\w*|light.?headed|faint\w*|black(ed|ing)? out|collaps\w*/],
+['breathless','Breathlessness',/breathless\w*|short(ness)? of breath|out of breath|breathing problems/],
+['pale','Looking pale',/\bpale\b|pallor/],
+['vaginal_dryness','Vaginal dryness',/vaginal dryness|dry (vagina|down there)|(vagina|vaginal) (is )?dry|lack of lubrication|dryness/],
+['low_libido','Low sex drive',/low (sex )?(drive|libido)|no (sex )?(drive|libido|interest in sex)|(lost|loss of) (my )?(libido|sex drive)/],
+['brain_fog','Brain fog or poor concentration',/brain fog|(poor|bad) memory|forget\w*|can'?t concentrate|concentration|foggy/],
+['joint_pain','Aching joints or muscles',/joint (pain|ache)|aching joints|stiff joints|muscle aches?|aches and pains/],
+['fracture','A broken bone',/broke(n)? (a |my )?(bone|wrist|hip|spine|arm|leg|ankle)|fractur\w*|(bone|wrist|hip|spine) (break|fracture)/],
+['thirst','Excess thirst',/(very|extremely|really) thirsty|excess(ive)? thirst|thirsty (all the time)/],
+['swelling','Swelling of face, hands or feet',/swollen (face|hands|feet|ankles)|swelling (in|of) (my )?(face|hands|feet|ankles)|puffy (face|hands|feet)/],
+['vision','Vision changes',/blurr\w*|flashing lights|seeing spots|vision (changes|problems)|can'?t see (properly|clearly)/],
+['upper_abdo','Pain under the ribs',/(pain|ache).{0,15}(under|below) (my )?(ribs|rib)|upper (right )?(tummy|abdom\w*|stomach) pain|pain (in|at) (the )?top of (my )?(tummy|stomach)/],
+['pelvic_pressure','Heaviness or a bulge',/pelvic (pressure|heaviness)|(heavy|dragging|bearing down) (feeling )?(in|down)|(lump|bulge) (in|at|coming out of) (my )?(vagina|vaginal)|bulge|something (is )?(coming|falling) (down|out)/],
+['trying_conceive','Difficulty getting pregnant',/(trying|try|struggling|unable) to (get pregnant|conceive)|can'?t (get pregnant|conceive)|infertil\w*|fertility (problems|issues)|not (getting|become|becoming) pregnant|trying for a baby/],
+['cramps_pre','Symptoms before periods',/(before|week before|days before|leading up to) (my )?period|premenstrual|pms\b|pmdd/],
+['vulval_pain','Vulval pain or burning',/(burning|stinging|raw|rawness|sore).{0,12}(vulva|vagina|down there)|vulval? pain|vulvodynia|pain (when|with) (i )?(wear\w*|touch\w*)/],
+['white_patches','White patches or thin skin',/white (patches?|spots?|skin|areas?)|(thin|crinkly|shiny) skin|skin (is )?splitting|tears? (in|on) (the )?(skin|vulva)/],
+['genital_sores','Sores, blisters or warts',/(sore|blister|ulcer|wart|lump|bump)s? (on|around|near) (my )?(vulva|vagina|genital\w*|labia)|genital (warts|sores|blisters|ulcers)/],
+['any_pain','Pain',/\bpain|cramp|\bhurts?\b|\bache\b/],
+['shoulder_pain','Shoulder tip pain',/shoulder (tip )?pain|pain in (my )?shoulder tip/],
+['one_sided','Pain on one side',/(one side|left side|right side)|one-sided|sharp (pain )?(on|in) (the |my )?(left|right)/],
+['tissue','Passing tissue or clots',/pass(ed|ing) (tissue|clots?)|tissue (coming|passed)/],
+['bonding','Difficulty bonding or intrusive thoughts',/(can'?t|not|difficult\w*|struggl\w*) (bond|connect)\w*|intrusive thoughts?|scared (of|to) (hurt|harm)|don'?t feel (anything|love) (for|towards) (my )?baby/]
+];
+const SYMX=SYM.map(([k,l,re])=>({k,l,re}));
+const SYML=Object.fromEntries(SYM.map(([k,l])=>[k,l]));
+
+/* entry id -> "symptom:weight" list */
+const BOT_SX={
+'endometriosis':'pelvic_pain:3,painful_periods:3,painful_sex:2,heavy_periods:2,bowel_pain:2,fatigue:1,bloating:1,trying_conceive:1',
+'pcos':'irregular_periods:3,absent_periods:2,acne:2,hair_growth:3,hair_loss:1,weight_gain:2,trying_conceive:2,low_mood:1,fatigue:1',
+'perimenopause-menopause':'hot_flushes:3,night_sweats:3,irregular_periods:2,sleep:2,brain_fog:2,vaginal_dryness:2,low_mood:1,anxiety:1,mood_swings:1,low_libido:1,joint_pain:1,painful_sex:1,frequent_urine:1,fatigue:1,absent_periods:1',
+'gestational-diabetes':'thirst:3,frequent_urine:1,fatigue:1,vulval_itch:1',
+'pre-eclampsia':'headache:2,swelling:2,vision:3,upper_abdo:3,nausea:1',
+'adenomyosis':'heavy_periods:3,painful_periods:3,pelvic_pain:2,bloating:1,painful_sex:1',
+'iron-deficiency-anaemia':'fatigue:3,pale:3,breathless:2,palpitations:2,dizzy:2,headache:1,heavy_periods:2,hair_loss:1',
+'bacterial-vaginosis':'fishy_smell:4,discharge_unusual:3',
+'thrush':'vulval_itch:3,cottage_cheese:3,discharge_unusual:2,burning_urine:1,painful_sex:1',
+'uti':'burning_urine:4,frequent_urine:3,cloudy_urine:2,blood_urine:2,pelvic_pain:1,back_pain:1,fever:1',
+'urinary-incontinence':'urine_leak:5,frequent_urine:1,pelvic_pressure:1',
+'pelvic-floor-problems':'pelvic_pressure:3,urine_leak:2,painful_sex:1,constipation:1',
+'fibroids':'heavy_periods:3,bloating:2,pelvic_pressure:2,frequent_urine:2,constipation:1,painful_periods:1,back_pain:1,painful_sex:1,pelvic_pain:1',
+'heavy-periods':'heavy_periods:5,fatigue:1,pale:1,painful_periods:1',
+'pms-pmdd':'cramps_pre:5,mood_swings:3,breast_pain:2,bloating:1,fatigue:1,low_mood:1,anxiety:1,headache:1,sleep:1',
+'period-pain':'painful_periods:5,back_pain:1,nausea:1,headache:1',
+'absent-periods':'absent_periods:5,irregular_periods:2,weight_loss:1,acne:1,hair_growth:1,hot_flushes:1',
+'ovarian-cysts':'pelvic_pain:2,bloating:2,painful_sex:1,frequent_urine:1,irregular_periods:1',
+'ovarian-cancer':'bloating:3,full_quickly:3,pelvic_pain:2,frequent_urine:1,weight_loss:1,fatigue:1,constipation:1,back_pain:1',
+'cervical-cancer':'bleeding_after_sex:4,bleeding_between:2,postmeno_bleeding:2,discharge_unusual:1,painful_sex:1,pelvic_pain:1',
+'endometrial-cancer':'postmeno_bleeding:6,bleeding_between:2,discharge_unusual:1,pelvic_pain:1',
+'breast-changes':'breast_pain:4,breast_lump:3,breast_skin:1',
+'breast-cancer':'breast_lump:4,breast_skin:4',
+'osteoporosis':'fracture:4,back_pain:1',
+'hypothyroidism':'cold:3,dry_skin:3,fatigue:2,weight_gain:2,constipation:2,hair_loss:2,low_mood:1,heavy_periods:1,brain_fog:1,joint_pain:1',
+'pid':'pelvic_pain:3,discharge_unusual:2,painful_sex:2,fever:2,bleeding_between:1,bleeding_after_sex:1,burning_urine:1',
+'stis':'genital_sores:4,discharge_unusual:2,burning_urine:2,bleeding_between:1,bleeding_after_sex:1,painful_sex:1,pelvic_pain:1,vulval_itch:1',
+'vaginismus':'tight:5,painful_sex:2',
+'vulvodynia':'vulval_pain:5,painful_sex:2,vulval_itch:1',
+'lichen-sclerosus':'white_patches:5,vulval_itch:3,vulval_pain:1,painful_sex:1',
+'miscarriage':'bleeding:3,tissue:3,pelvic_pain:2,back_pain:1',
+'ectopic-pregnancy':'shoulder_pain:4,one_sided:2,bleeding:2,pelvic_pain:2,dizzy:1',
+'hyperemesis-gravidarum':'vomiting:4,nausea:3,weight_loss:2,dizzy:1,fatigue:1',
+'postnatal-depression':'bonding:4,low_mood:3,anxiety:2,sleep:1,fatigue:1',
+'premature-ovarian-insufficiency':'absent_periods:2,irregular_periods:2,hot_flushes:2,vaginal_dryness:1,trying_conceive:1',
+'infertility':'trying_conceive:6'
+};
+const BOT_AL={
+'endometriosis':/endometriosis|\bendo\b/,'pcos':/\bpcos\b|polycystic/,'perimenopause-menopause':/perimenopaus|menopaus/,
+'gestational-diabetes':/gestational diabetes/,'pre-eclampsia':/pre-?eclampsia/,'adenomyosis':/adenomyosis/,
+'iron-deficiency-anaemia':/anaemi|anemi|low iron|iron deficien/,'bacterial-vaginosis':/\bbv\b|bacterial vaginosis/,'thrush':/thrush|yeast infection/,
+'uti':/\buti\b|cystitis|urine infection|urinary (tract )?infection|bladder infection/,'urinary-incontinence':/incontinen/,
+'pelvic-floor-problems':/prolapse|pelvic floor/,'fibroids':/fibroid/,'heavy-periods':/heavy periods|menorrhagia/,'pms-pmdd':/\bpms\b|\bpmdd\b|premenstrual/,
+'period-pain':/period pain|dysmenorrh/,'absent-periods':/amenorrh/,'ovarian-cysts':/ovarian cyst|cyst on (my )?ovary/,'ovarian-cancer':/ovarian cancer/,
+'cervical-cancer':/cervical cancer|\bhpv\b|smear|cervical screening|colposcopy/,'endometrial-cancer':/womb cancer|endometrial cancer|uterine cancer/,
+'breast-cancer':/breast cancer/,'breast-changes':/breast (pain|lump)/,'osteoporosis':/osteoporosis|brittle bones/,'hypothyroidism':/hypothyroid|underactive thyroid|thyroid/,
+'pid':/\bpid\b|pelvic inflammatory/,'stis':/\bsti\b|\bstd\b|chlamydia|gonorrhoea|herpes|genital warts|syphilis/,'vaginismus':/vaginismus/,
+'vulvodynia':/vulvodynia|vestibulodynia/,'lichen-sclerosus':/lichen sclerosus/,'miscarriage':/miscarr/,'ectopic-pregnancy':/ectopic/,
+'hyperemesis-gravidarum':/hyperemesis|\bhg\b/,'postnatal-depression':/postnatal depression|postpartum depression|\bppd\b|\bpnd\b/,
+'premature-ovarian-insufficiency':/premature ovarian|early menopause|\bpoi\b|premature menopause/,'infertility':/infertil/
+};
+const RARE=new Set(['ovarian-cancer','cervical-cancer','endometrial-cancer','breast-cancer','ectopic-pregnancy','pid','stis']);
+const PREG_ONLY=new Set(['gestational-diabetes','pre-eclampsia','hyperemesis-gravidarum']);
+const PREG_ANY=new Set(['miscarriage','ectopic-pregnancy']);
+const SXP={};Object.keys(BOT_SX).forEach(id=>{SXP[id]=Object.fromEntries(BOT_SX[id].split(',').map(p=>{const[a,b]=p.split(':');return[a,+b]}))});
+
+/* urgent patterns: checked on everything the person has typed */
+const FLAGS=[
+{lvl:'emergency',only:true,re:/suicid\w*|kill myself|end my life|want to die|don'?t want to (be here|live)|hurt myself|harm myself|self.?harm|harm (my|the) baby|hurt (my|the) baby/,
+ t:'If you are thinking about harming yourself or someone else, please get help now',
+ x:'Call 999 if you are in immediate danger. You can also call Samaritans free on 116 123 at any time, or contact NHS 111 and ask for urgent mental health help. If you can, tell someone you trust where you are. You deserve support, and this can get better with help.'},
+{lvl:'emergency',re:/hallucinat\w*|seeing things|hearing voices|think(ing)? (people|someone) (is|are) (out to|trying)/,
+ t:'Seek emergency help',x:'If you have recently had a baby and you are confused, hearing or seeing things others can\'t, or feel very agitated, this can be a medical emergency (postpartum psychosis). Call 999 or go to A&E.'},
+{lvl:'emergency',re:/chest pain|can'?t breathe|struggling to breathe|cannot breathe|collaps\w*|seizure|\bfit(ting)?\b|unconscious|passed out/,
+ t:'Seek emergency help now',x:'Chest pain, severe difficulty breathing, collapsing, seizures or passing out need emergency care. Call 999.'},
+{lvl:'emergency',re:/numb\w*.{0,30}(between (my )?legs|genital|saddle|bottom)|can'?t (pass|do a) (wee|pee|urine)|unable to (pass|wee|pee)/,
+ t:'Seek emergency help now',x:'Being unable to pass urine, or numbness between your legs or around your genitals, needs urgent assessment. Call 999 or go to A&E.'}
+];
+function ctxOf(t){
+ const tryingP=/(trying|try|want|hope|struggling|unable) (to )?(get|become|be)? ?(pregnant|conceive)|can'?t (get )?(pregnant|conceive)|not pregnant|negative pregnancy test|get pregnant/;
+ const preg=/\bpregnan(t|cy)\b|expecting a baby|\d+ weeks? (pregnant|along)|positive pregnancy test|first trimester|second trimester|third trimester/.test(t)&&!tryingP.test(t);
+ const possible=/(might|may|could|think)( i|'?m| i'?m| i am| be)? ?(be )?pregnant|late period|missed (my )?period|period is late|positive (home )?test/.test(t);
+ const postnatal=/(just|recently) (had|given birth)|gave birth|after (the |my )?(birth|baby|delivery)|postnatal|postpartum|newborn|my (baby|son|daughter) is \d|(weeks?|months?) (after|since) (the )?birth|since having (my|the) baby|had a baby/.test(t);
+ const meno=/menopaus|perimenopaus|periods? (have |has )?stopped|no periods? (for|in) (a |over |more than )?(year|12 months|\d+ years?)/.test(t);
+ let age=null;const m=t.match(/\b(?:i'?m|i am|aged?)\s*(\d{2})\b/)||t.match(/\b(\d{2}) years? old\b/);if(m)age=+m[1];
+ return {preg,possible,postnatal,meno,age};
+}
+function analyse(text,stage){
+ const t=text.toLowerCase().replace(/[‘’]/g,"'");
+ const hit=new Set(SYMX.filter(s=>s.re.test(t)).map(s=>s.k));
+ if(hit.has('bleeding_between')||hit.has('bleeding_after_sex')||hit.has('postmeno_bleeding'))hit.add('bleeding');
+ const ctx=ctxOf(t);
+ const flags=[];
+ FLAGS.forEach(f=>{if(f.re.test(t))flags.push(f)});
+ const R=(re)=>re.test(t);
+ if(ctx.preg||ctx.possible){
+  if(hit.has('shoulder_pain')||hit.has('one_sided')&&(hit.has('any_pain')||hit.has('pelvic_pain'))||(hit.has('pelvic_pain')||hit.has('any_pain'))&&(hit.has('bleeding')&&hit.has('one_sided')||hit.has('dizzy')))
+   flags.push({lvl:'emergency',t:'This could be an emergency: possible ectopic pregnancy',x:'Sharp or one-sided tummy pain, shoulder tip pain, or feeling faint with a positive test, a missed period or pregnancy can be signs of an ectopic pregnancy. Call 999 or go to A&E now. If the pain is milder, contact an early pregnancy unit or NHS 111 today.'});
+  else if(hit.has('bleeding')||hit.has('pelvic_pain')||hit.has('any_pain'))
+   flags.push({lvl:'urgent',t:'Bleeding or pain in pregnancy needs a same-day check',x:'Contact your midwife, an early pregnancy unit, your GP or NHS 111 today. If the bleeding is very heavy, you feel faint, or the pain is severe, go to A&E.'});
+  if(ctx.preg&&(hit.has('headache')||hit.has('vision')||hit.has('upper_abdo')||hit.has('swelling'))&&(hit.has('vision')||hit.has('upper_abdo')||(hit.has('headache')&&hit.has('swelling'))))
+   flags.push({lvl:'urgent',t:'These symptoms in pregnancy can be signs of pre-eclampsia',x:'A severe headache, vision changes, pain under your ribs or sudden swelling of the face, hands or feet should be checked straight away. Contact your maternity unit or NHS 111 now. Call 999 if you have a fit, collapse or have trouble breathing.'});
+  if(ctx.preg&&hit.has('vomiting')&&R(/can'?t keep|nothing down|dehydrat|very dark (urine|wee)|hardly (any )?(wee|pee|urine)/))
+   flags.push({lvl:'urgent',t:'You may need treatment for severe pregnancy sickness',x:'If you can\'t keep fluids down for 24 hours, or you\'re passing very little dark urine, contact your midwife, GP or NHS 111 today.'});
+ }
+ if(hit.has('bloating')&&hit.has('full_quickly'))flags.push({lvl:'soon',t:'Persistent bloating with feeling full quickly should be checked',x:'These can be early signs of ovarian cancer, although they have many more common causes. If they happen most days and are new for you, see a GP soon and say that these symptoms are persistent. A blood test and scan can rule it out.'});
+ if(hit.has('postmeno_bleeding'))flags.push({lvl:'soon',t:'Bleeding after menopause always needs checking',x:'Please see a GP as soon as you can, ideally within a few days. Most of the time it is not serious, but it must be checked. Ask for an urgent referral if you are told to wait.'});
+ if(hit.has('breast_lump')||hit.has('breast_skin'))flags.push({lvl:'soon',t:'A new breast lump or change should be checked',x:'Most breast lumps are not cancer, but see a GP promptly and ask for an assessment. Don\'t wait to see if it goes away.'});
+ if(hit.has('heavy_periods')&&(hit.has('dizzy')||R(/every (hour|half hour|30 min)|soak\w* .{0,25}(hour|hourly)/)))flags.push({lvl:'urgent',t:'Very heavy bleeding with dizziness needs urgent attention',x:'If you are soaking through protection every hour, passing large clots or feeling faint, contact NHS 111 or go to A&E.'});
+ if((hit.has('burning_urine')||hit.has('frequent_urine')||hit.has('cloudy_urine'))&&(hit.has('fever')||hit.has('back_pain')||hit.has('vomiting')))flags.push({lvl:'urgent',t:'Urinary symptoms with fever, back pain or vomiting could be a kidney infection',x:'Contact your GP, NHS 111 or an urgent care centre today. Don\'t wait for it to settle.'});
+ if(hit.has('pelvic_pain')&&hit.has('fever')&&!(ctx.preg||ctx.possible))flags.push({lvl:'urgent',t:'Pelvic pain with a fever should be checked today',x:'This can be a sign of an infection such as pelvic inflammatory disease. Contact your GP, a sexual health clinic, or NHS 111 today.'});
+ if(ctx.postnatal&&hit.has('bonding'))flags.push({lvl:'soon',t:'Please speak to someone about how you\'re feeling',x:'Difficult or frightening thoughts after having a baby are more common than people realise, and they are treatable. Talk to your GP, midwife or health visitor soon. If you feel you might act on harmful thoughts, call 999 or Samaritans on 116 123.'});
+ /* scoring */
+ const prof=(typeof profile==='object'&&profile&&profile.stage)||stage||null;
+ const out=[];
+ ENTRIES.forEach(e=>{
+  const sx=SXP[e.id];if(!sx)return;
+  let s=0;const m=[];
+  Object.keys(sx).forEach(k=>{if(hit.has(k)){s+=sx[k];m.push(k)}});
+  const named=BOT_AL[e.id]&&BOT_AL[e.id].test(t);
+  if(named)s+=6;
+  if(PREG_ONLY.has(e.id)){if(ctx.preg&&m.length)s+=3;else if(!named&&!(ctx.preg))s*=0.2;else if(!named&&!m.length)s=0}
+  if(PREG_ANY.has(e.id)){if((ctx.preg||ctx.possible)&&m.length)s+=3;else if(!named&&!(ctx.preg||ctx.possible))s*=0.25;else if(!named&&!m.length)s=0}
+  if(e.id==='postnatal-depression'){if(ctx.postnatal&&m.length)s+=4;else if(!named&&!ctx.postnatal)s*=0.2;else if(!named&&!m.length)s=0}
+  if(e.id==='premature-ovarian-insufficiency'){if(ctx.age&&ctx.age<40&&(hit.has('hot_flushes')||hit.has('irregular_periods')||hit.has('absent_periods')))s+=3;else if(!named&&(ctx.age&&ctx.age>=40))s*=0.2}
+  if(e.id==='absent-periods'&&ctx.meno&&!named)s*=0.3;
+  if(e.id==='perimenopause-menopause'){if(ctx.meno)s+=2;if(ctx.age&&ctx.age>=45)s+=1;if(ctx.age&&ctx.age<40&&!named)s*=0.5}
+  if(e.id==='osteoporosis'&&ctx.age&&ctx.age>=50)s+=1;
+  if(RARE.has(e.id)&&ctx.age&&ctx.age>=50&&s>0)s+=1;
+  if((ctx.preg)&&!PREG_ONLY.has(e.id)&&!PREG_ANY.has(e.id)&&!named)s*=0.6;
+  if(prof&&e.stages.includes(prof)&&s>0)s+=0.5;
+  if(s>0)out.push({e,s,m,named});
+ });
+ out.sort((a,b)=>b.s-a.s);
+ return {hit:[...hit].filter(k=>k!=='bleeding'),ctx,flags,res:out};
+}
+function fitLabel(r){
+ if(r.named&&r.m.length===0)return 'You mentioned this';
+ if(r.s>=9)return 'Fits many of the things you described';
+ if(r.s>=5)return 'Fits several of the things you described';
+ return 'Could fit one or two of them';
+}
+function renderAnswer(a){
+ const {hit,flags,res}=a;let html='';
+ if(flags.some(f=>f.only)){const f=flags.find(f=>f.only);return `<div class="flag emergency" role="alert"><b>${esc(f.t)}</b><p>${esc(f.x)}</p></div><p>I'm glad you said something. Reaching out to one of those services, or to someone you trust, is a good next step. Once you feel safer, I can also help you work out what else may be going on, and how to talk to a doctor about it.</p>`}
+ const order={emergency:0,urgent:1,soon:2};
+ flags.sort((x,y)=>order[x.lvl]-order[y.lvl]);
+ const seen=new Set();
+ flags.forEach(f=>{if(seen.has(f.t))return;seen.add(f.t);html+=`<div class="flag ${f.lvl}" role="alert"><b>${esc(f.t)}</b><p>${esc(f.x)}</p></div>`});
+ const topS=res.length?res[0].s:0;
+ let shown=res.filter(r=>(r.s>=2&&r.s>=topS*0.45)||r.named).slice(0,5);
+ if(hit.filter(k=>k!=='any_pain').length<2&&topS<4&&!res.some(r=>r.named))shown=[];
+ const labels=hit.filter(k=>k!=='any_pain').map(k=>SYML[k]).filter(Boolean);
+ if(labels.length){html+=`<p class="bot-note">What I picked up: ${labels.map(l=>`<span class="meta">${esc(l)}</span>`).join(' ')}</p>`}
+ if(!hit.length&&!shown.length){
+  html+=`<p>I couldn't pick out specific symptoms from that. Try describing what you feel in your own words, for example <i>"very heavy periods and I'm always tired"</i> or <i>"burning when I wee and needing to go all the time"</i>. You can also tell me how long it has been going on.</p>`;
+  return html;
+ }
+ if(shown.length){
+  html+=`<p>Here are some things that could fit. This is not a diagnosis. Lots of conditions share symptoms, and I can't examine you or run tests.</p><div class="list">`;
+  shown.forEach(r=>{
+   const sup=SUPPS.filter(s=>s.forIds.includes(r.e.id)).length;
+   html+=`<div class="row res"><a class="t" href="#/entry/${r.e.id}">${esc(r.e.name)}</a><span class="s">${esc(r.e.short)}</span>
+   <span class="meta fit">${esc(fitLabel(r))}</span>${RARE.has(r.e.id)?'<span class="meta rare">Less common, but worth ruling out</span>':''}
+   ${r.m.length?`<span class="s why">Matches: ${r.m.map(k=>esc(SYML[k]||k)).join(', ')}</span>`:''}
+   <span class="s"><a href="#/entry/${r.e.id}">Read the full guide</a>${sup?` · <a href="#/supps/${r.e.id}">Supplement information (${sup})</a>`:''}</span></div>`;
+  });
+  html+=`</div>`;
+ } else {
+  html+=`<p>That's not quite enough to point towards anything specific. Tell me more, such as how long it has lasted, whether you're still having periods, and anything that makes it better or worse.</p>`;
+ }
+ const top=shown[0];
+ html+=`<div class="care"><b>What to do next</b><ul>
+ <li>Speaking to a GP, nurse or pharmacist is the best way to find out what's going on. Many of these things are common and treatable.</li>
+ <li>If you feel nervous about going, you can ask for a female clinician, bring someone with you, write your symptoms down, or ask for a longer appointment. Use the summary below to help.</li>
+ <li>In England, a pharmacist can assess some things without an appointment, such as urinary infections in women aged 16 to 64 and thrush.</li>
+ <li>If symptoms are severe, getting worse, or have lasted more than a few weeks, don't wait.</li></ul></div>`;
+ html+=prepBlock(a,shown);
+ return html;
+}
+function prepBlock(a,shown){
+ const labels=a.hit.filter(k=>k!=='any_pain').map(k=>SYML[k]).filter(Boolean);
+ if(!labels.length)return '';
+ const qs=[];shown.slice(0,3).forEach(r=>{(r.e.ask||[]).slice(0,1).forEach(q=>qs.push(q))});
+ const mine=chat.filter(c=>c.r==='u').map(c=>c.t).join(' / ');
+ const txt=`APPOINTMENT SUMMARY (prepared with Her A–Z. Not a diagnosis.)\n\nSymptoms I've noticed: ${labels.join('; ')}.\n\nIn my own words: ${mine}\n\nPlease note: how long it has lasted: ____ . How often: ____ . What makes it better or worse: ____ . Medicines and supplements I take: ____ . First day of my last period: ____ .\n\nThings I'd like to ask about: ${shown.slice(0,4).map(r=>r.e.name).join(', ')}.\n\nQuestions for my doctor:\n${qs.map(q=>'- '+q).join('\n')}\n- What tests do I need?\n- What should I do if this gets worse?`;
+ return `<details class="prep"><summary>Prepare for your appointment</summary><textarea readonly rows="12" aria-label="Appointment summary">${esc(txt)}</textarea><button class="btn small ghost" data-copy>Copy summary</button></details>`;
 }
 
-function viewArea(k){
- const found=ENTRIES.filter(e=>e.areas.includes(k));
+/* ---------- Ask view ---------- */
+let chat=[];let chatText='';
+const EXAMPLES=['Really painful periods and pain during sex','Burning when I wee and needing to go all the time','Hot flushes, bad sleep and my periods are irregular','Very tired, pale, and my periods are heavy','Bloating that won\'t go away and feeling full quickly','I think I might have PCOS'];
+function viewAsk(){
+ const stage=profile&&profile.stage;
  $('#app').innerHTML=`<div class="wrap">
-  <button class="back" onclick="location.hash='#/browse'">← All conditions</button>
-  <h1 style="font-size:30px;margin-bottom:14px">${esc(AREAS[k]||'')}</h1>
-  <div class="list">${found.length?found.map(rowHtml).join(''):'<div class="empty">No guides in this area yet.</div>'}</div>
+  <div class="brand"><i></i>Her A–Z</div>
+  <h1 style="font-size:30px;margin-bottom:6px">Ask about your symptoms</h1>
+  <p class="muted" style="margin:0 0 14px">Describe what you're experiencing and what you think it might be. I'll show conditions that could fit, explain them plainly, and help you work out the next step.</p>
+  <p class="privacy">What you type stays on this device. Nothing is sent anywhere or stored. This is a rules-based guide, not a doctor and not a diagnosis.</p>
+  <div class="flag emergency"><b>In an emergency, call 999.</b><p>For urgent advice call NHS 111.</p></div>
+  <div class="chatlog" id="chatlog" aria-live="polite">
+   <div class="msg bot"><p>Hello. What's been going on? You can write as much or as little as you like, and add more later. It helps to say how long it has lasted, whether you're still having periods, and if you could be pregnant.</p></div>
+   ${chat.map(c=>c.r==='u'?`<div class="msg user"><p>${esc(c.t)}</p></div>`:`<div class="msg bot">${c.html}</div>`).join('')}
+  </div>
+  ${chat.length===0?`<div class="chips" style="margin-bottom:12px">${EXAMPLES.map(x=>`<button class="chip" data-ex="${esc(x)}">${esc(x)}</button>`).join('')}</div>`:''}
+  <form id="askform" class="askform">
+   <label for="askin" class="sr">Describe your symptoms</label>
+   <textarea id="askin" rows="3" placeholder="For example: I get very painful periods and my pain has been getting worse for a year" maxlength="1500"></textarea>
+   <div class="askbtns"><button class="btn" type="submit">${chat.length?'Send':'Ask'}</button>${chat.length?`<button class="link" type="button" id="reset">Start over</button>`:''}</div>
+  </form>
   <p class="disclaimer">${DISCLAIMER}</p>
  </div>`;
+ const send=(txt)=>{
+  txt=txt.trim();if(!txt)return;
+  chat.push({r:'u',t:txt});chatText+=' . '+txt;
+  const a=analyse(chatText,stage);
+  chat.push({r:'b',html:renderAnswer(a)});
+  viewAsk();
+  const log=$('#chatlog');const last=log&&log.lastElementChild;if(last)last.scrollIntoView({block:'start',behavior:'auto'});
+ };
+ $('#askform').onsubmit=ev=>{ev.preventDefault();send($('#askin').value)};
+ $('#askin').addEventListener('keydown',ev=>{if(ev.key==='Enter'&&(ev.ctrlKey||ev.metaKey)){ev.preventDefault();send($('#askin').value)}});
+ document.querySelectorAll('[data-ex]').forEach(b=>b.onclick=()=>send(b.dataset.ex));
+ const rs=$('#reset');if(rs)rs.onclick=()=>{chat=[];chatText='';viewAsk()};
+ document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{
+  const ta=b.parentElement.querySelector('textarea');
+  const done=()=>toast('Copied');
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value).then(done,()=>{ta.select();try{document.execCommand('copy');done()}catch(e){}})}
+  else{ta.select();try{document.execCommand('copy');done()}catch(e){}}
+ });
 }
+
+/* ---------- Supplements ---------- */
+function suppCard(s){
+ const r=RATING[s.rating];
+ const conds=s.forIds.map(byId).filter(Boolean).map(e=>`<a class="chip" href="#/entry/${e.id}">${esc(e.name)}</a>`).join('');
+ const links=s.src.map(k=>`<a href="${SOURCES[k].u}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[k].n)}</a>`).join(' · ');
+ return `<details class="supp" id="s-${s.id}"><summary><span class="sname">${esc(s.name)}</span><span class="badge ${r.c}">${r.l}</span></summary>
+  <div class="sbody"><p class="rnote">${esc(s.ratingNote)}</p>
+  <h3>What it's used for</h3><p>${esc(s.what)}</p>
+  <h3>What the evidence says</h3><p>${esc(s.evidence)}</p>
+  <h3>Safety</h3><p>${esc(s.safety)}</p>
+  <h3>Interactions with medicines</h3><p>${esc(s.interactions)}</p>
+  <h3>Who should check first</h3><p>${esc(s.avoid)}</p>
+  <h3>Related guides</h3><div class="chips">${conds}</div>
+  <p class="note">Read more: ${links}</p></div></details>`;
+}
+function viewSupps(f){
+ const ids=[...new Set(SUPPS.flatMap(s=>s.forIds))].map(byId).filter(Boolean).sort((a,b)=>a.name.localeCompare(b.name));
+ const list=f?SUPPS.filter(s=>s.forIds.includes(f)):SUPPS;
+ const fe=f?byId(f):null;
+ $('#app').innerHTML=`<div class="wrap">
+  <div class="brand"><i></i>Her A–Z</div>
+  <h1 style="font-size:30px;margin-bottom:6px">Supplements: what the evidence says</h1>
+  <p class="muted" style="margin:0 0 14px">Independent information on supplements people ask about for women's health issues. Each one has an evidence rating, safety notes and medicine interactions. This section doesn't recommend any brand or product.</p>
+  <div class="care"><b>Before you take any supplement</b><ul>
+   <li>Supplements don't replace finding out what's causing your symptoms. Heavy bleeding, pain or a lump needs checking, not just a pill.</li>
+   <li>Ask a pharmacist or GP first if you're pregnant, breastfeeding, trying to conceive, take any medicines, or have a thyroid, liver, kidney or hormone-sensitive condition.</li>
+   <li>"Natural" doesn't mean safe. Some herbs interact with the contraceptive pill, antidepressants and blood thinners.</li>
+   <li>Choose products from reputable UK retailers, and for herbal products look for a Traditional Herbal Registration (THR) mark.</li></ul></div>
+  <h2 style="font-size:17px;margin:20px 0 8px">How we rate the evidence</h2>
+  <div class="legend">${Object.values(RATING).map(r=>`<div><span class="badge ${r.c}">${r.l}</span><span class="muted"> ${esc(r.d)}</span></div>`).join('')}</div>
+  <h2 style="font-size:17px;margin:20px 0 8px">Filter by issue</h2>
+  <div class="chips"><a class="chip" href="#/supps" aria-pressed="${!f}">All</a>${ids.map(e=>`<a class="chip" href="#/supps/${e.id}" aria-pressed="${f===e.id}">${esc(e.name.replace(/ \(.*\)/,''))}</a>`).join('')}</div>
+  <h2 style="font-size:21px;margin:26px 0 12px">${fe?`For ${esc(fe.name)}`:'All supplements'} <span class="muted" style="font-size:15px">(${list.length})</span></h2>
+  ${fe?`<p class="note" style="margin:-4px 0 12px">Read the <a href="#/entry/${fe.id}">full guide to ${esc(fe.name)}</a> first, as the cause and treatment matter more than any supplement.</p>`:''}
+  <div class="supps">${list.length?list.map(suppCard).join(''):'<div class="empty">No supplements listed for this issue yet.</div>'}</div>
+  <p class="disclaimer">Draft content: not yet reviewed by a pharmacist or clinician. ${DISCLAIMER}</p>
+ </div>`;
+ if(f){const d=document.querySelector('.supp');if(d&&list.length===1)d.open=true}
+}
+
+/* ---------- A to Z browse (with area filter) ---------- */
+function viewBrowse(area){
+ const base=area?ENTRIES.filter(e=>e.areas.includes(area)):ENTRIES;
+ const sorted=[...base].sort((a,b)=>a.name.localeCompare(b.name));
+ let html='',cur='';const letters=[];
+ sorted.forEach(e=>{const l=e.name[0].toUpperCase();if(l!==cur){cur=l;letters.push(l);html+=`<div class="az-letter" id="L-${l}">${l}</div>`}html+=`<div class="list" style="margin-bottom:10px">${rowHtml(e)}</div>`});
+ $('#app').innerHTML=`<div class="wrap">
+  <div class="brand"><i></i>Her A–Z</div>
+  <h1 style="font-size:30px;margin-bottom:6px">${area?esc(AREAS[area]||''):'All conditions, A to Z'}</h1>
+  <p class="muted" style="margin-bottom:6px">${sorted.length} guide${sorted.length===1?'':'s'}${area?'':' so far. More are on the way.'}</p>
+  <input class="search" id="bq" type="search" placeholder="Filter this list" aria-label="Filter this list" autocomplete="off" style="margin:12px 0 4px">
+  <h2 style="font-size:17px;margin:18px 0 8px">Filter by body area</h2>
+  <div class="chips"><a class="chip" href="#/browse" aria-pressed="${!area}">All</a>${Object.entries(AREAS).map(([k,v])=>`<a class="chip" href="#/area/${k}" aria-pressed="${area===k}">${v}</a>`).join('')}</div>
+  <div class="jump" aria-label="Jump to letter">${letters.map(l=>`<a href="#" data-l="${l}">${l}</a>`).join('')}</div>
+  <div id="azlist">${html}</div>
+  <p class="disclaimer">${DISCLAIMER}</p>
+ </div>`;
+ document.querySelectorAll('[data-l]').forEach(a=>a.onclick=ev=>{ev.preventDefault();const t=document.getElementById('L-'+a.dataset.l);if(t)t.scrollIntoView({behavior:'auto',block:'start'})});
+ $('#bq').addEventListener('input',()=>{
+  const v=$('#bq').value.trim();
+  const found=v?sorted.filter(e=>matches(e,v)):sorted;
+  $('#azlist').innerHTML=found.length?found.map(e=>`<div class="list" style="margin-bottom:10px">${rowHtml(e)}</div>`).join(''):'<div class="empty">Nothing matches that. Try another word.</div>';
+  document.querySelector('.jump').hidden=!!v;
+ });
+}
+function viewArea(k){viewBrowse(k)}
 
 function viewEntry(id){
  const e=byId(id);
@@ -379,6 +1318,7 @@ function viewEntry(id){
   <section><h2>Causes and risk factors</h2>${ul(e.causes)}</section>
   <section><h2>How it's diagnosed</h2>${ul(e.diagnosis)}</section>
   <section><h2>Managing it</h2>${ul(e.manage)}</section>
+  ${(()=>{const n=SUPPS.filter(s=>s.forIds.includes(e.id));return n.length?`<section><h2>Supplements people ask about</h2><p>${n.length} supplement${n.length===1?'':'s'} ${n.length===1?'is':'are'} often discussed for this. See what the evidence says, including safety and interactions.</p><p>${n.map(s=>`<a class="chip" href="#/supps/${e.id}">${esc(s.name)}</a>`).join(' ')}</p></section>`:''})()}
   <section><h2>Questions to ask your doctor</h2>${ul(e.ask)}</section>
   <section class="urgent"><h2>Get help urgently if you have</h2>${ul(e.urgent)}<p style="margin-top:10px;font-size:15px">Call NHS 111 for urgent advice, or 999 in an emergency.</p></section>
   <section class="sources"><h2>Where to read more</h2>${ul(e.src.map(s=>s)).replace(/<li>(.*?)<\/li>/g,(m,s)=>`<li><a href="${SOURCES[s].u}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[s].n)}</a></li>`)}
@@ -411,12 +1351,14 @@ function viewMe(){
   ${profile.guest?`<p>You're browsing as a guest.</p>`:`<p>Age range: <b>${esc(profile.age||'not set')}</b><br>Life stage: <b>${esc(stageName(profile.stage)||'not set')}</b></p>`}
   <h2 style="font-size:19px;margin:18px 0 8px">Conditions on your list</h2>
   <div class="list">${conds.length?conds.map(rowHtml).join(''):'<div class="empty">None yet. Use "I have this" on a guide to add one.</div>'}</div>
+  <h2 style="font-size:19px;margin:22px 0 8px">Saved guides</h2>
+  <div class="list">${saved.map(byId).filter(Boolean).length?saved.map(byId).filter(Boolean).map(rowHtml).join(''):'<div class="empty">Nothing saved yet. Open a guide and choose "Save this guide".</div>'}</div>
   <div class="stack" style="margin-top:26px">
    <button class="btn ghost block" id="edit">${profile.guest?'Set up a profile':'Change my answers'}</button>
    <button class="btn ghost block" id="clear">Delete all my data from this device</button>
   </div>
   <h2 style="font-size:19px;margin:30px 0 8px">About this prototype</h2>
-  <p class="muted" style="font-size:15px">Her A–Z is an early prototype. The guides are drafts written from public UK health information and haven't yet been checked by a clinician. ${DISCLAIMER}</p>
+  <p class="muted" style="font-size:15px">Her A–Z is an early version. The guides and supplement notes are drafts written from public UK health information and haven't yet been checked by a clinician or pharmacist. The symptom guide uses simple matching rules on this device. It isn't a doctor and can't diagnose. ${DISCLAIMER}</p>
  </div>`;
  $('#edit').onclick=()=>{ob={step:1,age:null,stage:null};profile=null;route()};
  $('#clear').onclick=()=>{if(confirm('Delete your profile, saved guides and requests from this device?')){store.clearAll();profile=null;saved=[];reqs=[];viewStage=null;ob={step:1,age:null,stage:null};location.hash='#/';route()}};
@@ -427,13 +1369,15 @@ const ICON={
  home:'<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
  az:'<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
  bm:'<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
- me:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>'
+ me:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>',
+ ask:'<svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11h6M9 14h4"/></svg>',
+ pill:'<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="4" transform="rotate(-35 12 12)"/><path d="M9.5 14.5l5-5"/></svg>'
 };
 function tabs(){
  const h=location.hash||'#/';
- const cur=h.startsWith('#/browse')||h.startsWith('#/area')?'browse':h.startsWith('#/saved')?'saved':h.startsWith('#/me')?'me':'home';
- const t=(k,href,label,ic)=>`<button class="tab" ${cur===k?'aria-current="page"':''} onclick="location.hash='${href}'">${ic}${label}</button>`;
- $('#tabs').innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t('home','#/','Home',ICON.home)}${t('browse','#/browse','A to Z',ICON.az)}${t('saved','#/saved','Saved',ICON.bm)}${t('me','#/me','Profile',ICON.me)}</div></nav>`;
+ const cur=h.startsWith('#/browse')||h.startsWith('#/area')?'browse':h.startsWith('#/ask')?'ask':h.startsWith('#/supps')?'supps':(h.startsWith('#/saved')||h.startsWith('#/me'))?'me':'home';
+ const t=(k,href,label,ic)=>`<button class="tab" ${cur===k?'aria-current="page"':''} onclick="location.hash='${href}'">${ic}<span>${label}</span></button>`;
+ $('#tabs').innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t('home','#/','Home',ICON.home)}${t('browse','#/browse','A to Z',ICON.az)}${t('ask','#/ask','Ask',ICON.ask)}${t('supps','#/supps','Supplements',ICON.pill)}${t('me','#/me','Me',ICON.me)}</div></nav>`;
 }
 function route(){
  if(!profile){viewOnboarding();return}
@@ -441,7 +1385,9 @@ function route(){
  const [, a, b]=h.split('/');
  if(a==='entry')viewEntry(b);
  else if(a==='tag')viewTag(decodeURIComponent(b||''));
- else if(a==='area')viewArea(b);
+ else if(a==='area')viewBrowse(b);
+ else if(a==='ask')viewAsk();
+ else if(a==='supps')viewSupps(b||null);
  else if(a==='browse')viewBrowse();
  else if(a==='saved')viewSaved();
  else if(a==='me')viewMe();
