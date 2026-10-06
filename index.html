@@ -9,8 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FFF4F7; --surface:#FFFFFF; --ink:#3B2230; --muted:#7D5E6D; --line:#F6D8E1;
-  --accent:#C93A63; --accent-ink:#FFFFFF; --accent-soft:#FDE2EA;
+  --bg:#FFFAFB; --surface:#FFFFFF; --ink:#2B2230; --muted:#7A6B78; --line:#FBE6EC;
+  --accent:#D0356A; --accent-ink:#FFFFFF; --accent-soft:#FFEDF2;
   --sage:#DDEBE3; --sage-ink:#2F5A47;
   --alert:#FBE9E5; --alert-ink:#8E2F20; --alert-line:#E9B8AE; --amber:#FFF1D6; --amber-ink:#7A4B00; --amber-line:#EBCB8F;
   --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
@@ -19,7 +19,7 @@
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){
+@media not all{
   :root:not([data-theme="light"]){
     --bg:#1F1218; --surface:#2A1A22; --ink:#FBEAF0; --muted:#C9A5B4; --line:#433039;
     --accent:#FF8FAE; --accent-ink:#2B0F1B; --accent-soft:#3D2230;
