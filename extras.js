@@ -62,7 +62,10 @@ function periodReminder(){
  const p=predict();const out=document.querySelector("#hz-rmsg");
  if(!p){if(out)out.textContent="Log at least three periods in Track first, then I can estimate your next one.";return}
  const start=new Date(p.date.getFullYear(),p.date.getMonth(),p.date.getDate()-2,9,0,0);
- if(start<=new Date()){if(out)out.textContent="Your next estimated date ("+fmt(p.date)+") is too close for a reminder. Log your latest period and try again after it starts.";return}
+ if(start<=new Date()){
+  if(p.diff<1){if(out)out.textContent="Your next period is estimated for "+fmt(p.date)+", which is too close for a reminder. Log your latest period once it starts and try again.";return}
+  start.setTime(Date.now()+60*60*1000);start.setSeconds(0,0);
+ }
  download("her-a-z-period-reminder.ics",event(labelVal(),start,30,"",0));
  if(out)out.textContent="Added a reminder for "+fmt(start)+", two days before your estimated "+fmt(p.date)+". Cycles vary, so treat it as a guide.";
 }
