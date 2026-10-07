@@ -90,7 +90,7 @@ function cycle(){
  return {len:len,plen:plen,cd:cd,ov:ov,fs:fs,fe:fe,next:fromN(last+len),estimated:good.length<2,late:cd>len};
 }
 const PHASES={
- period:{n:"Period",c:"var(--accent)",t:"Your period. Energy can dip and cramps are common in the first days. Heat, rest, gentle movement and pain relief can all help."},
+ period:{n:"Menstrual",c:"var(--accent)",t:"Your menstrual phase (your period). Energy can dip and cramps are common in the first days. Heat, rest, gentle movement and pain relief can all help."},
  foll:{n:"Follicular",c:"#F7BACB",t:"After your period, oestrogen rises. Many people notice more energy, a brighter mood and clearer skin."},
  fert:{n:"Fertile window",c:"#8FCDB0",t:"Around ovulation (an estimate). Some people notice clearer, stretchy discharge or a one-sided twinge. Not reliable as contraception."},
  lut:{n:"Luteal",c:"#CDB8EC",t:"After ovulation, progesterone rises. Bloating, sore breasts, cravings or mood changes before a period (PMS) are common."}
