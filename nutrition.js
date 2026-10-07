@@ -128,6 +128,8 @@ function html() {
   });
   h += "</div></div>";
 
+  try { if (window.HZN && window.HZN.checklistCard) h += window.HZN.checklistCard(); } catch (e) { }
+
   h += '<div class="trk-card hzn-card" style="--hzn:' + col + '">';
   h += '<h2 style="margin-top:0">' + esc(p.name) + "</h2>";
   h += '<p class="hzn-small"><b>' + esc(dayText(c, sel)) + "</b></p>";
