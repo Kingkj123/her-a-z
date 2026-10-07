@@ -294,7 +294,7 @@ document.addEventListener("click",ev=>{
  /* breathing controls */
  const bp=t.closest("[data-bp]");if(bp){bState.p=bp.dataset.bp;qa("[data-bp]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.bp===bState.p)));return}
  const bm=t.closest("[data-bm]");if(bm){bState.min=+bm.dataset.bm;qa("[data-bm]").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.bm===bState.min)));return}
- if(t.closest("#hz-bgo")){const go=q("#hz-bgo");if(bState.run){stopBreathe();go.textContent="Start";q("#hz-cue").textContent="Paused";return}bState.buzz=!!(q("#hz-bbuzz")||{}).checked;bState.run=true;bState.end=Date.now()+bState.min*60000;go.textContent="Stop";stepBreathe(0);return}
+ if(t.closest("#hz-bgo")){const go=q("#hz-bgo");if(bState.run){stopBreathe();go.textContent="Start";q("#hz-cue").textContent="Paused";return}bState.buzz=!!(q("#hz-bbuzz")||{}).checked;bState.run=true;bState.end=Date.now()+bState.min*60000;go.textContent="Stop";const ob=q("#hz-orb");if(ob&&ob.scrollIntoView)ob.scrollIntoView({behavior:reduced()?"auto":"smooth",block:"center"});stepBreathe(0);return}
  /* feedback on existing buttons */
  const sv=t.closest("#save,#have");if(sv){buzz(12);heart(sv)}
  if(t.closest(".trk-chip,.trk-seg,.opt,.stage"))buzz(6);
@@ -317,7 +317,8 @@ css.textContent=`:root{--hz-fill:#FFE1E9}
 .card b .hz-ic{width:22px;height:22px;margin-right:4px}
 .hz-big{width:72px;height:72px;flex:none}
 .hz-mid{width:52px;height:52px;flex:none}
-.ribbon .stage .dot.hz-ill{width:48px;height:48px;border-radius:50%;background:var(--surface);border:2px solid var(--line);padding:7px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(208,53,106,.10)}
+.ribbon .stage .dot.hz-ill::before,.ribbon .stage .dot.hz-ill::after{display:none!important}
+.ribbon .stage .dot.hz-ill{transform:none!important;width:48px;height:48px;border-radius:50%!important;background:var(--surface);border:2px solid var(--line);padding:7px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(208,53,106,.10)}
 .ribbon .stage[aria-pressed="true"] .dot.hz-ill{border-color:var(--accent);background:var(--accent-soft)}
 .hz-art{position:relative;height:150px;margin:6px 0 12px;border-radius:30px 30px 30px 10px;background:linear-gradient(150deg,var(--accent-soft),#FFF6F8 70%);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hz-art.small{height:110px}
@@ -386,6 +387,7 @@ css.textContent=`:root{--hz-fill:#FFE1E9}
 .hz-cue{position:absolute;font:700 20px var(--display);color:var(--ink);text-align:center;padding:0 20px;text-shadow:0 1px 8px #fff}
 #hz-left{position:absolute;bottom:0}
 #hz-bp .opt{text-align:left}
+.hz-breathebtn,.hz-wheel a.btn,.hz-sheetbtns a.btn,#hz-foryou a.btn{text-decoration:none}
 .hz-heart{position:fixed;z-index:60;color:var(--accent);font-size:18px;pointer-events:none;animation:hzHeart 1s ease-out forwards}
 @keyframes hzHeart{0%{transform:translateY(0) scale(.6);opacity:0}20%{opacity:1}100%{transform:translateY(-60px) scale(1.2);opacity:0}}
 @media (prefers-reduced-motion:no-preference){
