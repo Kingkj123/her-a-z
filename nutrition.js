@@ -100,10 +100,11 @@ function dayText(c, k) {
     var gen = { period: [1, 5], foll: [6, 11], fert: [12, 16], lut: [17, 28] }[k];
     return "About days " + gen[0] + " to " + gen[1] + " of a 28-day cycle";
   }
-  if (k === "period") { a = 1; b = c.plen; }
-  else if (k === "foll") { a = c.plen + 1; b = c.fs - 1; }
-  else if (k === "fert") { a = c.fs; b = c.fe; }
-  else { a = c.fe + 1; b = c.len; }
+  var pl = (c.estimated || c.plen < 3) ? Math.max(c.plen, 5) : c.plen;
+  if (k === "period") { a = 1; b = pl; }
+  else if (k === "foll") { a = pl + 1; b = Math.max(a, c.fs - 1); }
+  else if (k === "fert") { a = Math.max(c.fs, pl + 1); b = Math.max(a, c.fe); }
+  else { a = Math.max(c.fe, pl + 1) + 1; b = Math.max(a, c.len); }
   if (b < a) return "Very short in your cycle";
   return "Days " + a + " to " + b + " of your cycle (estimate)";
 }
