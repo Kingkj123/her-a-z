@@ -196,10 +196,14 @@ function checklistInner(key) {
   var msg = done === ids.length ? '<div class="hzn-done">All covered today. Lovely work!</div>' : '<p class="hzn-small hzn-lead">Tick what you have eaten. One food per nutrient is enough.</p>';
   return '<div class="hzn-ringrow">' + ring(done, ids.length, pcol(key)) + '<div><b>' + done + " of " + ids.length + " focus nutrients covered</b><div class=\"hzn-small\">" + esc(pname(key)) + " · tap a nutrient to learn more</div></div></div>" + msg + rows;
 }
-function checklistCard() {
+function checklistCard(sel) {
   var p = phaseNow();
-  if (!p) return "";
-  return '<div class="trk-card hzn-hubcard" style="--hzn-col:' + pcol(p.key) + '"><h2 style="margin-top:0">Today\'s food checklist</h2><div data-hzn-box="' + p.key + '">' + checklistInner(p.key) + "</div></div>";
+  var key = (sel && FOCUS[sel]) ? sel : (p ? p.key : null);
+  if (!key) return "";
+  var isNow = !!(p && p.key === key);
+  var title = isNow ? "Today's food checklist" : "Foods for your " + pname(key) + " phase";
+  var note = isNow ? "" : '<p class="hzn-small">You are viewing a different phase. Ticks still count for today.</p>';
+  return '<div class="trk-card hzn-hubcard" style="--hzn-col:' + pcol(key) + '"><h2 style="margin-top:0">' + esc(title) + "</h2>" + note + '<div data-hzn-box="' + key + '">' + checklistInner(key) + "</div></div>";
 }
 function hubHtml() {
   var p = phaseNow();
