@@ -243,6 +243,7 @@ const obs=new MutationObserver(run);
 obs.observe($("#app"),{childList:true,subtree:true});
 window.addEventListener("hashchange",()=>{if((location.hash||"")==="#/setup")setTimeout(run,0)});
 if(store.clearAll){const _c=store.clearAll;store.clearAll=function(){_c.call(store);try{localStorage.removeItem(KEY)}catch(e){}me={};redirected=true}}
+window.HZhelp=helpHtml;window.HZme=()=>me;
 run();
 }
 )();

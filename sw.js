@@ -1,6 +1,6 @@
 /* Her A–Z service worker: lets the app open offline. Network first, so updates always arrive when you are online. */
-const V="hz-v2";
-const CORE=["./","index.html","theme.css","more-issues.js","track.js","personal.js","extras.js","delight.js","manifest.json","icon-192.png","icon-512.png"];
+const V="hz-v3";
+const CORE=["./","index.html","theme.css","more-issues.js","track.js","personal.js","extras.js","delight.js","redesign.js","manifest.json","icon-192.png","icon-512.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{

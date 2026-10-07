@@ -277,7 +277,7 @@ document.addEventListener("click",ev=>{
  const t=ev.target;if(!t.closest)return;
  const close=t.closest('[data-hz="close"]');
  const bodyEl=t.closest("[data-body]");
- if(bodyEl&&!t.closest(".hz-sheet")){buzz(8);bodySheet(bodyEl.dataset.body);return}
+ if(bodyEl&&(!t.closest(".hz-sheet")||t.closest("#hz-body"))){buzz(8);bodySheet(bodyEl.dataset.body);return}
  const ask=t.closest("[data-ask]");
  if(ask){pendingAsk=ask.dataset.ask;closeSheet(true);if(hash().indexOf("#/ask")===0){run()}else location.hash="#/ask";return}
  const qb=t.closest("[data-q]");
@@ -414,5 +414,6 @@ function run(){if(busy)return;busy=true;try{decorate()}catch(x){if(window.__hzDe
 const obs=new MutationObserver(run);
 obs.observe(q("#app"),{childList:true,subtree:true});
 window.addEventListener("hashchange",()=>{enterNext=true;closeSheet(true);if(hash().indexOf("#/breathe")!==0)stopBreathe();setTimeout(run,0)});
+window.HZD={wheel:wheel,cycle:cycle,PHASES:PHASES,phaseOf:phaseOf,sheet:sheet,closeSheet:closeSheet,bodyHtml:bodyHtml,quickHtml:quickHtml,face:face,art:art,ART:ART,STAGE_ART:STAGE_ART,buzz:buzz,loadT:loadT,dkey:dkey};
 run();
 })();
