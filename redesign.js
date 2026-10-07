@@ -15,7 +15,7 @@ const day=()=>Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/864
 function hello(){
  const h=new Date().getHours(),n=me().name;
  const g=h<12?"Good morning":h<18?"Good afternoon":"Good evening";
- return n?`${g}, ${n}.`:`${g}, lovely.`;
+ return n?`${g}, ${n}.`:`${g}.`;
 }
 const SUBS=["How's your body feeling today? Let's take it one thing at a time.","No question is too small or too awkward here.","Whatever's going on, you're not the only one. Let's figure it out together.","Check in, look something up, or just breathe. Your call."];
 const TIPS={
@@ -97,7 +97,7 @@ function renderHome(){
    <p class="rd-date">${e(longDate)}</p>
    <h1>${e(hello())}</h1>
    <p class="rd-sub">${e(SUBS[day()%SUBS.length])}</p>
-   <label class="rd-search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="rd-q" type="search" placeholder="Search a symptom or condition" aria-label="Search a symptom or condition" autocomplete="off"></label>
+   <label class="rd-search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="rd-q" type="search" placeholder="Symptom or condition" aria-label="Search a symptom or condition" autocomplete="off"></label>
   </section>
   <div id="rd-results" hidden></div>
   <div id="rd-sections">${setupCard()}${todayCard()}${tiles()}${tip()}${picks()}
@@ -186,6 +186,7 @@ body:has(.hz-exit) .rd-top{padding-right:112px}
 .rd-blob.b1{width:190px;height:190px;right:-60px;top:-70px;background:#FFC2D3;opacity:.55}
 .rd-blob.b2{width:120px;height:120px;right:40px;bottom:-60px;background:#FFD9C4;opacity:.5}
 .rd-blob.b3{width:70px;height:70px;left:-24px;bottom:30px;background:#E9DCFF;opacity:.45}
+a.btn{text-decoration:none}
 .rd-search{position:relative;display:flex;align-items:center;gap:8px;background:#fff;color:var(--muted);border-radius:999px;padding:4px 6px 4px 16px;box-shadow:0 8px 20px rgba(120,20,60,.18)}
 .rd-search input{flex:1;border:0;outline:0;background:none;font:600 16px var(--body);color:var(--ink);padding:12px 6px;min-width:0}
 .rd-search:focus-within{outline:3px solid #fff;outline-offset:2px}
