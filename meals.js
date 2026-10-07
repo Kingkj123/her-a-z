@@ -181,7 +181,7 @@ function covers(m, phase) {
 function mealDone(m) { var tk = HZN().ticked(); return m.f.every(function (f) { return tk.indexOf(f) > -1; }); }
 function mealsCard(phase) {
   var H = HZN(), d = curDiet(), list = mealList(phase, d), P = D().PHASES, nm = (P && P[phase] && P[phase].n) || "";
-  var h = '<div class="trk-card hzm-card hzm-meals" data-hzm-phase="' + phase + '"><h2 style="margin-top:0">🍳 Meal ideas</h2><p class="hzn-small">Simple ideas for the ' + esc(nm.toLowerCase()) + ' that cover your focus nutrients' + (d === "all" ? "" : ", all " + (d === "vegan" ? "vegan" : "vegetarian")) + ".</p>";
+  var h = '<div class="trk-card hzm-card hzm-meals" data-hzm-phase="' + phase + '"><h2 style="margin-top:0">🍳 Meal ideas</h2><p class="hzn-small">Simple ideas for your ' + esc(nm.toLowerCase()) + (phase === "fert" ? "" : " phase") + ' that cover your focus nutrients' + (d === "all" ? "" : ", all " + (d === "vegan" ? "vegan" : "vegetarian")) + ".</p>";
   list.forEach(function (m, idx) {
     var done = mealDone(m), cv = covers(m, phase);
     h += '<div class="hzm-meal' + (done ? " done" : "") + '"><span class="hzm-slot">' + esc(m.s) + "</span><b>" + esc(m.t) + '</b><div class="hzm-cov">' + cv.map(function (id) { return '<span class="hzm-cv">' + H.NUT[id].e + " " + esc(H.NUT[id].n) + "</span>"; }).join("") + '</div><div class="hzm-btns"><button type="button" class="chip" data-hzm-eat="' + idx + '"' + (done ? ' disabled aria-disabled="true"' : "") + ">" + (done ? "✓ In my day" : "✓ I had this") + '</button><button type="button" class="chip" data-hzm-add="' + idx + '">🛒 Add ingredients</button></div></div>';
@@ -292,7 +292,7 @@ var css = [
   ".hzm-meal.done{opacity:.8}",
   ".hzm-slot{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}",
   ".hzm-cov{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}",
-  ".hzm-cv{font-size:12.5px;background:var(--accent-soft);color:var(--accent-ink,var(--ink));border-radius:999px;padding:3px 10px}",
+  ".hzm-cv{font-size:12.5px;background:var(--accent-soft);color:var(--ink);font-weight:600;border-radius:999px;padding:3px 10px}",
   ".hzm-btns{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px}",
   ".hzm-btns .chip{min-height:40px;font-size:14px}",
   ".hzm-aisle{margin:14px 0 6px;font-size:15px}",
