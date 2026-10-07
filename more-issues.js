@@ -648,9 +648,269 @@ A("domestic-abuse-and-health","Domestic abuse and your health","Abuse in relatio
 ["If you are in immediate danger, call 999. If you can't speak, cough or tap the phone, and press 55 when prompted on a mobile."],
 ["refuge","wa","nhs"]);
 
+/* ---------- New guides (Oct 2026): pregnancy and after birth; vulva, vagina and cervix; immune system and whole body ---------- */
+AREAS.bone="Bones & joints";
+Object.assign(SOURCES,{
+  va:{n:"Versus Arthritis",u:"https://www.versusarthritis.org"},
+  lupus:{n:"LUPUS UK",u:"https://www.lupusuk.org.uk"},
+  coeliac:{n:"Coeliac UK",u:"https://www.coeliac.org.uk"},
+  sruk:{n:"Scleroderma & Raynaud's UK",u:"https://www.sruk.co.uk"},
+  fmauk:{n:"Fibromyalgia Action UK",u:"https://www.fmauk.org"},
+  icp:{n:"ICP Support",u:"https://www.icpsupport.org"},
+  bpas:{n:"British Pregnancy Advisory Service (BPAS)",u:"https://www.bpas.org"},
+  nbh:{n:"National Breastfeeding Helpline",u:"https://www.nationalbreastfeedinghelpline.org.uk"},
+  masic:{n:"MASIC Foundation (birth injuries)",u:"https://masic.org.uk"},
+  pas:{n:"Pernicious Anaemia Society",u:"https://pernicious-anaemia-society.org"},
+  hva:{n:"Herpes Viruses Association",u:"https://herpes.org.uk"}
+});
+
+/* Pregnancy and after birth */
+A("icp","Itching in pregnancy (obstetric cholestasis)","Intrahepatic cholestasis of pregnancy (ICP)",
+"A liver condition in pregnancy that causes intense itching, often on the hands and feet, without a rash.",
+["preg"],["preg"],["Itching","Fatigue"],
+"In ICP, bile acids build up in the blood because the liver isn't moving bile normally. It usually starts after about 28 weeks and goes away soon after the baby is born. It needs checking because very high bile acid levels are linked with a higher chance of complications for the baby.",
+["Itching that is often worse at night, especially on the palms and soles","Itching without a rash","Dark wee or pale poo (less common)","Feeling tired or off your food"],
+["Pregnancy hormones affecting how the liver handles bile","It runs in families and is more likely if you had it in a previous pregnancy","More common in twin pregnancies and in women of South Asian heritage"],
+["A blood test for bile acids and liver function","Tests may be repeated, as levels can change over the pregnancy","Extra monitoring of you and the baby, and sometimes a plan to give birth a little earlier"],
+["Tell your midwife about any itching, even if it seems minor","Cool baths, loose cotton clothes and moisturiser can ease the itch","A medicine called ursodeoxycholic acid is sometimes offered for symptoms","Go to all your extra checks and appointments"],
+["What are my bile acid levels and what do they mean?","How often will I be checked?","Does this change when or how I give birth?"],
+["Your baby is moving less than usual. Contact your maternity unit straight away, don't wait until the next day","Yellow skin or eyes"],
+["nhs","rcog","icp"]);
+
+A("low-placenta","Low-lying placenta (placenta praevia)","Placenta praevia",
+"When the placenta lies low in the womb, near or over the cervix. Most move up as the womb grows.",
+["preg"],["preg"],["Bleeding between periods"],
+"A low placenta is often spotted at the 20-week scan. In most women it moves up out of the way by later pregnancy. If it still covers the cervix near the end of pregnancy, it can cause bleeding and the baby will usually need to be born by caesarean.",
+["Often no symptoms and found on a scan","Painless bright red bleeding from the vagina, usually after 20 weeks","Bleeding after sex"],
+["The placenta has attached low down in the womb","More likely after a previous caesarean or womb surgery, in twin pregnancies, with IVF and if you smoke"],
+["Seen on the routine 20-week scan","A follow-up scan, usually around 32 weeks, to see if it has moved","Sometimes a vaginal scan, which is safe in this situation"],
+["Go to your follow-up scans","Your team may advise avoiding penetrative sex if it is still low","Have a plan for getting to hospital quickly if you bleed","Plan your birth with your team if the placenta stays low"],
+["Has my placenta moved?","What should I do if I bleed?","Will I need a caesarean?"],
+["Any vaginal bleeding in pregnancy. Contact your maternity unit straight away, or call 999 if it is heavy"],
+["nhs","rcog","tommys"]);
+
+A("perineal-tears","Tears and stitches after birth","Perineal tears, episiotomy",
+"Tears to the skin and muscles between the vagina and bottom are common during vaginal birth. Most heal well.",
+["preg"],["preg","urinary"],["Pelvic pain","Painful sex","Urine leaks"],
+"Most women who give birth vaginally have some kind of tear or a cut (episiotomy). Many are small and heal within a few weeks. Deeper tears that involve the muscle around the back passage (third or fourth degree) are repaired in theatre and need extra follow-up.",
+["Soreness and stinging, especially when weeing","Pain when sitting","Stitches that pull or feel tight","Difficulty holding in wind or poo (with deeper tears)"],
+["The skin stretching as the baby's head is born","More likely with a first vaginal birth, a large baby, or an assisted birth with forceps or ventouse"],
+["Checked by your midwife or doctor straight after the birth","Your midwife checks healing at home visits","Deeper tears are followed up at a specialist clinic"],
+["Pour warm water over the area while you wee, and pat dry","Change pads often and wash your hands before and after","Simple painkillers, a cool pack wrapped in cloth, and laxatives to avoid straining","Start gentle pelvic floor exercises when it feels comfortable"],
+["Is my tear healing as it should?","When can I go back to exercise or sex?","Can I be referred to a pelvic health physiotherapist?"],
+["Pain that is getting worse, a bad smell, pus, or a high temperature. These can be signs of infection","Being unable to control wind or poo"],
+["nhs","rcog","masic"]);
+
+A("c-section-recovery","Recovering from a caesarean","C-section recovery",
+"A caesarean is major surgery. Most women recover over about 6 weeks, though it can take longer.",
+["preg"],["preg"],["Pelvic pain","Fatigue"],
+"More than a third of babies in England are now born by caesarean. You will usually stay in hospital for a day or two. The wound often feels numb or sore for a while, and it is normal to need help with lifting and moving at first.",
+["Pain and soreness around the cut","Numbness around the scar that can last months","Feeling tired","Vaginal bleeding (lochia), as after any birth"],
+["Recovery from surgery while also caring for a new baby","Planned and emergency caesareans can feel very different emotionally"],
+["Your midwife checks your wound and recovery at home visits","A check with your GP around 6 to 8 weeks after the birth"],
+["Take regular pain relief as advised, including when breastfeeding","Get up and walk gently soon after, to lower the chance of blood clots","Support your tummy with a pillow when you cough or laugh","Avoid heavy lifting and check your car insurance before driving again"],
+["How should my wound look as it heals?","When can I drive and exercise again?","What does this mean for future births?"],
+["A red, hot, swollen or oozing wound, or a high temperature","Pain, swelling and redness in one leg, or sudden breathlessness or chest pain. Call 999 for chest pain or breathlessness","Heavy bleeding that soaks a pad within an hour"],
+["nhs","rcog"]);
+
+A("diastasis","Tummy muscle gap after pregnancy","Diastasis recti, abdominal separation",
+"A gap between the two long tummy muscles that often happens in pregnancy and usually improves after birth.",
+["preg","repro"],["preg"],["Bloating"],
+"As the bump grows, the tummy muscles stretch apart at the midline to make room. This is normal and many gaps close within about 8 weeks after birth. For some women a gap remains, which can cause a bulge or a weak-feeling core.",
+["A ridge or dome down the middle of your tummy when you sit up","A soft gap you can feel above or below your belly button","Lower back pain or a weak-feeling tummy"],
+["Normal stretching during pregnancy","More likely with twins, a larger baby or several pregnancies"],
+["Your midwife, GP or a physiotherapist can check the gap","A physiotherapist can assess how well your deep tummy muscles work"],
+["Gentle deep tummy and pelvic floor exercises","Roll onto your side to get out of bed rather than sitting straight up","Ask about a referral to a pelvic health physiotherapist","Surgery is rarely needed and only considered if other options haven't helped"],
+["How big is my gap?","Which exercises are right for me now?","Can I see a pelvic health physiotherapist?"],
+["A painful lump near your belly button that you can't push back in. This could be a hernia and needs checking the same day"],
+["nhs"]);
+
+A("breastfeeding-problems","Breastfeeding problems","Sore nipples, latch problems, engorgement, low milk supply",
+"Pain, latch problems and worries about milk supply are common, especially early on, and support helps.",
+["preg"],["preg","breast"],["Breast changes"],
+"Breastfeeding is a skill you and your baby learn together, and it can take time. Many problems come down to how the baby attaches at the breast. Getting help early often makes a big difference, however you decide to feed.",
+["Sore, cracked or bleeding nipples","Hard, swollen, painful breasts (engorgement)","A tender lump from a blocked duct","Worries that your baby isn't getting enough milk"],
+["The baby not being attached deeply enough","Long gaps between feeds or missed feeds","Tongue tie in the baby, sometimes","Thrush on the nipples, less often"],
+["Your midwife, health visitor or a breastfeeding supporter can watch a feed","Your baby's weight and wet and dirty nappies show how feeding is going"],
+["Get help with positioning and attachment","Feed often and let your baby finish the first breast","A few drops of breast milk on sore nipples after feeds","Call the National Breastfeeding Helpline on 0300 100 0212"],
+["Can someone watch a feed and check the latch?","Is my baby getting enough milk?","Could my baby have tongue tie?"],
+["A hot, red, painful area on the breast with a fever or flu-like feeling (mastitis). See a GP the same day","Your baby has very few wet nappies, is very sleepy or won't feed"],
+["nhs","nbh"]);
+
+A("abortion","Abortion (ending a pregnancy)","Termination of pregnancy",
+"Abortion is a safe, common medical treatment. In Great Britain you can refer yourself without seeing a GP.",
+["teen","repro"],["preg","sexual"],["Pelvic pain"],
+"About one in three women in the UK have an abortion in their lifetime. You can choose a medical abortion (tablets) or a surgical procedure, depending on how far along the pregnancy is. Services are confidential and free on the NHS. Rules differ in Northern Ireland and other countries.",
+["Cramping and bleeding after a medical abortion, often heavier than a period","Feeling tired or emotional afterwards","Some people feel relief, some feel sad, many feel a mix"],
+["Unplanned pregnancy, health reasons, or changes in circumstances","Every reason is valid. You don't have to explain your choice"],
+["A consultation, often by phone, to talk through options","Sometimes a scan to check how many weeks pregnant you are","Tests for sexually transmitted infections may be offered"],
+["Self-refer to an NHS-funded provider such as BPAS, MSI Reproductive Choices or your local clinic","Use pads, not tampons, while bleeding","Take painkillers such as ibuprofen for cramps","Contraception can be started straight away. Ask the clinic"],
+["What are my options at this stage of pregnancy?","What should I expect during and afterwards?","Who can I talk to if I feel unsure or upset?"],
+["Soaking two large pads an hour for two hours in a row","Severe pain, a high temperature, or smelly discharge in the days after","Still feeling pregnant after a week. Call the provider's aftercare line"],
+["nhs","rcog","bpas"]);
+
+/* Vulva, vagina and cervix */
+A("bartholins-cyst","Bartholin's cyst","Bartholin's gland cyst or abscess",
+"A small, usually painless lump on one side of the vaginal opening. It can become a painful abscess if infected.",
+["repro","meno"],["repro","sexual"],["Painful sex","Swelling"],
+"The Bartholin's glands sit on either side of the vaginal opening and make fluid. If a gland gets blocked, fluid builds up and forms a cyst. Small cysts often cause no problems and go away on their own.",
+["A soft, painless lump on one side of the vaginal opening","Discomfort when walking, sitting or having sex","A hot, red, very painful lump if it becomes an abscess","A high temperature with an abscess"],
+["The gland opening getting blocked","Sometimes an infection, including some STIs"],
+["A GP or sexual health clinic can usually tell by looking","A swab may be taken if there's discharge or an abscess"],
+["Soak in a warm bath a few times a day","Use simple painkillers","Abscesses may need antibiotics or a small procedure to drain them","Cysts that keep coming back can be treated with minor surgery"],
+["Does this need draining?","Should I have an STI test?","What can I do if it keeps coming back?"],
+["A very painful, swollen lump with a high temperature. See a GP the same day","Any new lump on the vulva if you are over 40 should be checked"],
+["nhs","sh"]);
+
+A("trichomoniasis","Trichomoniasis","Trich, TV",
+"A common sexually transmitted infection caused by a tiny parasite. It is easily treated with antibiotics.",
+["teen","repro","meno","later"],["sexual"],["Unusual discharge","Itching","Burning when peeing","Fishy smell"],
+"Trichomoniasis is passed on through sex. Up to half of people have no symptoms, so they can pass it on without knowing. It is treated with a short course of antibiotics, and partners need treating too.",
+["Frothy yellow-green discharge, sometimes with a fishy smell","Itching, soreness or swelling around the vagina","Pain or burning when weeing","Discomfort during sex"],
+["Vaginal, oral or anal sex without a condom, or sharing sex toys"],
+["A swab from the vagina at a sexual health clinic or GP","Free, confidential testing at NHS sexual health services"],
+["Antibiotics, usually metronidazole","Avoid sex until you and your partner have finished treatment","Avoid alcohol while taking metronidazole and for 2 days after","Use condoms to lower the chance of getting it again"],
+["Should I be tested for other STIs?","When can I have sex again?","Is it safe to take this treatment in pregnancy?"],
+["Lower tummy pain with a high temperature. This can be a sign of pelvic inflammatory disease","Symptoms during pregnancy. Tell your midwife"],
+["nhs","sh"]);
+
+A("cervical-ectropion","Cervical ectropion","Cervical erosion",
+"When softer cells from inside the cervix grow on the outside. It is harmless and often linked to hormones.",
+["teen","repro","preg"],["repro"],["Bleeding after sex","Bleeding between periods","Unusual discharge"],
+"Cervical ectropion is common in teenagers, in pregnancy and in people using the combined pill. It is not cancer and does not lead to cancer. Many people never notice it, and it often goes away on its own.",
+["Often no symptoms and found during a screening test","Light bleeding after sex","Spotting between periods","More clear or white discharge than usual"],
+["Higher oestrogen levels, from puberty, pregnancy or the combined pill"],
+["A doctor or nurse can see it when they look at the cervix with a speculum","Tests to rule out infection or other causes of bleeding","Keep up with your cervical screening"],
+["No treatment is needed if it isn't bothering you","Changing contraception sometimes helps","Treatment to the area (cautery) may be offered if bleeding or discharge is troublesome"],
+["Could my contraception be causing this?","Do I need any treatment?","Am I up to date with cervical screening?"],
+["Bleeding after sex should always be checked by a GP, to rule out other causes","Any bleeding after menopause"],
+["nhs","jos"]);
+
+A("hpv","HPV (human papillomavirus)","Human papillomavirus",
+"A very common virus passed on through skin contact during sex. Most infections clear on their own.",
+["teen","repro","meno","later"],["sexual","cancer"],[],
+"Most sexually active people get HPV at some point. Usually the body clears it within two years without any problems. Some high-risk types can cause cell changes in the cervix that may become cancer over many years, which is why screening checks for HPV.",
+["Usually no symptoms at all","Some low-risk types cause genital warts","High-risk types can cause cell changes found by cervical screening"],
+["Close skin-to-skin genital contact, including sex without penetration","Condoms lower the risk but do not remove it"],
+["Cervical screening tests for high-risk HPV first","If HPV is found, the sample is checked for cell changes","You may be invited back sooner or for a closer look (colposcopy)"],
+["There's no treatment for the virus itself. Your body usually clears it","Go to every cervical screening when invited","The HPV vaccine protects against the main types. Ask your GP if you missed it","Not smoking helps your body clear HPV"],
+["What does my screening result mean?","When is my next test due?","Can I still have the HPV vaccine?"],
+["Bleeding after sex, between periods or after menopause. See a GP"],
+["nhs","jos","cruk"]);
+
+A("genital-herpes","Genital herpes","Herpes simplex virus (HSV)",
+"A common infection that causes painful blisters or sores. Outbreaks usually become milder and less frequent.",
+["teen","repro","meno","later"],["sexual"],["Itching","Burning when peeing"],
+"Genital herpes is caused by the same virus as cold sores. Once you have it, it stays in your body and can come back, but many people have few or no further outbreaks. It is common and manageable, and it doesn't stop you having relationships.",
+["Small blisters that burst to leave red, painful sores","Tingling, burning or itching before sores appear","Pain when weeing","Feeling flu-like during a first outbreak"],
+["Skin contact during vaginal, anal or oral sex, including from someone with a cold sore","It can be passed on even when there are no sores"],
+["A sexual health clinic can swab a sore to confirm it","Testing is free and confidential"],
+["Antiviral tablets can shorten an outbreak","Salt water baths and petroleum jelly can soothe sores","Pour water over the area while weeing to reduce stinging","Avoid sex from the first tingle until sores have fully healed"],
+["Should I take tablets every day to prevent outbreaks?","How do I tell a partner?","What does this mean if I get pregnant?"],
+["A first outbreak in late pregnancy. Tell your midwife straight away","Being unable to wee"],
+["nhs","sh","hva"]);
+
+A("vulval-cancer","Vulval cancer","Cancer of the vulva",
+"A rare cancer of the outer genitals, most common in women over 65. It is more treatable when found early.",
+["meno","later"],["cancer","sexual"],["Itching"],
+"Vulval cancer affects the skin around the vagina. It's rare, but it can be missed because people feel embarrassed to get symptoms checked. Long-lasting itching or skin changes that don't get better are worth showing a GP.",
+["Itching that doesn't go away","A lump, sore or raised patch on the vulva","Skin that looks thicker, or a different colour","Bleeding or discharge that isn't your period","A mole on the vulva that changes shape or colour"],
+["Getting older","Lichen sclerosus that is not treated","Long-term HPV infection","Smoking"],
+["A GP examines the area","A small skin sample (biopsy) taken by a specialist"],
+["Treatment usually involves surgery, sometimes with radiotherapy","If you have lichen sclerosus, use your treatment as advised and go to check-ups","Check your vulva with a mirror now and then so you know what is normal for you"],
+["What could this be?","Do I need a biopsy?","How soon will I be seen?"],
+["Any vulval lump, sore or skin change that lasts more than 3 weeks. See a GP"],
+["nhs","eve","cruk"]);
+
+A("toxic-shock","Toxic shock syndrome","TSS",
+"A rare but life-threatening reaction to bacterial toxins, sometimes linked to tampons. It needs emergency care.",
+["teen","repro"],["repro"],["Dizziness","Nausea"],
+"Toxic shock syndrome happens when certain bacteria release toxins into the blood. It can be linked to tampons or menstrual cups left in too long, and to wounds and skin infections. It is rare, and it can be treated if caught early.",
+["A sudden high temperature","Flu-like symptoms such as a headache, aches and a sore throat","Feeling sick, being sick or having diarrhoea","A widespread rash that looks like sunburn","Feeling dizzy, faint or confused"],
+["Toxins from staphylococcus or streptococcus bacteria","Tampons, especially high-absorbency ones or ones left in too long","Burns, cuts or skin infections"],
+["Diagnosed and treated in hospital"],
+["Change tampons as often as the packet says, usually every 4 to 8 hours","Use the lowest absorbency you need","Alternate with pads, for example at night","Empty and clean a menstrual cup as the instructions say"],
+["Which period products are safest for me?"],
+["Sudden high fever with a rash, being sick or feeling faint, especially during your period. Remove any tampon and call 999 or go to A&E"],
+["nhs"]);
+
+/* Immune system and whole body */
+A("lupus","Lupus (SLE)","Systemic lupus erythematosus",
+"An autoimmune condition that can cause joint pain, rashes and tiredness. About 9 in 10 people with it are women.",
+["teen","repro","meno","later"],["bone","skin","energy"],["Fatigue","Low mood"],
+"In lupus, the immune system attacks healthy tissue. It often comes and goes in flares. Symptoms vary a lot between people, which can make it slow to diagnose. With treatment, most people live a full life.",
+["Joint pain and stiffness","Extreme tiredness","A rash, often across the cheeks and nose, or after sun exposure","Mouth ulcers and hair thinning","Fevers and swollen glands"],
+["Not fully understood. Genes and hormones are thought to play a part","Sunlight, infections and some medicines can trigger flares","More common in women of African, Caribbean and Asian heritage"],
+["Blood tests, including tests for antibodies","A referral to a rheumatologist","Urine tests to check the kidneys"],
+["Medicines such as hydroxychloroquine, and others to calm the immune system","High-factor sunscreen and covering up in the sun","Pace yourself and plan rest","Plan pregnancies with your specialist, as some medicines need changing"],
+["Could my symptoms be lupus?","Which blood tests do I need?","How will we monitor my kidneys?"],
+["Chest pain or breathlessness. Call 999","Swollen legs or very foamy wee"],
+["nhs","lupus","va"]);
+
+A("rheumatoid-arthritis","Rheumatoid arthritis","RA, inflammatory arthritis",
+"An autoimmune condition that causes painful, swollen joints. It is two to three times more common in women.",
+["repro","meno","later"],["bone"],["Fatigue","Swelling"],
+"Rheumatoid arthritis happens when the immune system attacks the lining of the joints. It often starts in the small joints of the hands and feet, on both sides of the body. Early treatment helps protect the joints from long-term damage.",
+["Painful, warm, swollen joints","Stiffness that is worse in the morning and lasts more than 30 minutes","Tiredness and feeling generally unwell","Symptoms often affecting both sides of the body"],
+["The immune system attacking the joint lining","Genes, smoking and hormones may play a part"],
+["Blood tests for inflammation and antibodies","X-rays or scans of the joints","Referral to a rheumatologist, ideally quickly"],
+["Disease-modifying medicines such as methotrexate","Physiotherapy and keeping active","Stopping smoking","Ask about planning pregnancy, as some medicines need changing"],
+["Could this be rheumatoid arthritis?","How quickly can I see a specialist?","What can I do to protect my joints?"],
+["A single very hot, swollen joint with a fever. Get medical help the same day"],
+["nhs","nice","va"]);
+
+A("fibromyalgia","Fibromyalgia","Fibromyalgia syndrome",
+"A long-term condition that causes widespread pain and tiredness. It is much more common in women.",
+["repro","meno","later"],["bone","energy"],["Fatigue","Sleep problems","Low mood","Headache"],
+"Fibromyalgia makes the nervous system more sensitive to pain. It doesn't damage the joints or muscles, but the pain is real. Symptoms can come and go, and there's a lot people can do to feel better.",
+["Pain in many parts of the body","Feeling very tired","Sleep that doesn't feel refreshing","Problems with memory and focus ('fibro fog')","Headaches and IBS-type symptoms"],
+["Not fully understood. Changes in how the brain and nerves process pain","Often starts after physical or emotional stress, an illness or an injury"],
+["No single test. A GP or specialist diagnoses it from your symptoms","Blood tests to rule out other conditions such as an underactive thyroid"],
+["Regular gentle exercise, built up slowly","Talking therapies to help manage pain and stress","Some medicines can help, discussed with your GP","Good sleep habits and pacing your activities"],
+["What else could be causing this?","Can I be referred to a pain service?","Which kind of exercise should I start with?"],
+["Pain with weakness, numbness, or loss of control of your bladder or bowels. Get urgent help"],
+["nhs","nice","fmauk"]);
+
+A("coeliac","Coeliac disease","Gluten intolerance (autoimmune)",
+"An autoimmune condition where eating gluten damages the gut. It is more common in women and often missed.",
+["teen","repro","preg","meno","later"],["gut"],["Bloating","Fatigue"],
+"In coeliac disease, gluten (found in wheat, barley and rye) makes the immune system damage the lining of the small intestine. This can stop the body absorbing nutrients. It is treated with a lifelong gluten-free diet.",
+["Bloating, wind, tummy pain or diarrhoea","Tiredness and low iron (anaemia)","Weight loss or problems putting on weight","Mouth ulcers or an itchy rash","Sometimes few gut symptoms at all"],
+["An immune reaction to gluten","More likely if a close family member has it, or you have type 1 diabetes or thyroid disease"],
+["A blood test while you are still eating gluten. Don't cut it out before testing","A small sample from the gut taken by a specialist may be needed"],
+["A strict gluten-free diet for life","Check food labels carefully","A dietitian can help","Checks for iron, vitamin D and bone health"],
+["Should I be tested for coeliac disease?","Can I see a dietitian?","Do my family need testing?"],
+["Blood in your poo, or weight loss you can't explain. See a GP"],
+["nhs","nice","coeliac"]);
+
+A("raynauds","Raynaud's","Raynaud's phenomenon",
+"Fingers and toes change colour and go numb in the cold or with stress. It is very common and more so in women.",
+["teen","repro","meno","later"],["heart","skin"],[],
+"In Raynaud's, small blood vessels in the fingers and toes narrow too much in response to cold or stress. It is usually harmless. Sometimes it's linked to another condition, such as lupus or scleroderma.",
+["Fingers or toes turning white, then blue, then red","Numbness, tingling or pain","Attacks lasting minutes to hours","Symptoms triggered by cold or stress"],
+["Usually no clear cause","Sometimes linked to autoimmune conditions, some medicines, or smoking"],
+["A GP can usually diagnose it from your symptoms","Blood tests if they think another condition might be involved"],
+["Keep your whole body warm, not just your hands","Wear gloves and warm socks, and use hand warmers","Stop smoking and cut down on caffeine","Medicine can help if attacks are frequent or severe"],
+["Could this be linked to another condition?","Would medicine help me?"],
+["Sores or ulcers on your fingers or toes. See a GP","Symptoms only on one side of the body, or starting after age 40, should be checked"],
+["nhs","sruk"]);
+
+A("b12-deficiency","Vitamin B12 deficiency","Pernicious anaemia, B12 anaemia",
+"Low B12 can cause tiredness, pins and needles and memory problems. It is easily tested and treated.",
+["repro","preg","meno","later"],["energy","horm"],["Fatigue","Low mood","Dizziness"],
+"Vitamin B12 is needed to make red blood cells and keep nerves healthy. Low levels can come from not getting enough in your diet or from not absorbing it properly, as in pernicious anaemia, an autoimmune condition that is more common in women.",
+["Feeling very tired and weak","Pins and needles in the hands or feet","A sore, red tongue or mouth ulcers","Memory problems or feeling low","Feeling breathless or faint"],
+["Pernicious anaemia, where the body can't absorb B12","A vegan diet without supplements","Some medicines, such as metformin or long-term stomach acid medicines","Gut conditions such as coeliac or Crohn's disease"],
+["A blood test for B12 and a full blood count","Further tests to find the cause"],
+["B12 injections or tablets, depending on the cause","If you are vegan, use fortified foods or a B12 supplement","Pernicious anaemia usually needs lifelong treatment"],
+["What is causing my low B12?","Do I need injections or tablets?","How often should my levels be checked?"],
+["Problems with balance, walking or eyesight. See a GP urgently"],
+["nhs","nice","pas"]);
+
+
 /* ---------- Coming-soon list ---------- */
 const have=new Set(ENTRIES.map(e=>e.name.toLowerCase()));
-const next=["Fibromyalgia","ME/CFS (chronic fatigue)","ADHD and autism in women","Sleep apnoea in women","Breastfeeding problems","Eating disorders","Gallstones","Carpal tunnel syndrome"];
+const next=["ME/CFS (chronic fatigue)","ADHD and autism in women","Sleep apnoea in women","Eating disorders","Gallstones","Carpal tunnel syndrome"];
 COMING.length=0;next.forEach(n=>COMING.push(n));
 
 window.HZ_ADDED=added.length;
