@@ -181,7 +181,7 @@ function quickHtml(){
  <div class="hz-sheetbtns"><a class="btn ghost" href="#/track" data-hz="close">More in Track</a><button class="btn" type="button" data-hz="close">Done</button></div>`;
 }
 function fab(){
- const show=typeof profile!=="undefined"&&profile&&!q("#hz-setup")&&!q(".ob")&&hash().indexOf("#/breathe")!==0;
+ const show=typeof profile!=="undefined"&&profile&&!q("#hz-setup")&&!q(".ob")&&hash().indexOf("#/track")===0;
  let b=q(".hz-fab");
  if(show&&!b){b=document.createElement("button");b.className="hz-fab";b.type="button";b.setAttribute("aria-label","Quick log for today");b.innerHTML=`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>`;b.onclick=()=>{buzz(8);sheet(quickHtml(),"Quick log")};document.body.appendChild(b)}
  else if(!show&&b)b.remove();
