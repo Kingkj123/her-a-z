@@ -908,9 +908,336 @@ A("b12-deficiency","Vitamin B12 deficiency","Pernicious anaemia, B12 anaemia",
 ["nhs","nice","pas"]);
 
 
+/* ---------- New guides round 2 (Oct 2026): baby loss and pregnancy complications; neurodivergence and chronic illness; procedures; skin and body; other ---------- */
+Object.assign(SOURCES,{
+  sands:{n:"Sands (stillbirth and neonatal death charity)",u:"https://www.sands.org.uk"},
+  beat:{n:"Beat (eating disorders charity)",u:"https://www.beateatingdisorders.org.uk"},
+  app:{n:"Action on Postpartum Psychosis",u:"https://www.app-network.org"},
+  gbss:{n:"Group B Strep Support",u:"https://gbss.org.uk"},
+  molar:{n:"Molar Pregnancy Information and Support",u:"https://www.molarpregnancy.co.uk"},
+  bliss:{n:"Bliss (premature and sick babies)",u:"https://www.bliss.org.uk"},
+  adhd:{n:"ADHD UK",u:"https://adhduk.co.uk"},
+  nas:{n:"National Autistic Society",u:"https://www.autism.org.uk"},
+  mea:{n:"The ME Association",u:"https://meassociation.org.uk"},
+  afme:{n:"Action for ME",u:"https://www.actionforme.org.uk"},
+  blf:{n:"British Lung Foundation (Asthma + Lung UK)",u:"https://www.blf.org.uk"},
+  blt:{n:"British Liver Trust",u:"https://britishlivertrust.org.uk"},
+  hysta:{n:"The Hysterectomy Association",u:"https://www.hysterectomy-association.org.uk"},
+  hst:{n:"Hidradenitis Suppurativa Trust",u:"https://www.hstrust.org"},
+  ppsn:{n:"Pelvic Pain Support Network",u:"https://www.pelvicpain.org.uk"},
+  forward:{n:"FORWARD (African Women's Rights)",u:"https://www.forwarduk.org.uk"},
+  nspcc:{n:"NSPCC",u:"https://www.nspcc.org.uk"}
+});
+
+/* 1. Baby loss and pregnancy complications */
+A("stillbirth-baby-loss","Stillbirth and baby loss","Losing a baby, neonatal death",
+"Losing a baby is devastating, and it is not your fault. Specialist support is available for as long as you need it.",
+["preg","repro"],["preg","mind"],["Low mood","Mood changes"],
+"Stillbirth is when a baby dies in the womb after 24 weeks of pregnancy, and neonatal death is when a baby dies in the first 28 days of life. Around 1 in 250 UK births end in stillbirth. Many parents never find a clear reason, and that can be very hard. Grief after baby loss can come in waves and there is no right or wrong way to feel.",
+["Strong grief, numbness, anger, guilt or feeling empty","Trouble sleeping, eating or concentrating","Physical changes after the birth, including bleeding and milk coming in","Finding it hard to be around pregnant women or babies","Anniversaries and everyday moments suddenly feeling very hard"],
+["Often no cause is found","Sometimes a problem with the placenta, an infection, a condition in the baby or a health problem in the mother","It is very rarely caused by anything a parent did or didn't do"],
+["Tests and a post-mortem (if you agree) can sometimes give answers","A review by the maternity team and a follow-up appointment to talk it through","A plan for any future pregnancy, with extra care and support"],
+["Allow yourself time. Grief has no timetable","Ask for the memory-making options the hospital offers, such as photos, hand and footprints, and time with your baby","Contact Sands. Their helpline is 0808 164 3332","Ask your GP or midwife for bereavement or counselling support, and for care that reflects what happened in the next pregnancy","Tell people what helps, even if it is just to be listened to"],
+["Can we have a review of what happened?","What support is there for me and my partner?","What extra care could I have in a future pregnancy?"],
+["Thoughts of harming yourself or not wanting to be here. Call Samaritans free on 116 123, or 999 in an emergency","Heavy bleeding, a high temperature or a hot, red, painful breast after a loss. Contact your maternity unit or call 999"],
+["nhs","sands","tommys","sam"]);
+
+A("molar-pregnancy","Molar pregnancy","Hydatidiform mole, gestational trophoblastic disease",
+"A rare pregnancy problem where the placenta grows abnormally and a baby cannot develop. It needs specialist follow-up.",
+["repro"],["preg"],["Bleeding between periods","Nausea"],
+"In a molar pregnancy, a fertilised egg has the wrong number of chromosomes. The placenta grows as a cluster of cells, and a baby cannot survive. It affects about 1 in 600 pregnancies in the UK. It is usually found at an early scan or after a miscarriage. It is rarely cancerous, and it is almost always curable.",
+["Vaginal bleeding, often brown or bright red","Severe morning sickness","A womb larger than expected for the dates","Often no symptoms and found on a scan"],
+["An error at fertilisation. It is not caused by anything you did","Slightly more common in women under 20 or over 35, and after a previous molar pregnancy"],
+["An early pregnancy scan, then tests on tissue removed from the womb","Blood or urine tests for the pregnancy hormone hCG","Registration with a specialist centre that follows your hCG levels"],
+["Usually removal of the tissue with a short surgical procedure","hCG monitoring until levels are normal, sometimes for several months","Avoid getting pregnant until the specialist centre says it is safe. Ask which contraception to use","A small number of women need chemotherapy, and the outlook is very good"],
+["Which specialist centre will follow me?","How long until I can try again?","Which contraception is safe for me now?"],
+["Heavy bleeding, soaking a pad in an hour, or fainting","Severe tummy pain on one side. This could be an ectopic pregnancy. Go to A&E"],
+["nhs","rcog","molar"]);
+
+A("preterm-labour","Preterm labour and birth","Premature labour, labour before 37 weeks",
+"Labour that starts before 37 weeks. Fast medical care can make a big difference to the baby.",
+["preg"],["preg"],["Pelvic pain"],
+"A baby born before 37 weeks is premature. Preterm labour is when the womb starts to open and contract too early. Medicines can sometimes delay the birth for a short time and help prepare the baby, so getting seen fast is important.",
+["Regular tightenings or period-type cramps","A gush or trickle of fluid (waters breaking)","A show of mucus, sometimes with blood","Low back pain or pressure in the pelvis that feels different from usual","Vaginal bleeding"],
+["Often no clear cause","Infection, a short cervix, twins or triplets, a previous preterm birth, smoking, some health conditions or a problem with the placenta"],
+["An examination, and swabs for infection","A scan and a test on fluid from the vagina to help predict labour","Your cervix may be measured with a vaginal scan if you are at higher risk"],
+["Steroid injections to help the baby's lungs, if birth is likely","Magnesium sulfate to protect the baby's brain, given in labour","Antibiotics if your waters have broken","A neonatal unit team will care for the baby. Bliss offers support to parents"],
+["Am I at higher risk of preterm birth?","Could I have a cervical check or stitch?","What will happen to my baby after birth?"],
+["Regular contractions, waters breaking, bleeding or reduced baby movements before 37 weeks. Call your maternity unit straight away or go to hospital. Call 999 if you cannot get there"],
+["nhs","rcog","tommys","bliss"]);
+
+A("postpartum-haemorrhage","Heavy bleeding after birth","Postpartum haemorrhage (PPH)",
+"Heavy bleeding after having a baby can happen straight away or in the weeks after. It needs urgent medical help.",
+["preg"],["preg"],["Heavy periods","Dizziness","Fatigue"],
+"Some bleeding after birth (lochia) is normal and can last 4 to 6 weeks. A postpartum haemorrhage is heavy blood loss, usually defined as 500 ml or more after a vaginal birth. It can happen in the first 24 hours (primary) or between 24 hours and 12 weeks after birth (secondary). Most women are treated successfully.",
+["Bleeding that soaks a pad in under an hour","Passing large clots, bigger than a golf ball","Feeling dizzy, faint, cold or clammy","A racing heart or fast breathing","A bad-smelling discharge or a high temperature (secondary bleeding with infection)"],
+["The womb not tightening properly after birth","Pieces of placenta left behind","A tear in the womb, cervix or vagina","A clotting problem"],
+["Checked by the midwife or doctor by feeling the womb and measuring blood loss","Blood tests for iron levels and clotting","A scan if bleeding continues after you go home"],
+["Medicines to help the womb tighten, a womb massage, fluids and sometimes a blood transfusion","Surgery is sometimes needed","Eat iron-rich foods and ask about iron tablets","Tell your midwife about all bleeding that worries you, even after discharge"],
+["How much blood did I lose?","Do I need iron treatment?","What does this mean for my next birth?"],
+["Soaking a pad in under an hour, feeling faint or having a racing heart. Call 999","A high temperature or foul-smelling discharge. Contact your midwife or GP the same day"],
+["nhs","rcog","tommys"]);
+
+A("postpartum-psychosis","Postpartum psychosis","Puerperal psychosis",
+"A rare but serious illness that can start in the first weeks after birth. It is a medical emergency, and women recover with treatment.",
+["preg"],["mind","preg"],["Mood changes","Sleep problems","Low mood"],
+"Postpartum psychosis affects about 1 or 2 in every 1,000 women who have a baby. It usually starts suddenly in the first two weeks, though it can start later. It is not postnatal depression and it is not the same as the baby blues. With quick treatment, most women make a full recovery.",
+["Feeling very high, excited, or unable to stop talking or moving","Very low mood or confusion","Seeing or hearing things that are not there","Strange, frightening or unusual beliefs","Being unable to sleep and not feeling tired"],
+["Not fully understood. Hormones and sleep loss may play a part","More likely if you or a close relative have had bipolar disorder or postpartum psychosis before"],
+["A specialist assessment by a psychiatrist","Blood tests and a check to rule out other medical causes"],
+["Treatment is usually in hospital, ideally in a specialist mother and baby unit so you can stay with your baby","Medicines and support, with the family involved","If you are at higher risk, your team can plan extra support before your next baby","Action on Postpartum Psychosis offers peer support to women and families"],
+["Am I at risk because of my family history?","Can I be cared for with my baby?","What is the plan for a future pregnancy?"],
+["Hallucinations, strange beliefs, severe confusion, or thoughts of harming yourself or your baby. Call 999 or go to A&E now. This is a medical emergency","If a partner or relative sees these signs in a new mum, call 999 or 111 urgently. Don't wait"],
+["nhs","nice","app","pandas"]);
+
+A("group-b-strep","Group B strep in pregnancy","GBS",
+"A common bacteria many healthy women carry. It is usually harmless, but it can be passed to a baby at birth.",
+["preg"],["preg"],[],
+"About 1 in 4 women carry group B strep (GBS) in the vagina or bowel without symptoms, and it can come and go. It does not usually cause problems for you. In a small number of cases it can make a newborn baby very unwell. In the UK, most pregnant women are not routinely tested.",
+["Usually no symptoms","It is often found by chance in a urine or swab test during pregnancy","Signs in a baby: grunting, floppiness, a high or low temperature, fast breathing or poor feeding"],
+["GBS naturally lives in the body in many healthy people"],
+["Found in a urine test or swab, or you may be offered a test if you have a higher risk","A private test is available around 35 to 37 weeks if you want one. Ask your midwife","You will be told if you carry GBS"],
+["If GBS is found in this pregnancy, or you had a baby affected by GBS before, you will usually be offered antibiotics through a drip in labour","Tell your midwife as soon as you know you carry GBS","After birth, your baby will be watched closely for signs of infection"],
+["Do I carry GBS?","Should I have antibiotics in labour?","What should I look out for in my baby?"],
+["Your newborn baby is grunting, floppy, very sleepy, not feeding, or has a high or low temperature. Call 999 or go to A&E straight away","Your waters have broken early or you have a fever in labour. Tell your midwife straight away"],
+["nhs","rcog","gbss"]);
+
+/* 2. Neurodivergence and chronic illness */
+A("adhd-autism-women","ADHD and autism in women","Late diagnosis, masking, neurodivergence",
+"ADHD and autism are often missed in women and girls, which can lead to years of struggling without support.",
+["teen","repro","preg","meno","later"],["mind","energy"],["Fatigue","Low mood","Mood changes"],
+"Girls and women often show ADHD and autism differently from boys and men. Many learn to hide their difficulties (masking), which can be exhausting. Because of this, diagnosis often comes late, sometimes after anxiety, depression or burnout. Hormones can change how symptoms feel across the cycle, in pregnancy and in perimenopause.",
+["ADHD: trouble focusing, forgetfulness, disorganisation, restlessness, impulsiveness, strong emotions","Autism: finding social situations tiring, sensory sensitivities, a need for routine, intense interests","Needing a lot of time alone to recover","Often being told you are sensitive, lazy or too much","Anxiety, low mood or burnout"],
+["Both are differences in how the brain develops and they run in families","They are not caused by parenting or by anything a person did"],
+["Ask your GP for a referral for an assessment. In England you may be able to choose a provider under Right to Choose","A specialist assessment with questionnaires, interviews and a look at your childhood","Waiting lists can be long"],
+["ADHD can be treated with medicines and talking therapies, and by changing the environment","Autism support focuses on understanding, reasonable adjustments and avoiding overload","Look after sleep, routine and rest. Peer groups can help","Ask for adjustments at work or study. A diagnosis can help you request them"],
+["Could I have ADHD or autism?","How do I get referred, and how long might it take?","Could hormones be affecting my symptoms?"],
+["Feeling hopeless, or thoughts of self-harm. Call Samaritans free on 116 123, or 999 in an emergency","Severe burnout that stops you working or looking after yourself. See your GP soon"],
+["nhs","nice","adhd","nas","mind"]);
+
+A("me-cfs","ME/CFS (chronic fatigue)","Myalgic encephalomyelitis, chronic fatigue syndrome",
+"A long-term illness that causes severe tiredness, which gets worse after activity. It is more common in women.",
+["teen","repro","meno","later"],["energy"],["Fatigue","Sleep problems","Dizziness"],
+"ME/CFS is a complex illness that affects the whole body. The main feature is post-exertional malaise, where even small amounts of physical, mental or emotional effort bring on a flare of symptoms that can last days. It often follows an infection. It is real and it can range from mild to very severe.",
+["Extreme tiredness that does not go away with rest","Symptoms getting worse after activity, sometimes a day or two later","Unrefreshing sleep","Brain fog, trouble concentrating and memory problems","Muscle and joint pain, headaches, a sore throat and dizziness on standing"],
+["Not fully understood. Often starts after a viral infection","Genes, the immune system and stress may play a part"],
+["Diagnosed from symptoms that last at least 3 months in adults","Blood tests to rule out other causes of tiredness, such as anaemia, thyroid problems and coeliac disease"],
+["Pacing: planning rest and staying within your energy limit","Current NICE guidance says that graded exercise therapy should not be used","Treatment for symptoms like pain, poor sleep or dizziness","Ask for support at work, school or home. A specialist ME/CFS service can help"],
+["Could this be ME/CFS?","Which other conditions should be ruled out?","Can I be referred to a specialist service?"],
+["Being unable to eat, drink or look after yourself. Contact your GP urgently","Chest pain, severe breathlessness or fainting. Call 999"],
+["nhs","nice","mea","afme"]);
+
+A("eating-disorders","Eating disorders","Anorexia, bulimia, binge eating, OSFED",
+"Eating disorders are serious mental illnesses, not a choice. They can affect anyone, and recovery is possible.",
+["teen","repro","preg","meno","later"],["mind"],["Low mood","Irregular periods","Fatigue","Dizziness"],
+"An eating disorder is a way of coping with difficult feelings through food and body image. Types include anorexia, bulimia, binge eating disorder and other specified feeding or eating disorders (OSFED). They can affect periods, fertility, bones and the heart. Getting help early improves the chance of full recovery.",
+["Preoccupation with food, weight or body shape","Skipping meals, strict rules about food, eating in secret or bingeing","Making yourself sick, or misusing laxatives or exercise","Periods that become irregular or stop","Feeling cold, dizzy, faint or very tired"],
+["A mix of genes, personality, life events and pressure around appearance","Often linked to anxiety, low self-esteem or trauma"],
+["A GP or specialist assessment, with blood tests and heart checks","A referral to an eating disorder service, which is free on the NHS","You do not need to be underweight to be seriously unwell"],
+["Talking therapies designed for eating disorders","Support to restore regular eating, with a dietitian","Family support, especially for young people","Beat's helpline is 0808 801 0677 (England)"],
+["How can I get a referral to an eating disorder service?","Could this be affecting my periods or bones?","How can my family support me?"],
+["Fainting, chest pain, a very slow or irregular heartbeat, or not being able to keep fluids down. Go to A&E or call 999","Thoughts of harming yourself. Call Samaritans free on 116 123, or 999 in an emergency"],
+["nhs","nice","beat","sam"]);
+
+A("sleep-apnoea","Sleep apnoea in women","Obstructive sleep apnoea (OSA)",
+"Breathing repeatedly pauses in sleep. It is often missed in women, who may notice tiredness more than snoring.",
+["repro","preg","meno","later"],["energy"],["Fatigue","Sleep problems","Headache","Low mood"],
+"In obstructive sleep apnoea, the airway narrows or closes during sleep, which stops breathing for short periods and disturbs your sleep. Women are less likely to be diagnosed because they report tiredness, low mood, insomnia or morning headaches more than loud snoring. The risk goes up after menopause.",
+["Feeling very tired in the day even after a full night in bed","Morning headaches","Snoring, or gasping or choking in your sleep","Waking often, and needing to wee at night","Low mood, poor concentration or irritability"],
+["The throat muscles relaxing and narrowing the airway","More likely with excess weight, after menopause, in pregnancy, with a large neck, or with PCOS"],
+["A GP assessment and a questionnaire about sleepiness","A home sleep test, or a hospital sleep study","A referral to a sleep clinic"],
+["CPAP, a mask that gently keeps the airway open, is the main treatment","Losing weight if it applies to you, avoiding alcohol in the evening and sleeping on your side","A mouth device that moves the jaw forward may help for milder cases","Treating it can improve energy, mood and heart health"],
+["Could I have sleep apnoea?","Can I have a sleep test?","Is it safe for me to drive?"],
+["Falling asleep while driving or nearly doing so. Do not drive until you have been assessed and tell your GP","Chest pain or severe breathlessness. Call 999"],
+["nhs","nice","blf"]);
+
+/* 3. Procedures and surgery */
+A("hysterectomy","Hysterectomy","Womb removal",
+"An operation to remove the womb, done for heavy bleeding, fibroids, endometriosis, prolapse or cancer.",
+["repro","meno","later"],["repro"],["Heavy periods","Pelvic pain"],
+"A hysterectomy permanently ends periods and the ability to carry a pregnancy. A total hysterectomy removes the womb and cervix. A subtotal hysterectomy leaves the cervix. Sometimes the ovaries and tubes are removed at the same time. It can be done by keyhole surgery, through the vagina or through a cut in the tummy. It is usually offered after other treatments have not worked.",
+["Before surgery, symptoms such as heavy bleeding, pain or pressure","After surgery: soreness, tiredness, a few weeks of light bleeding or discharge","Hot flushes and other menopause symptoms if the ovaries are removed"],
+["Heavy periods, fibroids, endometriosis, adenomyosis, prolapse, or cancer or pre-cancer of the womb or cervix"],
+["A discussion with a gynaecologist about whether surgery is the right option","Scans and sometimes a camera test or biopsy before surgery"],
+["Recovery usually takes 6 to 12 weeks, depending on the type of surgery","Walk gently and build up. Avoid heavy lifting at first","Do not put anything in the vagina or have sex until your surgeon says it is safe, usually after 6 weeks","If you still have a cervix, keep going to cervical screening","Keep your pelvic floor exercises up, and ask about HRT if your ovaries are removed"],
+["Do I need my ovaries or cervix removed?","Which type of surgery is best for me?","How long until I can go back to work and exercise?"],
+["Heavy bleeding, soaking a pad in an hour","A high temperature, a bad-smelling discharge or a hot, red wound","Pain, swelling and redness in one leg, or chest pain and breathlessness. Call 999"],
+["nhs","rcog","hysta"]);
+
+A("surgical-menopause","Surgical menopause","Menopause after ovary removal",
+"Menopause that happens suddenly when both ovaries are removed. Symptoms can be stronger, and treatment can help.",
+["repro","meno","later"],["horm"],["Hot flushes","Mood changes","Sleep problems","Vaginal dryness","Low mood"],
+"When both ovaries are removed (bilateral oophorectomy), hormone levels fall suddenly rather than gradually. Women who have not been through menopause before may get strong symptoms straight away. The same can happen after some cancer treatments such as chemotherapy or radiotherapy to the pelvis.",
+["Severe hot flushes and night sweats","Mood changes, anxiety or low mood","Poor sleep and brain fog","Vaginal dryness and a lower sex drive","Joint aches"],
+["Surgery to remove both ovaries, or treatment that stops the ovaries working"],
+["It is diagnosed because of your surgery and symptoms. No test is needed","A review to check your bones and heart risk"],
+["HRT is usually offered unless there is a reason not to have it, and it can lower the risk of osteoporosis and heart problems when started early","Ask your surgeon about HRT before you have the operation","Weight-bearing exercise, calcium and vitamin D for bones","Talking therapies can help with mood. Peer groups can help too"],
+["Will I be offered HRT after surgery?","How long should I take HRT?","How can I look after my bones and heart?"],
+["Low mood that does not lift, or thoughts of self-harm. Call Samaritans free on 116 123, or 999 in an emergency","Chest pain or breathlessness. Call 999"],
+["nhs","nice","mp","daisy"]);
+
+A("endometrial-ablation","Endometrial ablation","Treatment for heavy periods",
+"A short procedure that destroys the womb lining to make heavy periods lighter. It is not suitable if you want a pregnancy.",
+["repro"],["repro"],["Heavy periods","Painful periods"],
+"Ablation removes or destroys the thin lining of the womb using heat, cold, microwaves or other methods. It is offered for heavy periods when there is no other cause that needs treatment, and when other options such as the coil or tablets have not worked. Many women have much lighter periods, and some have none.",
+["After ablation: period-like cramps and a watery or bloody discharge for a few weeks","Lighter periods, or periods that stop"],
+["It is used for heavy periods when no serious cause has been found"],
+["Tests first, such as a blood test, a scan and sometimes a camera test of the womb","A discussion about whether you have finished having children"],
+["You still need contraception, because pregnancy after ablation is dangerous","It may be done under local or general anaesthetic, and many go home the same day","Most people return to normal activities in a few days","Some women need further treatment, such as a hysterectomy, if heavy bleeding comes back","Report any bleeding after menopause"],
+["Is ablation or another treatment right for me?","How likely am I to have lighter periods or none?","Which contraception should I use?"],
+["A high temperature, severe tummy pain, or heavy bleeding after the procedure. Get medical help the same day","Any bleeding after menopause. See a GP"],
+["nhs","nice","rcog"]);
+
+A("ovarian-torsion","Ovarian torsion","Twisted ovary",
+"When an ovary twists and its blood supply is cut off. It causes sudden severe pain and is an emergency.",
+["teen","repro","preg"],["repro"],["Pelvic pain","Nausea"],
+"Ovarian torsion is when an ovary twists on the tissues that hold it in place. This can cut off its blood supply. Quick treatment can save the ovary. It is more likely if an ovary is enlarged, for example with a cyst, and it can happen at any age.",
+["Sudden, severe pain low down on one side of the tummy","Feeling sick or being sick","Pain that comes in waves, or that starts after exercise or a sudden movement","A mild fever or feeling faint"],
+["An enlarged ovary or cyst, which makes twisting more likely","Fertility treatment, pregnancy and sometimes no clear cause"],
+["An exam and an ultrasound scan, which may show blood flow","Blood tests and a pregnancy test","Sometimes the diagnosis is confirmed during keyhole surgery"],
+["Keyhole surgery to untwist the ovary, and to treat any cyst. Surgeons try to save the ovary where possible","Sometimes the ovary needs to be removed","Painkillers and anti-sickness medicine in hospital"],
+["Can my ovary be saved?","Will this affect my fertility?","What is the chance of it happening again?"],
+["Sudden, severe tummy pain on one side, with being sick. Go to A&E or call 999. This is an emergency","Sudden pain with fainting or a fever"],
+["nhs","rcog"]);
+
+A("sterilisation","Female sterilisation","Tubal occlusion, getting your tubes tied",
+"A permanent method of contraception that blocks the fallopian tubes. It is rarely reversible, so think carefully.",
+["repro","later"],["repro"],[],
+"Female sterilisation blocks or seals the fallopian tubes so eggs can't meet sperm. It is more than 99 per cent effective, but not perfect. About 1 in 200 sterilisations fail over a lifetime, and if it does fail there is a higher chance of an ectopic pregnancy. It does not protect against infections. Long-acting methods such as the implant or coil are just as effective and can be removed.",
+["No periods are affected, and the procedure does not bring on menopause"],
+["Chosen as a permanent method of contraception when you are sure you don't want any or more children"],
+["A discussion with your GP or sexual health clinic","A referral to a gynaecology team","It is usually done by keyhole surgery under anaesthetic. Another method of contraception is needed until it is done"],
+["Think about all options, including long-acting reversible contraception and vasectomy for a partner","Use contraception until your next period or for 3 months after, as advised","Women can usually return to normal activities in a few days"],
+["Is sterilisation or a long-acting reversible method best for me?","What are the risks?","What if I change my mind?"],
+["Severe tummy pain or a missed period after sterilisation. This could be an ectopic pregnancy. Go to A&E","A high temperature, a very painful or swollen tummy, or a red wound"],
+["nhs","rcog","sh"]);
+
+A("emergency-contraception","Emergency contraception","The morning-after pill, the emergency coil",
+"A way to prevent pregnancy after unprotected sex. The sooner you take it, the better it works.",
+["teen","repro"],["repro","sexual"],[],
+"Emergency contraception can be used after sex without contraception, or if your contraception failed, for example a split condom or missed pills. There are two pills and a copper coil. It does not protect against infections. Pills are available from pharmacies, sexual health clinics and GPs, and are often free.",
+["No symptoms. Some people feel sick, tired or have a headache","Your next period may come early or late"],
+["Unprotected sex, a condom that split or slipped, or missed contraceptive pills"],
+["A pregnancy test if your period is more than 7 days late, or 3 weeks after unprotected sex if you did not get a period"],
+["The copper coil is the most effective, and can be fitted up to 5 days after sex","Ulipristal can be taken up to 5 days (120 hours) after sex","Levonorgestrel can be taken up to 3 days (72 hours) after sex. It may be less effective if you weigh over 70 kg or have a BMI over 26, so ask a pharmacist","If you are sick within 2 to 3 hours of taking a pill, you may need another dose. Ask a pharmacist","Get tested for infections if there was a risk, and start regular contraception"],
+["Which emergency method is best for me?","Do I need an infection test?","What regular contraception should I use?"],
+["Severe tummy pain 3 to 5 weeks after taking it. This could be an ectopic pregnancy. Go to A&E","If you are unsure of your options, call NHS 111 or visit a sexual health clinic as soon as possible"],
+["nhs","rcog","sh"]);
+
+A("colposcopy","Colposcopy","A closer look at the cervix",
+"A short examination of the cervix with a magnifying device, after an abnormal screening test.",
+["repro","meno"],["cancer","repro"],["Bleeding after sex","Bleeding between periods"],
+"A colposcopy looks closely at the cervix using a special microscope. It is offered if your cervical screening showed HPV with cell changes, or if there are other symptoms. Most changes are not cancer, and finding them early means they can be treated before they become a problem.",
+["The test itself can feel like a smear, with some pressure or discomfort","A little spotting or discharge afterwards"],
+["Cell changes in the cervix, most often caused by HPV","Sometimes bleeding after sex or other symptoms"],
+["A speculum is used to see the cervix, which is painted with liquid to show abnormal areas","A small sample (biopsy) may be taken for the lab","Results usually take a few weeks"],
+["Ask for a chaperone or a break if you need one. You can ask to stop at any time","Avoid tampons, sex and swimming for a few days after a biopsy, or as advised","If treatment is needed, it is often a quick procedure to remove the affected area, sometimes at the same visit","Keep going to your follow-up screening tests"],
+["What did my screening result mean?","Do I need treatment today?","When is my next test?"],
+["Heavy bleeding, a bad-smelling discharge or a high temperature after the procedure. See a GP or call NHS 111","Bleeding after sex or between periods that continues. Tell your GP"],
+["nhs","jos","cruk"]);
+
+/* 4. Skin and body */
+A("hidradenitis","Hidradenitis suppurativa","HS, acne inversa",
+"Painful lumps and boils in areas like the armpits, groin and under the breasts. It is often misdiagnosed and is more common in women.",
+["teen","repro","meno"],["skin"],["Itching","Swelling"],
+"HS is a long-term inflammatory skin condition that causes deep, painful lumps that can burst and leave scars. It is not caused by poor hygiene, and it is not an infection you can catch. It often starts after puberty. Many people wait years for a diagnosis, so it helps to know the signs.",
+["Painful, deep lumps in the armpits, groin, buttocks or under the breasts","Lumps that burst and leak pus, and then come back in the same places","Scarring and tunnels under the skin in more severe cases","Symptoms that flare around periods"],
+["Not fully understood. Genes, hormones, smoking and excess weight can play a part"],
+["A GP or dermatologist can diagnose it from the pattern of lumps and your history","Ask for a referral to a dermatology service if it keeps coming back"],
+["Antibacterial washes, creams and antibiotic courses","Biologic medicines for moderate to severe HS, prescribed by specialists","Surgery for scarred or tunnelling areas","Stopping smoking, losing weight if it applies, and wearing loose clothes can help","Pain relief and emotional support. The HS Trust has useful advice"],
+["Could I have HS rather than boils?","Should I see a dermatologist?","Are biologic medicines an option for me?"],
+["A very painful, swollen area with a fever or feeling very unwell. See a GP the same day","Spreading redness or red streaks. Seek urgent help"],
+["nhs","bad","hst"]);
+
+A("melasma","Melasma","Brown patches on the face, chloasma",
+"Brown or grey-brown patches on the face, linked to hormones and the sun. Common in pregnancy and with some contraception.",
+["repro","preg","meno"],["skin"],["Acne"],
+"Melasma causes flat, brown or grey patches on the cheeks, forehead, nose or upper lip. It is harmless, but it can affect confidence. It is triggered by sun exposure and hormones, such as in pregnancy or when taking some hormonal contraception. It may fade on its own after pregnancy or when the trigger is removed.",
+["Symmetrical brown or grey-brown patches on the face","Patches that get darker in summer or with sun exposure","No itching or pain"],
+["Sunlight and hormones, including pregnancy and some pills","More common in people with darker skin tones, and it often runs in families"],
+["A GP or dermatologist can diagnose it by looking at the skin","Sometimes a special light is used to check how deep the colour sits"],
+["Use sunscreen every day, SPF 50 with UVA protection, and wear a hat","Avoid harsh scrubs or products that irritate the skin","A dermatologist can prescribe creams, peels or other treatments","Ask your doctor about your contraception if you think it is a trigger"],
+["Could my contraception be a trigger?","Which treatments are safe for me, especially if I'm pregnant or breastfeeding?","How can I protect my skin from the sun?"],
+["A dark patch or mole that changes in size, shape or colour, bleeds or itches. See a GP promptly. This is not melasma"],
+["nhs","bad"]);
+
+A("varicose-veins","Varicose veins","Swollen, twisted veins",
+"Swollen, bulging veins, most often in the legs. They are common in pregnancy and are usually harmless.",
+["repro","preg","meno","later"],["heart"],["Swelling"],
+"Varicose veins happen when the valves in the veins stop working properly, so blood pools. They are more common in women, in pregnancy, with age and with long periods of standing. They often cause aching or heaviness, but many people have no symptoms. Pregnancy ones often improve after birth.",
+["Dark purple or blue, lumpy or twisted veins","Aching, heavy or tired legs","Burning, throbbing or itching around the veins","Swollen ankles at the end of the day"],
+["Weakened vein valves. Hormones, pregnancy, family history, age and standing for long periods all play a part"],
+["A GP can usually diagnose it by looking and feeling","A scan may be offered to check blood flow"],
+["Walk regularly, raise your legs when resting and avoid standing still for long periods","Compression stockings can ease aching. Ask a pharmacist or your midwife","Treatment such as a minimally invasive procedure is available, and the NHS offers it if you have complications","Do not stop moving. Gentle exercise helps"],
+["Do I need treatment?","Are compression stockings safe for me?","Will it improve after pregnancy?"],
+["A painful, swollen, red or warm leg, especially if only one leg is affected. This could be a blood clot (DVT). Seek urgent help","Chest pain or breathlessness with a swollen leg. Call 999","A vein that bleeds. Lie down, raise the leg and press firmly on it with a clean cloth. Call 999 if it will not stop"],
+["nhs","nice"]);
+
+A("carpal-tunnel","Carpal tunnel syndrome","Tingling and numbness in the hand",
+"Pressure on a nerve in the wrist causes tingling, numbness and pain in the hand. It is common in pregnancy and around menopause.",
+["repro","preg","meno","later"],["bone","head"],["Swelling"],
+"The carpal tunnel is a narrow gap in the wrist. The median nerve and tendons pass through it. If the area swells, the nerve can be squeezed. It is more common in women, in pregnancy and around menopause, and after repetitive hand work. It often settles after pregnancy.",
+["Tingling, numbness or pins and needles in the thumb, index, middle and part of the ring finger","Pain in the hand or forearm, worse at night","Weak grip and dropping things","Relief from shaking the hand"],
+["Swelling in the wrist from fluid retention in pregnancy, hormonal changes, thyroid problems, diabetes or repetitive wrist use"],
+["A GP can often diagnose it from your symptoms and a physical exam","Nerve tests and blood tests may be done to check for other causes"],
+["Wear a wrist splint at night to keep the wrist straight","Rest and change the way you do repetitive tasks","A steroid injection can help if symptoms continue","Surgery to release the pressure is an option if other treatments do not work","In pregnancy, it often improves after birth"],
+["Could a splint help me?","Do I need tests for other causes?","Would an injection or surgery be right for me?"],
+["Constant numbness, weakness in the hand, or wasting at the base of the thumb. See a GP soon to prevent permanent nerve damage","Sudden severe weakness or numbness in the face, arm or leg. Call 999. This could be a stroke"],
+["nhs","nice"]);
+
+A("gallstones","Gallstones","Gallbladder pain",
+"Small stones that form in the gallbladder. They are more common in women, in pregnancy and with rapid weight loss.",
+["repro","preg","meno","later"],["gut"],["Nausea","Bloating"],
+"Gallstones are small hard lumps that form from bile. Many people have them without symptoms. If one blocks a bile duct it can cause sudden pain (biliary colic). Women are more likely to get them, especially during pregnancy, with rapid weight loss and with some hormone treatments.",
+["Sudden severe pain in the upper right tummy or below the breastbone, often after a meal","Pain that can spread to the back or shoulder blade","Feeling or being sick","Bloating and indigestion"],
+["Too much cholesterol or bile pigment in the bile","More likely with pregnancy, rapid weight loss, excess weight, a family history, and HRT or the pill"],
+["A GP will examine you and may order blood tests","An ultrasound scan to look for stones"],
+["Small meals that are lower in fat, and regular, gradual weight loss rather than crash diets","Painkillers for attacks","Keyhole surgery to remove the gallbladder if you have repeated attacks. You can live well without it","Mention symptoms in pregnancy to your midwife"],
+["Do I need surgery?","Which foods trigger my pain?","Could my medicines be a factor?"],
+["Severe pain lasting more than a few hours, a high temperature, shivering, yellow skin or eyes, dark wee or pale poo. Go to A&E or call 999. This could be a serious complication"],
+["nhs","nice","blt"]);
+
+/* 5. Other */
+A("fgm","Female genital mutilation (FGM)","Female genital cutting",
+"FGM is illegal in the UK and harms health. Confidential medical and emotional support is available, and nobody will judge you.",
+["teen","repro","preg","meno","later"],["everyday","sexual"],["Painful sex","Pelvic pain","Burning when peeing","Low mood"],
+"FGM means cutting or removing part of the female genitals for non-medical reasons. It is a form of abuse. It is illegal in the UK, and also to take a girl abroad for it. It can cause long-term pain, infections, problems with periods, sex, childbirth and mental health. NHS staff are trained to look after women and girls affected, and you can get specialist care in confidence.",
+["Pain, scarring or tenderness","Difficulty passing urine, or recurring urine infections","Painful periods and problems with periods","Painful sex or difficulty with sex","Problems in labour and childbirth","Anxiety, low mood and flashbacks"],
+["A cultural or family practice. It has no health benefit"],
+["A GP, midwife or sexual health nurse can talk to you in private","Specialist FGM clinics can assess you and explain your options","Pregnant women are offered extra support and a birth plan"],
+["Specialist surgery (reversal, or de-infibulation) is available on the NHS if you want it","Counselling and trauma support can help","If you are pregnant, tell your midwife early so they can plan your care","Health professionals have a duty to report FGM in under-18s, but they will support you","You can ask for help in confidence from the NSPCC FGM helpline on 0800 028 3550 or FORWARD"],
+["Where is my nearest specialist FGM clinic?","What are my options for care in pregnancy?","How can I get emotional support?"],
+["If a girl is at immediate risk or in danger, call 999","If you are worried a girl may be taken abroad for FGM, call the NSPCC FGM helpline on 0800 028 3550 or 999 if it is urgent"],
+["nhs","nspcc","forward","rcog"]);
+
+A("brca-inherited-risk","BRCA and inherited cancer risk","BRCA1 and BRCA2 gene changes",
+"Some gene changes passed down in families raise the chance of breast and ovarian cancer. Knowing your risk gives you options.",
+["repro","meno","later"],["cancer","breast"],["Breast changes"],
+"BRCA1 and BRCA2 are genes that help protect against cancer. Faulty versions can raise the risk of breast, ovarian and some other cancers. Most breast and ovarian cancers are not inherited, but a strong family history is a reason to ask about testing. A gene change is a risk, not a diagnosis.",
+["No symptoms. It is about family history, not current illness","Several close relatives with breast or ovarian cancer, especially at a younger age","A relative with a known BRCA gene change","Breast cancer before 40, or in both breasts, or in a male relative"],
+["Faulty genes passed down in families. Each child has a 1 in 2 chance of inheriting it from an affected parent"],
+["Ask your GP to refer you to a genetics service if you have a strong family history","A blood or saliva test looks for gene changes. You will be offered counselling first","NHS testing has criteria. Not everyone qualifies"],
+["Extra screening, such as yearly breast MRI scans from a younger age","Medicines to lower the chance of breast cancer in some people","Risk-reducing surgery, such as removal of the ovaries and tubes, or breasts, is an option for some, but it is a very personal choice","Know your body and report any changes quickly","Talk to relatives so that they can also get advice"],
+["Do I meet the criteria for testing?","What would a positive result mean for me and my family?","What options would I have?"],
+["Any new breast lump, nipple change or persistent bloating. See a GP promptly, whatever your risk"],
+["nhs","bcn","ovca","cruk"]);
+
+A("pudendal-neuralgia","Pudendal neuralgia","Pudendal nerve pain",
+"Burning, stabbing or aching pain around the genitals and bottom, usually worse when sitting.",
+["repro","meno","later"],["urinary","sexual","everyday"],["Pelvic pain","Painful sex"],
+"The pudendal nerve supplies the skin and muscles around the pelvis, genitals and back passage. If it is irritated or trapped, it can cause long-lasting pain. It can follow childbirth, injury, cycling or long periods of sitting, but sometimes there is no clear cause. It is often misdiagnosed, so it can take time to get answers.",
+["Burning, stabbing or aching pain around the vulva, vagina or bottom","Pain that is worse when sitting and eases when standing, lying down or sitting on the toilet","A feeling of swelling or a foreign object in the area","Pain during or after sex, or with a full bladder or bowel","Numbness or increased sensitivity"],
+["Pressure or stretching of the nerve, for example during childbirth, injury, surgery, or long periods of sitting or cycling","Sometimes no clear cause"],
+["Diagnosed from your symptoms and an examination, as there is no single test","A referral to a pain clinic or a specialist in pelvic pain","Nerve blocks are sometimes used to help confirm the diagnosis"],
+["A special cushion, and avoiding long periods of sitting","Pelvic health physiotherapy, with an experienced physio","Medicines for nerve pain, and nerve injections","Counselling and pain management support. Pelvic Pain Support Network offers help","Surgery is an option for a few people"],
+["Could this be pudendal neuralgia?","Can I see a pelvic pain specialist?","Which treatments could help me?"],
+["Numbness around your genitals and back passage, new difficulty passing urine, or loss of bowel control. Go to A&E or call 999 straight away. This can be a sign of nerve damage in the spine"],
+["nhs","ppsn","vps"]);
+
+
 /* ---------- Coming-soon list ---------- */
 const have=new Set(ENTRIES.map(e=>e.name.toLowerCase()));
-const next=["ME/CFS (chronic fatigue)","ADHD and autism in women","Sleep apnoea in women","Eating disorders","Gallstones","Carpal tunnel syndrome"];
+const next=["Twin pregnancy","Vaginal birth after caesarean (VBAC)","Genital warts","Chlamydia and gonorrhoea","Kidney stones"];
 COMING.length=0;next.forEach(n=>COMING.push(n));
 
 window.HZ_ADDED=added.length;
