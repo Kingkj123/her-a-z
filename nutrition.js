@@ -128,7 +128,7 @@ function html() {
   });
   h += "</div></div>";
 
-  try { if (window.HZN && window.HZN.checklistCard) h += window.HZN.checklistCard(); } catch (e) { }
+  try { if (window.HZN && window.HZN.checklistCard) h += window.HZN.checklistCard(sel); } catch (e) { }
 
   h += '<div class="trk-card hzn-card" style="--hzn:' + col + '">';
   h += '<h2 style="margin-top:0">' + esc(p.name) + "</h2>";
