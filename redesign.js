@@ -187,6 +187,9 @@ body:has(.hz-exit) .rd-top{padding-right:112px}
 .rd-blob.b2{width:120px;height:120px;right:40px;bottom:-60px;background:#FFD9C4;opacity:.5}
 .rd-blob.b3{width:70px;height:70px;left:-24px;bottom:30px;background:#E9DCFF;opacity:.45}
 a.btn{text-decoration:none}
+.tabs .tab{flex:1 1 auto}
+.hz-fab{width:52px!important;height:52px!important}
+body:has(.hz-fab) .wrap{padding-bottom:170px}
 .rd-search{position:relative;display:flex;align-items:center;gap:8px;background:#fff;color:var(--muted);border-radius:999px;padding:4px 6px 4px 16px;box-shadow:0 8px 20px rgba(120,20,60,.18)}
 .rd-search input{flex:1;border:0;outline:0;background:none;font:600 16px var(--body);color:var(--ink);padding:12px 6px;min-width:0}
 .rd-search:focus-within{outline:3px solid #fff;outline-offset:2px}
