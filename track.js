@@ -77,7 +77,7 @@ function head(){
   return `<div class="brand"><i></i>Her A–Z</div>
   <h1 style="font-size:30px;margin-bottom:6px">Track</h1>
   <p class="privacy">Your diary stays on this device only. Nothing is sent to a server, and clearing your browser data will erase it. Estimates here are not a form of contraception or a diagnosis.</p>
-  <div class="trk-segs" role="group" aria-label="Track sections">${seg("log","Log")}${seg("cal","Calendar")}${seg("pat","Patterns")}</div>`;
+  <div class="trk-segs" role="group" aria-label="Track sections">${seg("log","Log")}${seg("cal","Calendar")}${seg("pat","Patterns")}${seg("nut","Nutrition")}</div>`;
 }
 
 function viewLog(T,A){
@@ -214,7 +214,7 @@ function summaryText(T,A){
 
 window.viewTrack=function(){
   const T=load(),A=analyse(T);
-  const body=st.tab==="cal"?viewCal(T,A):st.tab==="pat"?viewPat(T,A):viewLog(T,A);
+  const body=st.tab==="nut"?(window.hzNutrition?window.hzNutrition():""):st.tab==="cal"?viewCal(T,A):st.tab==="pat"?viewPat(T,A):viewLog(T,A);
   $("#app").innerHTML=`<div class="wrap trk">${head()}${body}<p class="disclaimer">${DISCLAIMER}</p></div>`;
 };
 function rerender(keepScroll){const y=window.scrollY;window.viewTrack();tabs();if(keepScroll)window.scrollTo(0,y)}
