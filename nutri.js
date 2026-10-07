@@ -201,7 +201,7 @@ function checklistCard(sel) {
   var key = (sel && FOCUS[sel]) ? sel : (p ? p.key : null);
   if (!key) return "";
   var isNow = !!(p && p.key === key);
-  var title = isNow ? "Today's food checklist" : "Foods for your " + pname(key) + " phase";
+  var title = isNow ? "Today's food checklist" : "Foods for the " + pname(key).toLowerCase() + (key === "fert" ? "" : " phase");
   var note = isNow ? "" : '<p class="hzn-small">You are viewing a different phase. Ticks still count for today.</p>';
   return '<div class="trk-card hzn-hubcard" style="--hzn-col:' + pcol(key) + '"><h2 style="margin-top:0">' + esc(title) + "</h2>" + note + '<div data-hzn-box="' + key + '">' + checklistInner(key) + "</div></div>";
 }
