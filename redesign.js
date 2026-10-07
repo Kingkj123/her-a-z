@@ -75,7 +75,12 @@ function picks(){
  let pool=ENTRIES.slice();
  if(areas.length)pool=pool.filter(x=>(x.areas||[]).some(a=>areas.indexOf(a)>-1));
  if(stage){const s=pool.filter(x=>x.stages.indexOf(stage)>-1);if(s.length)pool=s}
- const off=day()%Math.max(1,pool.length-4);pool=pool.slice(off,off+4);
+ const heavy=["cancer"].concat((M.goals||[]).indexOf("sexual")>-1?[]:["sexual"]);
+ const soft=pool.filter(x=>!(x.areas||[]).some(a=>heavy.indexOf(a)>-1));if(soft.length>=4)pool=soft;
+ const easy=/period|pms|bloat|acne|sleep|stress|mood|migraine|flush|thrush|fatigue|tired|iron|cramp|breast-pain|ovulation|discharge/;
+ pool.sort((a,b)=>(easy.test(b.id)?1:0)-(easy.test(a.id)?1:0));
+ const top=pool.filter(x=>easy.test(x.id));if(top.length>=4)pool=top;
+ const off=day()%Math.max(1,pool.length-3);pool=pool.slice(off,off+4);
  if(!pool.length)return "";
  return `<section class="rd-picks"><div class="rd-head"><h2>Picked for you</h2><a href="#/browse">See all</a></div><div class="rd-scroll">${pool.map((x,i)=>{const k=(x.areas||[]).find(a=>D().ART&&D().ART[a])||"repro";return `<a class="rd-pick" href="#/entry/${x.id}" style="--pc:${PICKCOL[i%4]}"><span class="rd-pill">${art(k)}</span><b>${e(x.name)}</b><span>${e(x.short)}</span></a>`}).join("")}</div></section>`;
 }
@@ -113,7 +118,7 @@ function refreshToday(){const t=q(".rd-today");if(t){t.outerHTML=todayCard()}}
 const STAGE_COL={teen:"#FFE1EA",repro:"#FFE7D9",preg:"#E1F3E8",meno:"#EFE6FF",later:"#FFF1D6"};
 let stageFilter=null;
 function decorateBrowse(app){
- const w=q(".wrap",app);if(!w||w.dataset.rd)return;w.dataset.rd="1";
+ const w=q(".wrap",app);if(!w||w.dataset.rdx)return;w.dataset.rdx="1";
  const h1=q("h1",w),p=q("p.muted",w),bq=q("#bq",w);
  if(h1)h1.textContent="Learn about your body";
  if(p)p.textContent="Plain-English guides for every stage of life. Pick where you are, choose a topic, or search.";
@@ -131,7 +136,7 @@ function applyStage(){
  const list=q("#azlist");if(!list)return;
  let n=0;
  qa(".row",list).forEach(r=>{const id=(r.getAttribute("href")||"").split("/")[2];const en=ENTRIES.find(x=>x.id===id);const ok=!stageFilter||(en&&en.stages.indexOf(stageFilter)>-1);r.hidden=!ok;if(ok)n++});
- qa(":scope > :not(.row)",list).forEach(h=>{let s=h.nextElementSibling,any=false;while(s&&s.classList.contains("row")){if(!s.hidden){any=true;break}s=s.nextElementSibling}h.hidden=!!stageFilter&&!any});
+ qa(":scope > .list",list).forEach(g=>{const any=qa(".row",g).some(r=>!r.hidden);g.hidden=!any;const h=g.previousElementSibling;if(h&&h.classList.contains("az-letter")){let nx=h.nextElementSibling,vis=false;while(nx&&nx.classList.contains("list")){if(!nx.hidden){vis=true;break}nx=nx.nextElementSibling}h.hidden=!vis}});
  const note=q("#rd-stagenote");
  if(note)note.innerHTML=stageFilter?`Showing ${n} guides for ${e((STAGES.find(s=>s.k===stageFilter)||{}).n||"")}. <button type="button" class="rd-link" data-rdstage="${stageFilter}">Show all</button>`:"";
  const jump=q(".jump");if(jump)jump.hidden=!!stageFilter;
@@ -140,7 +145,7 @@ function applyStage(){
 /* ---------- Wiring ---------- */
 document.addEventListener("click",ev=>{
  const t=ev.target;if(!t.closest)return;
- const rd=t.closest("[data-rd]");
+ const rd=t.closest("button[data-rd]");
  if(rd){
   const k=rd.dataset.rd,d=D();if(d.buzz)d.buzz(8);
   if(k==="body"&&d.sheet)d.sheet(`<h2 style="margin:0 0 4px">Where's it bothering you?</h2>${d.bodyHtml().replace('<h2>Where\'s it bothering you?</h2>','')}<a class="btn block ghost" href="#/ask" data-hz="close" style="margin-top:6px;text-decoration:none">Or describe it in your own words</a>`,"Body map");
@@ -255,6 +260,7 @@ body:has(.hz-exit) .rd-top{padding-right:112px}
 @media (max-width:380px){.rd-tile{min-height:136px;padding:14px 12px}.rd-tile b{font-size:17px}.rd-moods .hz-face{width:34px;height:34px}}
 @media (prefers-reduced-motion:no-preference){.rd-tile,.rd-pick,.rd-stage,.rd-mood,.rd-setup{transition:transform .14s ease,box-shadow .2s ease}.rd-tile:active,.rd-pick:active,.rd-stage:active,.rd-mood:active,.rd-setup:active{transform:scale(.97)}.rd-tile:hover,.rd-pick:hover{transform:translateY(-3px)}.rd-blob.b1{animation:rdFloat 9s ease-in-out infinite}.rd-blob.b2{animation:rdFloat 11s ease-in-out infinite reverse}@keyframes rdFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-12px,10px)}}}`;
 document.head.appendChild(css);
+if(typeof window.tabs==="function"&&!window.tabs.__rd){const _t=window.tabs;window.tabs=function(){_t.apply(this,arguments);qa("#tabs .tab span").forEach(sp=>{if(sp.textContent==="A to Z")sp.textContent="Learn"})};window.tabs.__rd=true;try{if(q("#tabs .tab"))window.tabs()}catch(x){}}
 const obs=new MutationObserver(run);
 obs.observe(q("#app"),{childList:true,subtree:true});
 window.addEventListener("hashchange",()=>{stageFilter=null;setTimeout(run,0)});
