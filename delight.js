@@ -135,11 +135,11 @@ const BODY={
  mind:{n:"Mood, sleep and energy",areas:["mind","energy"],ask:["Always tired","Can't sleep","Low mood","Anxiety","Mood swings before my period"]}
 };
 function bodyHtml(){
- const spot=(k,x,y)=>`<g class="hz-spot" data-body="${k}" tabindex="0" role="button" aria-label="${e(BODY[k].n)}"><circle cx="${x}" cy="${y}" r="15" class="hz-spot-ring"/><circle cx="${x}" cy="${y}" r="6" class="hz-spot-dot"/></g>`;
+ const spot=(k,x,y)=>`<g class="hz-spot" data-body="${k}" tabindex="0" role="button" aria-label="${e(BODY[k].n)}"><circle cx="${x}" cy="${y}" r="13" class="hz-spot-ring"/><circle cx="${x}" cy="${y}" r="5" class="hz-spot-dot"/></g>`;
  return `<section class="hz-box hz-bodybox" id="hz-body"><h2>Where's it bothering you?</h2><p class="hz-small" style="margin:0 0 6px">Tap the body or a button to see common symptoms and guides.</p>
- <div class="hz-bodywrap"><svg viewBox="0 0 200 290" class="hz-bodysvg" aria-hidden="false" role="group" aria-label="Body map">
-  <g class="hz-fig"><path d="M77 80c-12 5-18 13-25 30l-14 38c-2 6 5 9 8 4l15-30v45c0 6 3 9 6 10l2 92c0 8 12 8 13 0l6-82h4l6 82c1 8 13 8 13 0l2-92c3-1 6-4 6-10v-45l15 30c3 5 10 2 8-4l-14-38c-7-17-13-25-25-30z"/><circle cx="100" cy="42" r="24"/><path d="M92 64h16v12H92z"/></g>
-  ${spot("head",100,40)}${spot("chest",100,98)}${spot("tummy",100,130)}${spot("pelvis",100,160)}${spot("skin",44,150)}${spot("joints",86,232)}
+ <div class="hz-bodywrap"><svg viewBox="20 6 160 296" class="hz-bodysvg" aria-hidden="false" role="group" aria-label="Body map">
+  <defs> <g id="hz-half">  <path class="sk" d="M101 54L93 54L93 64C93 70 92 74 90 77C82 80 72 81 67 86C63 90 62 96 63 104C64 116 70 124 71 134C72 144 74 150 75 156C76 164 68 174 66 186C64 198 66 214 70 230C73 242 74 250 74 258C74 270 78 280 80 288C80 292 78 295 82 296L94 296C95 290 94 286 94 280C94 262 96 236 98 214C99 205 99 200 101 196Z"/>  <path class="ln" d="M93 64C93 70 92 74 90 77C82 80 72 81 67 86C63 90 62 96 63 104C64 116 70 124 71 134C72 144 74 150 75 156C76 164 68 174 66 186C64 198 66 214 70 230C73 242 74 250 74 258C74 270 78 280 80 288C80 292 78 295 82 296L94 296C95 290 94 286 94 280C94 262 96 236 98 214C99 205 99.5 199 100 196"/>  <path class="sk" d="M67 86C59 90 56 100 55 110C53 128 50 146 48 162C46 176 45 188 46 198C46 204 48 208 52 208C56 208 57 204 56 198C56 186 58 172 60 160C62 146 64 130 64 116C64 106 66 94 70 86Z"/>  <path class="ln" d="M67 86C59 90 56 100 55 110C53 128 50 146 48 162C46 176 45 188 46 198C46 204 48 208 52 208C56 208 57 204 56 198C56 186 58 172 60 160C62 146 64 130 64 116"/> </g> <path id="hz-hairb" d="M101 13C86 13 76 23 76 39C76 53 74 61 70 68C78 72 86 70 90 63L101 63Z"/> <path id="hz-fringe" d="M101 16C92 16 84 22 83 34C88 29 95 26 101 25Z"/></defs><g class="hz-fig"> <use href="#hz-hairb" class="hr"/><use href="#hz-hairb" class="hr" transform="translate(200 0) scale(-1 1)"/> <use href="#hz-half"/><use href="#hz-half" transform="translate(200 0) scale(-1 1)"/> <ellipse class="sk" cx="100" cy="37" rx="17" ry="21"/><ellipse class="ln" cx="100" cy="37" rx="17" ry="21"/> <use href="#hz-fringe" class="hr"/><use href="#hz-fringe" class="hr" transform="translate(200 0) scale(-1 1)"/></g>
+  ${spot("head",100,36)}${spot("chest",100,118)}${spot("tummy",100,150)}${spot("pelvis",100,182)}${spot("skin",51,200)}${spot("joints",126,250)}
  </svg>
  <div class="hz-bodybtns">${Object.keys(BODY).map(k=>`<button type="button" class="chip" data-body="${k}">${e(BODY[k].n)}</button>`).join("")}</div></div></section>`;
 }
@@ -346,7 +346,7 @@ css.textContent=`:root{--hz-fill:#FFE1E9}
 .hz-wheel-empty{display:flex;gap:14px;align-items:center}
 .hz-bodywrap{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:12px;align-items:center}
 .hz-bodysvg{width:100%;height:auto}
-.hz-fig path,.hz-fig circle{fill:#FFE6EC;stroke:#E9B5C4;stroke-width:2}
+.hz-fig .sk{fill:#FFE6EC}.hz-fig .ln{fill:none;stroke:#E2A9BB;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.hz-fig .hr{fill:#E7A9BC}
 .hz-spot{cursor:pointer;outline:none}
 .hz-spot-ring{fill:rgba(208,53,106,.10);stroke:var(--accent);stroke-width:2;transform-box:fill-box;transform-origin:center}
 .hz-spot-dot{fill:var(--accent)}
