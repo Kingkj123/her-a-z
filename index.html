@@ -1383,9 +1383,9 @@ const ICON={
 };
 function tabs(){
  const h=location.hash||'#/';
- const cur=h.startsWith('#/browse')||h.startsWith('#/area')?'browse':h.startsWith('#/ask')?'ask':h.startsWith('#/supps')?'supps':(h.startsWith('#/saved')||h.startsWith('#/me'))?'me':'home';
+ const cur=h.startsWith('#/browse')||h.startsWith('#/area')||h.startsWith('#/supps')?'browse':h.startsWith('#/ask')?'ask':(h.startsWith('#/saved')||h.startsWith('#/me'))?'me':'home';
  const t=(k,href,label,ic)=>`<button class="tab" ${cur===k?'aria-current="page"':''} onclick="location.hash='${href}'">${ic}<span>${label}</span></button>`;
- $('#tabs').innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t('home','#/','Home',ICON.home)}${t('browse','#/browse','A to Z',ICON.az)}${t('ask','#/ask','Ask',ICON.ask)}${t('supps','#/supps','Supplements',ICON.pill)}${t('me','#/me','Me',ICON.me)}</div></nav>`;
+ $('#tabs').innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t('home','#/','Home',ICON.home)}${t('browse','#/browse','Learn',ICON.az)}${t('ask','#/ask','Ask',ICON.ask)}${t('me','#/me','Me',ICON.me)}</div></nav>`;
 }
 function route(){
  if(!profile){viewOnboarding();return}
