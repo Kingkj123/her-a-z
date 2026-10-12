@@ -360,8 +360,7 @@ function decorate() {
   try {
     var app = document.getElementById("app"); if (!app) return;
     var h = location.hash || "#/";
-    if (h === "#/" || h === "#" || h === "") injectHub(app);
-    else if (h.indexOf("#/track") === 0) injectTrack(app);
+    if (h.indexOf("#/track") === 0) injectTrack(app);
     else if (h.indexOf("#/entry/") === 0) injectEntry(app, h.split("/")[2]);
     else if (h.indexOf("#/supps") === 0) injectSupps(app);
   } catch (x) { if (window.__hzDebug) console.error(x); }

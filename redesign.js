@@ -54,10 +54,10 @@ function thanks(m){
 }
 function tiles(){
  return `<div class="rd-tiles">
-  <button type="button" class="rd-tile t1" data-rd="body"><span class="rd-ill">${art("everyday")}</span><b>Something feels off?</b><span>Tap where it bothers you</span></button>
-  <button type="button" class="rd-tile t2" data-rd="log"><span class="rd-ill">${art("track")}</span><b>Log today</b><span>Period, pain and mood in seconds</span></button>
-  <a class="rd-tile t3" href="#/browse"><span class="rd-ill">${art("mind")}</span><b>Learn about your body</b><span>Plain-English guides</span></a>
-  <a class="rd-tile t4" href="#/breathe"><span class="rd-ill">${art("breathe")}</span><b>Take a breather</b><span>Calm cramps, stress or flushes</span></a>
+  <button type="button" class="rd-tile t1" data-rd="body"><span class="rd-ill">${art("everyday")}</span><b>Check a symptom</b><span>Tap where it bothers you</span></button>
+  <button type="button" class="rd-tile t2" data-rd="log"><span class="rd-ill">${art("track")}</span><b>Log how you feel</b><span>Period, pain and mood in seconds</span></button>
+  <a class="rd-tile t3" href="#/track"><span class="rd-ill">${art("repro")}</span><b>Track my cycle</b><span>Calendar, patterns and food</span></a>
+  <a class="rd-tile t4" href="#/breathe"><span class="rd-ill">${art("breathe")}</span><b>Breathing exercise</b><span>Calm cramps, stress or flushes</span></a>
  </div>`;
 }
 function tip(){
@@ -82,7 +82,7 @@ function picks(){
  const top=pool.filter(x=>easy.test(x.id));if(top.length>=4)pool=top;
  const off=day()%Math.max(1,pool.length-3);pool=pool.slice(off,off+4);
  if(!pool.length)return "";
- return `<section class="rd-picks"><div class="rd-head"><h2>Picked for you</h2><a href="#/browse">See all</a></div><div class="rd-scroll">${pool.map((x,i)=>{const k=(x.areas||[]).find(a=>D().ART&&D().ART[a])||"repro";return `<a class="rd-pick" href="#/entry/${x.id}" style="--pc:${PICKCOL[i%4]}"><span class="rd-pill">${art(k)}</span><b>${e(x.name)}</b><span>${e(x.short)}</span></a>`}).join("")}</div></section>`;
+ return `<section class="rd-picks"><div class="rd-head"><h2>Picked for you</h2></div><div class="rd-scroll">${pool.map((x,i)=>{const k=(x.areas||[]).find(a=>D().ART&&D().ART[a])||"repro";return `<a class="rd-pick" href="#/entry/${x.id}" style="--pc:${PICKCOL[i%4]}"><span class="rd-pill">${art(k)}</span><b>${e(x.name)}</b><span>${e(x.short)}</span></a>`}).join("")}</div></section>`;
 }
 function setupCard(){
  const M=me();if(M.done)return "";
@@ -100,7 +100,7 @@ function renderHome(){
    <label class="rd-search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="rd-q" type="search" placeholder="Symptom or condition" aria-label="Search a symptom or condition" autocomplete="off"></label>
   </section>
   <div id="rd-results" hidden></div>
-  <div id="rd-sections">${setupCard()}${todayCard()}${tiles()}${tip()}${picks()}
+  <div id="rd-sections">${todayCard()}${tiles()}
    <p class="rd-foot">Plain information, not a diagnosis. If you're worried, talk to a doctor or nurse.</p></div>
  </div>`;
  const inp=q("#rd-q");
@@ -111,6 +111,13 @@ function renderHome(){
   res.innerHTML=hits.length?`<p class="rd-kick" style="margin:6px 4px">${hits.length} result${hits.length>1?"s":""}</p><div class="list">${hits.map(rowHtml).join("")}</div>`:`<div class="empty">Nothing found for "${e(v)}". Try different words, or <a href="#/ask">describe it in Ask</a>.</div>`;
   res.hidden=false;sec.hidden=true;
  });
+}
+function exploreCards(){
+ return `<section class="rd-explore"><h2>Explore more</h2><div class="rd-morelist">
+  <a class="rd-more m1" href="#/supps"><span class="rd-ill">${art("energy")}</span><div><b>Supplements</b><span>What the evidence says</span></div><span class="rd-arrow" aria-hidden="true">→</span></a>
+  <button type="button" class="rd-more m2" data-ngo="nut"><span class="rd-ill">${art("gut")}</span><div><b>Food for your cycle</b><span>What to eat in each phase</span></div><span class="rd-arrow" aria-hidden="true">→</span></button>
+  <a class="rd-more m3" href="#/breathe"><span class="rd-ill">${art("breathe")}</span><div><b>Breathing exercise</b><span>Calm cramps, stress or flushes</span></div><span class="rd-arrow" aria-hidden="true">→</span></a>
+ </div></section>${tip()}${picks()}`;
 }
 function refreshToday(){const t=q(".rd-today");if(t){t.outerHTML=todayCard()}}
 
@@ -129,6 +136,7 @@ function decorateBrowse(app){
  const sec=document.createElement("section");sec.className="rd-stagesec";
  sec.innerHTML=`<h2>Where are you in life?</h2><div class="rd-stages">${stages.map(s=>`<button type="button" class="rd-stage" data-rdstage="${s.k}" aria-pressed="${stageFilter===s.k}" style="--sc:${STAGE_COL[s.k]||"#FFE1EA"}"><span class="rd-sill">${art((D().STAGE_ART||{})[s.k]||"teen")}</span><b>${e(s.n)}</b></button>`).join("")}</div><p class="rd-kick" id="rd-stagenote" aria-live="polite"></p><h2>Or pick a topic</h2>`;
  (bq||p||h1).after(sec);
+ sec.insertAdjacentHTML("beforebegin",exploreCards());
  if(chips[0]){chips[0].classList.add("rd-topics");sec.after(chips[0])}
  applyStage();
 }
@@ -198,6 +206,11 @@ body:has(.hz-fab) .wrap{padding-bottom:170px}
 .rd-setup b{display:block;font-family:var(--display);font-size:18px}
 .rd-setup span{font-size:14.5px;color:var(--muted)}
 .rd-setup .rd-ill{width:44px;height:44px;flex:none}
+.rd-explore{margin:18px 0 0}.rd-explore h2{font-size:21px;margin-bottom:12px}.rd-morelist{display:grid;gap:10px}
+.rd-more{display:flex;align-items:center;gap:12px;width:100%;padding:12px 16px;border:0;border-radius:24px;text-align:left;text-decoration:none;color:var(--ink);font:inherit;cursor:pointer;box-shadow:0 8px 20px rgba(43,34,48,.06)}
+.rd-more b{display:block;font-family:var(--display);font-size:18px}.rd-more span{font-size:14.5px;color:var(--muted)}
+.rd-more .rd-ill{width:44px;height:44px;flex:none;background:rgba(255,255,255,.75);border-radius:16px;padding:7px}.rd-more>div{flex:1}.rd-more .rd-arrow{color:var(--accent)}
+.rd-more.m1{background:var(--mint)}.rd-more.m2{background:var(--peach)}.rd-more.m3{background:var(--lilac)}
 .rd-arrow{margin-left:auto;font-size:22px;color:var(--accent)!important}
 .rd-today{margin:14px 0 0;border-radius:30px 30px 30px 10px;background:var(--surface);box-shadow:0 10px 30px rgba(208,53,106,.10);overflow:hidden;border:1px solid var(--line)}
 .rd-cyc{display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(120deg,#368C6B,#2A6E53);color:#fff;text-decoration:none}

@@ -252,9 +252,9 @@ store.clearAll=function(){_clear.call(store);try{localStorage.removeItem(KEY)}ca
 ICON.track='<svg viewBox="0 0 24 24"><path d="M12 3c3.2 4 6 6.8 6 10.2A6 6 0 0 1 6 13.2C6 9.8 8.8 7 12 3z"/><path d="M9.5 14a2.6 2.6 0 0 0 2.5 2.4"/></svg>';
 window.tabs=function(){
   const h=location.hash||"#/";
-  const cur=h.startsWith("#/browse")||h.startsWith("#/area")?"browse":h.startsWith("#/ask")?"ask":h.startsWith("#/supps")?"supps":h.startsWith("#/track")?"track":(h.startsWith("#/saved")||h.startsWith("#/me"))?"me":"home";
+  const cur=h.startsWith("#/browse")||h.startsWith("#/area")||h.startsWith("#/supps")?"browse":h.startsWith("#/ask")?"ask":(h.startsWith("#/saved")||h.startsWith("#/me"))?"me":"home";
   const t=(k,href,label,ic)=>`<button class="tab" ${cur===k?'aria-current="page"':""} onclick="location.hash='${href}'">${ic}<span>${label}</span></button>`;
-  $("#tabs").innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t("home","#/","Home",ICON.home)}${t("browse","#/browse","A to Z",ICON.az)}${t("ask","#/ask","Ask",ICON.ask)}${t("supps","#/supps","Supplements",ICON.pill)}${t("track","#/track","Track",ICON.track)}${t("me","#/me","Me",ICON.me)}</div></nav>`;
+  $("#tabs").innerHTML=`<nav class="tabs" aria-label="Main"><div class="in">${t("home","#/","Home",ICON.home)}${t("browse","#/browse","Learn",ICON.az)}${t("ask","#/ask","Ask",ICON.ask)}${t("me","#/me","Me",ICON.me)}</div></nav>`;
 };
 
 /* ---------- route #/track and topic browsing ---------- */
